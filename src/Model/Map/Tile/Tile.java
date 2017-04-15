@@ -1,5 +1,7 @@
 package Model.Map.Tile;
 
+import Model.Resource.ResourceBag;
+
 import java.util.ArrayList;
 
 /**
@@ -11,9 +13,11 @@ public class Tile {
     ArrayList<TileZone> containedTileZone;
     ArrayList<Integer> riverEdges;
     TileOrientation orientation;
+    ResourceBag resourceBag;
 
-    Tile(){
+    public Tile(){
         containedTileZone=new ArrayList<TileZone>();
+        resourceBag = new ResourceBag();
     }
 
 

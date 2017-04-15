@@ -6,6 +6,7 @@ package Model.Transportation;
 public class Donkey extends Transportation {
     String transportationType="donkey";
 
+
     @Override
     public void getMovementAbilities() {
         movementManager.getMovementAbilities(this);

@@ -2,6 +2,7 @@ package Model.Transportation;
 
 import Model.Abilities.*;
 import Model.Movement.MovementManager;
+import Model.Resource.ResourceBag;
 
 import java.util.ArrayList;
 
@@ -16,8 +17,7 @@ public abstract class Transportation {
   ArrayList<ProduceStructureAbility> produceStructureAbilities;
   CarryResourceAbility carryResourceAbility;
 
-
-
+  ResourceBag resourceBag;
 
  public abstract void getMovementAbilities();
  public abstract void getDropResourceAbilities();
