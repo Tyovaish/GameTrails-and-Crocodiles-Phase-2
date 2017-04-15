@@ -14,6 +14,7 @@ public class Tile {
 
     Tile(){
         containedTileZone=new ArrayList<TileZone>();
+        riverEdges=new ArrayList<Integer>();
     }
 
 
@@ -44,14 +45,33 @@ public class Tile {
     public void setOrientation(TileOrientation orientation) {
         this.orientation = orientation;
     }
-
+    public ArrayList<TileZone> getConnectedTileZones(){return this.containedTileZone;}
     public FeatureType getFeature() {
         return feature;
     }
-
+    public void mergeTileZone(int tileZoneNumber,TileZone tileZone){
+        for(int i=0;i<containedTileZone.size();i++){
+            if(containedTileZone.get(i).containsTileZoneNumber(tileZoneNumber)){
+                containedTileZone.get(i).mergeTileZone(tileZone);
+            }
+        }
+    }
+    public TileZone getTileZone(int tileZoneNumber){
+        for(int i=0;i<containedTileZone.size();i++){
+            if(containedTileZone.get(i).containsTileZoneNumber(tileZoneNumber)){
+                return containedTileZone.get(i);
+            }
+        }
+        return null;
+    }
 
     public void setFeature(FeatureType feature) {
         this.feature = feature;
     }
+    public boolean checkIfTileZoneContainsIn(TileZone tileZone){
+        return containedTileZone.contains(tileZone);
+    }
+
+
 
 }
