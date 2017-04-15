@@ -1,9 +1,9 @@
 package Model.Resource.SecondaryResource;
 
-import Model.Resource.Resource;
+import model.resource.Resource;
 
 /**
- * Created by Trevor on 4/15/2017.
+ * Created by khariollivierre on 4/15/17.
  */
 public class SecondaryResource extends Resource {
 }
