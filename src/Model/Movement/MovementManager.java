@@ -1,4 +1,8 @@
-package Model;
+package Model.Movement;
+
+import Model.Abilities.MovementAbility;
+import Model.Transportation.Transportation;
+import Model.Transportation.TransportationManager;
 
 import java.util.ArrayList;
 
@@ -10,5 +14,6 @@ public class MovementManager {
 
 
     public ArrayList<MovementAbility> getMovementAbilities(Transportation transportation) {
+       return null;
     }
 }

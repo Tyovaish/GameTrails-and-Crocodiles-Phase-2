@@ -1,4 +1,8 @@
-package Model;
+package Controller;
+
+import Controller.Controller;
+import Model.Abilities.Ability;
+import Model.Transportation.Transportation;
 
 import java.util.ArrayList;
 

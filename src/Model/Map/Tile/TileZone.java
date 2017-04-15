@@ -1,4 +1,4 @@
-package Model;
+package Model.Map.Tile;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,7 @@
-package Model;
+package Model.Transportation;
+
+import Model.Location.TransportationLocation;
+import Model.Transportation.Transportation;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,7 @@
-package Model;
+package Model.Abilities;
+
+import Model.Movement.MovementManager;
+import Model.Location.TransportationLocation;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package Model;
+package Model.Resource.SecondaryResource;
 
 /**
  * Created by Trevor on 4/15/2017.
