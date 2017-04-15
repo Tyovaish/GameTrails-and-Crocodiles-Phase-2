@@ -10,13 +10,16 @@ import java.util.ArrayList;
  * Created by Trevor on 4/14/2017.
  */
 public class MovementAbility implements Ability {
-  Transportation transportation;
-  MovementManager movementManager;
-  TransportationLocation transportationLocation;
+  TransportationLocation currentTransportationLocation;
+  TransportationLocation nextTransportationLocation;
 
+  public MovementAbility(TransportationLocation currentTransportationLocation, TransportationLocation nextTransportationLocation){
+    this.currentTransportationLocation=currentTransportationLocation;
+    this.nextTransportationLocation=nextTransportationLocation;
+  }
   @Override
   public void execute() {
-
+      currentTransportationLocation.setEqualTo(nextTransportationLocation);
   }
 
   @Override

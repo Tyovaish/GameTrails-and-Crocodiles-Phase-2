@@ -52,5 +52,8 @@ public class Tile {
     public void setFeature(FeatureType feature) {
         this.feature = feature;
     }
+    public boolean checkIfTileZoneContainsIn(TileZone tileZone){
+        return containedTileZone.contains(tileZone);
+    }
 
 }

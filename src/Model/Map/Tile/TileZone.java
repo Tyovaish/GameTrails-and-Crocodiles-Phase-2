@@ -1,6 +1,7 @@
 package Model.Map.Tile;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Trevor on 4/14/2017.
@@ -22,6 +23,9 @@ public class TileZone {
     }
     public void insertPartOfEdge(int edgeNumber){
         tileParts.add(edgeNumber);
+    }
+   public ArrayList<TileZone> getConnectedTileZones(){
+        return connectedTileZones;
     }
 
     public void print(){
