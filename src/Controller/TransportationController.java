@@ -12,27 +12,30 @@ import java.util.ArrayList;
 public class TransportationController implements Controller {
     Transportation currentTransportation;
     ArrayList<ArrayList<Ability>> currentAbilities;
+    Controller prevController;
     int currentAbility=0;
     int currentSubAbility=0;
 
 
     @Override
     public void getKeyPress(int keyPressed) {
-
+        if(keyPressed>=0 && keyPressed<currentAbilities.size()){
+          currentAbility=keyPressed;
+        }
     }
 
     @Override
     public Controller nextController() {
-        return null;
+        return this;
     }
 
     @Override
     public Controller previousController() {
-        return null;
+        return prevController;
     }
 
     @Override
     public void print() {
-
+        currentAbilities.get(currentAbility).get(currentSubAbility);
     }
 }

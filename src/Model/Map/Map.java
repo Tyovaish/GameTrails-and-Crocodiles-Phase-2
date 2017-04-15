@@ -33,6 +33,5 @@ public class Map {
     }
     public void insertTile(Location location,Tile tile){
         map.put(location,tile);
-
     }
 }

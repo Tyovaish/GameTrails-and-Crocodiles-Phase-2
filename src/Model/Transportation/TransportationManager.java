@@ -12,8 +12,16 @@ import java.util.HashMap;
 public class TransportationManager {
     ArrayList<Transportation> transportationList;
     HashMap<Transportation,TransportationLocation> transportationLocations;
+    TransportationManager(){
+        transportationList=new ArrayList<Transportation>();
+        transportationLocations=new HashMap<Transportation,TransportationLocation>();
+    }
     public ArrayList<Transportation> getTransportationList() {
                 return transportationList;
+    }
+
+    public TransportationLocation getTransportationLocation(Transportation transportation){
+        return transportationLocations.get(transportation);
     }
 
 
