@@ -11,7 +11,7 @@ import java.awt.event.MouseMotionListener;
  */
 public class boardView extends JPanel implements MouseMotionListener, MouseListener {
 
-    final   int BSIZE = 10; //board size.
+    final   int BSIZE = 6; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
     private JScrollPane wholeBoard = new JScrollPane(this);

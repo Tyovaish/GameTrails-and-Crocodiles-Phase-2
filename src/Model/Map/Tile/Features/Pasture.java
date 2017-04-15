@@ -1,5 +1,4 @@
-
-
+package Model.Map.Tile.Features;
 import Model.Map.Tile.FeatureType;
 
 /**
@@ -7,4 +6,9 @@ import Model.Map.Tile.FeatureType;
  */
 public class Pasture extends FeatureType {
     String name="pasture";
+
+    @Override
+    public String getType() {
+        return name;
+    }
 }

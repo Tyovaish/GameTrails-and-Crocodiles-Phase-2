@@ -8,7 +8,10 @@ import java.util.ArrayList;
 public class TileZone {
     ArrayList<Integer> tileParts;
     private ArrayList<TileZone> connectedTileZones;
-
+    TileZone(){
+        tileParts=new ArrayList<Integer>();
+        connectedTileZones=new ArrayList<TileZone>();
+    }
     public void mergeTileZone(TileZone tileZone){
         if(!connectedTileZones.contains(tileZone)) {
             connectedTileZones.add(tileZone);

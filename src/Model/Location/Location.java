@@ -4,18 +4,60 @@ package Model.Location;
  * Created by Trevor on 4/14/2017.
  */
 public class Location {
-    int xPosition;
-    int yPosition;
+    int x;
+    int y;
     boolean equals(Location location2){
         return location2.getX()==this.getX() && location2.getY()==this.getY();
     }
     public boolean equals(int x, int y){
-        return xPosition==x && yPosition==y;
+        return this.x==x && this.y==y;
     }
     int getX(){
-        return xPosition;
+        return x;
     }
     int getY(){
-        return yPosition;
+        return y;
+    }
+
+
+    public Location(int row, int col){
+        this.x= row;
+        this.y= col;
+    }
+
+    public Location(Location location){
+        this.x = x;
+        this.y = y;
+    }
+
+    public Location getNorth() {
+        return new Location(getX() - 1, getY());
+    }
+    public Location getSouth() {
+        return new Location( getX() + 1, getY());
+    }
+    public Location getNorthWest() {
+        if (getY() % 2 == 0)
+            return new Location(getX() - 1, getY() - 1);
+        else
+            return new Location(getX(), getY() - 1);
+    }
+    public Location getSouthWest() {
+        if (getY() % 2 == 0)
+            return new Location(getX(), getY() - 1);
+        else
+            return new Location(getX() + 1, getY() - 1);
+    }
+    public Location getNorthEast() {
+        if (getY() % 2 == 0)
+            return new Location(getX() - 1, getY() + 1);
+        else
+            return new Location(getX(), getY() + 1);
+    }
+    public Location getSouthEast() {
+        if (getY() % 2 == 0)
+            return new Location(getX(), getY() + 1);
+        else
+            return new Location(getX() + 1, getY() + 1);
     }
 }

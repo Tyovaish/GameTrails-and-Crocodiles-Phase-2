@@ -2,26 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a0905fd-0d0e-45a4-8e29-14f8f1d0bc72" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/TransportationController.java" afterPath="$PROJECT_DIR$/src/Controller/TransportationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/CarryResourceAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/CarryResourceAbility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/DropUpResourceAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/DropUpResourceAbility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/MovementAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/MovementAbility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/PickUpResourceAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/PickUpResourceAbility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/ProduceStructureAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/ProduceStructureAbility.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BAndR/newFile.txt" afterPath="$PROJECT_DIR$/out/production/BAndR/newFile.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ImportManager.java" afterPath="$PROJECT_DIR$/src/ImportManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Location/Location.java" afterPath="$PROJECT_DIR$/src/Model/Location/Location.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Map.java" afterPath="$PROJECT_DIR$/src/Model/Map/Map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/Pasture.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/Pasture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/TileFactory.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/TileFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Movement/MovementManager.java" afterPath="$PROJECT_DIR$/src/Model/Movement/MovementManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java" afterPath="$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Resource/ResourceManager.java" afterPath="$PROJECT_DIR$/src/Model/Resource/ResourceManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Transportation/Donkey.java" afterPath="$PROJECT_DIR$/src/Model/Transportation/Donkey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Transportation/Transportation.java" afterPath="$PROJECT_DIR$/src/Model/Transportation/Transportation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Transportation/TransportationManager.java" afterPath="$PROJECT_DIR$/src/Model/Transportation/TransportationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ViewObserver.java" afterPath="$PROJECT_DIR$/src/Model/ViewObserver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/MapEditor.java" afterPath="$PROJECT_DIR$/src/Model/Map/MapEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/FeatureType.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/FeatureType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/Features/Pasture.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/Features/Pasture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/TileZone.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/TileZone.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/boardView.java" afterPath="$PROJECT_DIR$/src/View/boardView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/newFile.txt" afterPath="$PROJECT_DIR$/src/newFile.txt" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,16 +27,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="Resource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Resource/Resource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Donkey.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Transportation/Donkey.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -106,11 +89,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Wood.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Wood.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
               <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-40537">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -538,18 +531,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BAndR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BAndR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Model.Map.Tile" />
-      <recent name="Model" />
-    </key>
   </component>
   <component name="RunManager" selected="Application.runView">
     <configuration default="false" name="runView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -784,18 +782,11 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="9a0905fd-0d0e-45a4-8e29-14f8f1d0bc72" name="Default" comment="" />
-      <created>1492215981959</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1492215981959</updated>
-    </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3226" height="1746" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -812,7 +803,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2446875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2446875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -841,14 +832,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Trunks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Resource/SecondaryResource/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1042,9 +1025,9 @@
         <state relative-caret-position="721">
           <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#854#855#0" expanded="false" />
+            <element signature="e#892#893#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1094,8 +1077,8 @@
         <state relative-caret-position="528">
           <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
           <folding>
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="false" />
+            <element signature="e#642#643#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1252,6 +1235,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40537">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

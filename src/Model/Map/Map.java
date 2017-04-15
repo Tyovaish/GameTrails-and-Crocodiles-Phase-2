@@ -11,14 +11,16 @@ import java.util.Set;
  */
 public class Map {
     HashMap<Location, Tile> map;
-
+    public Map(){
+        map=new HashMap<Location,Tile>();
+    }
     public Tile getTileAt(int x, int y){
         Location location=getLocation(x,y);
         return getTile(location);
     }
     private Location getLocation(int x,int y){
         Set<Location> locationSet=map.keySet();
-        Location locationAt= new Location();
+        Location locationAt= new Location(x,y);
         for(Location l:locationSet){
             if(l.equals(x,y)){
                 locationAt=l;

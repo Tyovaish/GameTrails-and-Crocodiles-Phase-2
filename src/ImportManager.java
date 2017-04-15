@@ -1,15 +1,29 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import Model.Location.Location;
+import Model.Map.Map;
+import Model.Map.MapEditor;
+import Model.Map.Tile.Tile;
+import Model.Map.Tile.TileFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
  * Created by Lazaro on 4/12/2017.
  */
 public class ImportManager {
+
+    private TileFactory tilecreator = new TileFactory();
+    private Map board = new Map();
+    private MapEditor editor = new MapEditor(board);
+    private int rotation = 0;
+    private int row;
+    private int col;
+    private String type;
+    private ArrayList<Integer> riverEdges = new ArrayList<Integer>();
 
     public ImportManager() {
         File mapFile;
@@ -30,7 +44,7 @@ public class ImportManager {
                 currentLine = bufferedReader.readLine();
                 while ( !checkFileEnd(currentLine)) {
                     System.out.println(currentLine);
-                    getCoordinates(currentLine);
+                    setCoordinates(currentLine);
                     currentLine = bufferedReader.readLine();
                 }
             }
@@ -53,51 +67,48 @@ public class ImportManager {
         return lastLine.equals("End Map");
     }
 
-    private int getOrientation(int[] riverEdges){
-        int rotation = 0;
-        switch (riverEdges.length){
+    private void setOrientation(ArrayList<Integer> riverEdges){
+
+        switch (riverEdges.size()){
             case 1:{
-                rotation = riverEdges[0] -1;
+                rotation = riverEdges.get(0) -1;
                 break;
             }
             case 2:{
-                if(riverEdges[0] == 1 && riverEdges[1]==3)
+                if(riverEdges.get(0) == 1 && riverEdges.get(1)==3)
                     rotation = 0;
-                else if(riverEdges[0] == 2 && riverEdges[1]==4)
+                else if(riverEdges.get(0) == 2 && riverEdges.get(1)==4)
                     rotation = 1;
-                else if(riverEdges[0] == 3 && riverEdges[1]==5)
+                else if(riverEdges.get(0) == 3 && riverEdges.get(1)==5)
                     rotation = 2;
-                else if(riverEdges[0] == 4 && riverEdges[1]==6)
+                else if(riverEdges.get(0) == 4 && riverEdges.get(1)==6)
                     rotation = 3;
-                else if(riverEdges[0] == 5 && riverEdges[1]==1)
+                else if(riverEdges.get(0) == 5 && riverEdges.get(1)==1)
                     rotation = 4;
-                else if(riverEdges[0] == 6 && riverEdges[1]==2)
+                else if(riverEdges.get(0) == 6 && riverEdges.get(1)==2)
                     rotation = 5;
                 break;
             }
             case 3:{
-                if(riverEdges[0] == 6 && riverEdges[1]==2 && riverEdges[2]==4)
+                if(riverEdges.get(0) == 6 && riverEdges.get(1)==2 && riverEdges.get(2)==4)
                     rotation = 0;
-                else if(riverEdges[0] == 1 && riverEdges[1]==3 && riverEdges[2]==5)
+                else if(riverEdges.get(0) == 1 && riverEdges.get(1)==3 && riverEdges.get(2)==5)
                     rotation = 1;
-                else if(riverEdges[0] == 2 && riverEdges[1]==4 && riverEdges[2]==6)
+                else if(riverEdges.get(0) == 2 && riverEdges.get(1)==4 && riverEdges.get(2)==6)
                     rotation = 2;
-                else if(riverEdges[0] == 3 && riverEdges[1]==5 && riverEdges[2]==1)
+                else if(riverEdges.get(0) == 3 && riverEdges.get(1)==5 && riverEdges.get(2)==1)
                     rotation = 3;
-                else if(riverEdges[0] == 4 && riverEdges[1]==6 && riverEdges[2]==2)
+                else if(riverEdges.get(0) == 4 && riverEdges.get(1)==6 && riverEdges.get(2)==2)
                     rotation = 4;
-                else if(riverEdges[0] == 5 && riverEdges[1]==1 && riverEdges[2]==3)
+                else if(riverEdges.get(0) == 5 && riverEdges.get(1)==1 && riverEdges.get(2)==3)
                     rotation = 5;
                 break;
             }
         }
-        return rotation;
+
     }
 
-    private void getCoordinates(String text){
-
-        int row;
-        int col;
+    private void setCoordinates(String text){
         String substr;
 
         substr = text.substring(8, text.indexOf(" "));
@@ -106,17 +117,15 @@ public class ImportManager {
         substr = substr.substring(0 , substr.indexOf(")"));
         col = Integer.parseInt(substr);
 
-        System.out.println(row + " " + col );
-        getType(text);
+        setType(text);
 
     }
 
-    private void getType(String text){
-        String substr;
-        substr = text.substring(text.indexOf(" ") + 4);
-        substr = substr.substring(0 , substr.indexOf(" "));
-        System.out.println(substr);
-        getriverEdges(text);
+    private void setType(String text){
+        String temp;
+        temp = text.substring(text.indexOf(" ") + 4);
+        type = temp.substring(0 , temp.indexOf(" "));
+        getriverEdges(temp);
     }
 
     private void getriverEdges(String text){
@@ -124,9 +133,9 @@ public class ImportManager {
         String temp;
         int face1, face2 = 0, face3 = 0;
         int index = 0;
-        substr = text.substring(text.indexOf(")") + text.indexOf(" "));
+        substr = text.substring(text.indexOf("("));
         int length = substr.length();
-
+        riverEdges.clear();
         if(length != 2) {
             temp = substr.substring(1,2);
             face1 =  Integer.parseInt(temp); // first river face
@@ -142,40 +151,44 @@ public class ImportManager {
                         face3 = Integer.parseInt(temp); // third river face
                         index++;
                     }
-
-            int [] riverEdges = new int[index];
             switch(index){
                 case 1:{
-                    riverEdges[0] = face1;
-                    System.out.println(getOrientation(riverEdges));
+                    riverEdges.add(face1);
+                    setOrientation(riverEdges);
                     break;
                 }
                 case 2:{
-                    riverEdges[0] = face1;
-                    riverEdges[1] = face2;
-                    System.out.println(getOrientation(riverEdges));
+                    riverEdges.add(face1);
+                    riverEdges.add(face2);
+                    setOrientation(riverEdges);
                     break;
                 }
                 case 3:{
-                    riverEdges[0] = face1;
-                    riverEdges[1] = face2;
-                    riverEdges[2] = face3;
-                    System.out.println(getOrientation(riverEdges));
+                    riverEdges.add(face1);
+                    riverEdges.add(face2);
+                    riverEdges.add(face3);
+                    setOrientation(riverEdges);
                     break;
                 }
             }
 
         }
         else{
-            int [] riverEdges = new int[1];
-            riverEdges[index] = 1;
-            System.out.println(getOrientation(riverEdges));
+            riverEdges.add(1);
+            setOrientation(riverEdges);
         }
 
 
+        //inserting tile to map
+        Location loc = new Location(row, col);
+        editor.insertTile(loc, createTile());
 
 
     }
 
+
+    private Tile createTile(){
+        return tilecreator.createTile(type, rotation, riverEdges);
+    }
 }
 
