@@ -1,5 +1,7 @@
 package View;
 
+import Model.Map.Map;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.*;
@@ -17,39 +19,21 @@ public class paintHex {
 
 
 
-    public Polygon setHex(int row, int col){
+    public Polygon setHex(int row, int col) {
         int[] cx, cy;
-        int x = row ;
-        int y = col ;
+        int x = row;
+        int y = col;
 
 
-        cx = new int[] { (int) (x + radius * Math.cos(2 * Math.PI * 1/6)),(int) (x + radius * Math.cos(2 * Math.PI * 2/6)),
-                (int) (x + radius * Math.cos(2 * Math.PI * 3/6)),(int) (x + radius * Math.cos(2 * Math.PI * 4/6)),
-                (int) (x + radius * Math.cos(2 * Math.PI * 5/6)),(int) (x + radius * Math.cos(2 * Math.PI ))};
+        cx = new int[]{(int) (x + radius * Math.cos(2 * Math.PI * 1 / 6)), (int) (x + radius * Math.cos(2 * Math.PI * 2 / 6)),
+                (int) (x + radius * Math.cos(2 * Math.PI * 3 / 6)), (int) (x + radius * Math.cos(2 * Math.PI * 4 / 6)),
+                (int) (x + radius * Math.cos(2 * Math.PI * 5 / 6)), (int) (x + radius * Math.cos(2 * Math.PI))};
 
-        cy = new int[] {(int) (y + radius * Math.sin(2 * Math.PI* 1/6)),(int) (y + radius * Math.sin(2 * Math.PI* 2/6)),
-                (int) (y + radius * Math.sin(2 * Math.PI* 3/6)),(int) (y + radius * Math.sin(2 * Math.PI* 4/6)),
-                (int) (y + radius * Math.sin(2 * Math.PI* 5/6)),(int) (y + radius * Math.sin(2 * Math.PI))};
+        cy = new int[]{(int) (y + radius * Math.sin(2 * Math.PI * 1 / 6)), (int) (y + radius * Math.sin(2 * Math.PI * 2 / 6)),
+                (int) (y + radius * Math.sin(2 * Math.PI * 3 / 6)), (int) (y + radius * Math.sin(2 * Math.PI * 4 / 6)),
+                (int) (y + radius * Math.sin(2 * Math.PI * 5 / 6)), (int) (y + radius * Math.sin(2 * Math.PI))};
         //CREATES THE HEX IN TWO HALVES WITH EQUAL SIDES
-        return new Polygon(cx,cy,6);
-    }
-    public  void drawHex(int i, int j, Graphics2D g2) {
-
-        int vert;
-        int horiz = radius +(j*((width/4*3)));
-        if(j % 2 == 0)
-            vert = radius +(i * height);
-        else
-            vert = 10 + ((i+1) * (height));
-
-
-        Polygon poly = setHex(horiz, vert);
-        g2.setColor(Color.WHITE);
-        g2.fillPolygon(poly);
-        g2.setColor(Color.BLACK);
-        g2.setStroke(new BasicStroke(5));
-        g2.drawPolygon(poly);
-
+        return new Polygon(cx, cy, 6);
     }
 
     public void drawCursor(int i, int j, Graphics2D g2){
@@ -69,8 +53,11 @@ public class paintHex {
     }
 
 
-    public void fillHex(int i, int j, int rot, String type, int rivers,  Graphics2D g2) {
+    public void fillHex(int i, int j, Map board, Graphics2D g2) {
         String riverType;
+        int rivers = board.getTileAt(i,j).getRiverEdges().size();
+        String type = board.getTileAt(i,j).getFeature().getType();
+        int rot = board.getTileAt(i,j).getOrientation().getNumberOfRotations();
         riverType = getRiverType(rivers);
         File img = new File("./src/View/Images/" + type + ".jpg");
         File img2 = new File("./src/View/Images/" + riverType);
@@ -80,11 +67,12 @@ public class paintHex {
         BufferedImage transparentImage = null;
 
         int vert;
-        int horiz = radius +(j*((width/4*3)));
+        int horiz = radius +(int)(j*((width/4*2.9)));
         if(j % 2 == 0)
-            vert = radius +(i * height);
+            vert = radius +(int)(i * height*0.97);
         else
             vert = 10 + ((i+1) * (height));
+
 
         if(type == null) {return;}
         else{
@@ -108,8 +96,9 @@ public class paintHex {
 
 
         if(rot > -1) {
+            Polygon poly = setHex(horiz, vert);
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
-            g2.setClip(setHex(horiz, vert));
+            g2.setClip(poly);
             if(bi != null)
                 g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
             if(riverType != null && riverType.equals("source.PNG"))
@@ -119,9 +108,12 @@ public class paintHex {
             else if(riverType != null && riverType.equals("Y.PNG"))
                 g2.drawImage(transparentImage, horiz-120, vert-110, null);
             g2.setColor(Color.BLACK);
-            g2.setStroke(new BasicStroke(10));
-            g2.draw(setHex(horiz, vert));
+            g2.setStroke(new BasicStroke(15));
+            g2.draw(poly);
         }
+
+
+
 
 
     }

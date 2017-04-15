@@ -1,46 +1,42 @@
 package View;
 
+import Model.Map.Map;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 
 /**
  * Created by Lazaro on 4/11/2017.
  */
 public class boardView extends JPanel implements MouseMotionListener, MouseListener {
 
-    final   int BSIZE = 6; //board size.
+    final   int BSIZE = 5; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
     private JScrollPane wholeBoard = new JScrollPane(this);
+    private Map board;
 
 
-
-    private void drawGameBoard(Graphics2D g2){
-
-        for (int i = 0; i < BSIZE; i++) {
-            for (int j = 0; j < BSIZE; j++) {
-                hex.drawHex(i, j, g2);
-            }
-        }
-    }
-
-
-/*
     private void fillInHex(Graphics2D g2){
-        for (int i = 0; i < BSIZE; i++) {
+        //for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
-                AffineTransform old = g2.getTransform();
-                hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j),
-                        board.getTileNumberOfRivers(i,j) , g2);
-                hex.drawCursor(hoverP.x,hoverP.y,g2);
-                g2.setTransform(old);
-            }
+                if(board.getTileAt(0,j) != null) {
+                    AffineTransform old = g2.getTransform();
+                    hex.fillHex(0, j, board, g2);
+                    hex.drawCursor(hoverP.x, hoverP.y, g2);
+                    g2.setTransform(old);
+                }
+                else {
+                    continue;
+                }
+           // }
         }
     }
-*/
+
 
 
     public void paintComponent(Graphics g)
@@ -50,12 +46,8 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         //draws GameBoard
-        drawGameBoard(g2);
         //Fills In Hexes with Tile Images from the Board
-       // fillInHex(g2);
-        //Drawing the cursor
-        hex.drawCursor(hoverP.x,hoverP.y,g2);
-
+         fillInHex(g2);
 
 
 
@@ -107,7 +99,8 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
 
 
 
-    boardView(){
+    boardView(Map board){
+        this.board = board;
         addMouseMotionListener(this);
         addMouseListener(this);
         setPreferredSize(new Dimension(2200,2100));

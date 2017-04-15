@@ -1,5 +1,7 @@
 package View;
 
+import Model.Map.Map;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,10 +9,9 @@ import java.awt.*;
  * Created by Lazaro on 4/11/2017.
  */
 public class Display extends JFrame {
-    boardView board = new boardView();
-    dashBoard dash = new dashBoard();
 
-    private void createDisplay(){
+    private void createDisplay(boardView board){
+        dashBoard dash = new dashBoard();
         setTitle("PHASE 02");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
@@ -23,7 +24,8 @@ public class Display extends JFrame {
         setResizable(true);
     }
 
-    public Display(){
-        createDisplay();
+    public Display(Map board){
+        boardView map = new boardView(board);
+        createDisplay(map);
     }
 }
