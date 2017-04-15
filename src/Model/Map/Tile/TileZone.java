@@ -34,4 +34,7 @@ public class TileZone {
         }
         System.out.println();
     }
+    public boolean containsTileZoneNumber(int tileZoneNumber){
+        return tileParts.contains(tileZoneNumber);
+    }
 }
