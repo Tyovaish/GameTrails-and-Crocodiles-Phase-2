@@ -1,6 +1,4 @@
-package Model;
-
-import javafx.geometry.Orientation;
+package Model.Map.Tile;
 
 import java.util.ArrayList;
 

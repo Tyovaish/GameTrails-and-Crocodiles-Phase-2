@@ -1,6 +1,8 @@
-package Model;
+package Model.Map;
 
-import java.util.ArrayList;
+import Model.Location.Location;
+import Model.Map.Tile.Tile;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -8,7 +10,7 @@ import java.util.Set;
  * Created by Trevor on 4/14/2017.
  */
 public class Map {
-    HashMap<Location,Tile> map;
+    HashMap<Location, Tile> map;
 
     public Tile getTileAt(int x, int y){
         Location location=getLocation(x,y);
@@ -29,5 +31,6 @@ public class Map {
     }
     public void insertTile(Location location,Tile tile){
         map.put(location,tile);
+
     }
 }

@@ -1,6 +1,6 @@
-package Model;
+package Model.Map.Tile;
 
-import javafx.geometry.*;
+import Model.Map.Tile.Features.Pasture;
 
 import java.util.ArrayList;
 
