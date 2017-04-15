@@ -17,15 +17,17 @@ import java.util.ArrayList;
 public class ImportManager {
 
     private TileFactory tilecreator = new TileFactory();
-    private Map board = new Map();
-    private MapEditor editor = new MapEditor(board);
+    private Map board;
+    private MapEditor editor;
     private int rotation = 0;
     private int row;
     private int col;
     private String type;
     private ArrayList<Integer> riverEdges = new ArrayList<Integer>();
 
-    public ImportManager() {
+    public ImportManager(Map board) {
+        this.board = board;
+        editor = new MapEditor(this.board);
         File mapFile;
         String file = "src/newFile.txt";
         String currentLine;
@@ -43,7 +45,6 @@ public class ImportManager {
             if(executable && correctFile) {
                 currentLine = bufferedReader.readLine();
                 while ( !checkFileEnd(currentLine)) {
-                    System.out.println(currentLine);
                     setCoordinates(currentLine);
                     currentLine = bufferedReader.readLine();
                 }
@@ -55,7 +56,6 @@ public class ImportManager {
         {
             e.printStackTrace();
         }
-
 
     }
 
@@ -182,6 +182,7 @@ public class ImportManager {
         //inserting tile to map
         Location loc = new Location(row, col);
         editor.insertTile(loc, createTile());
+
 
 
     }

@@ -1,3 +1,4 @@
+import Model.Map.Map;
 import View.Display;
 
 /**
@@ -8,8 +9,9 @@ public class runView {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new Display();
-                new ImportManager();
+                Map board = new Map();
+                new ImportManager(board);
+                new Display(board);
             }
 
         });
