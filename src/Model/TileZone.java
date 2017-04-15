@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class TileZone {
     ArrayList<Integer> tileParts;
     private ArrayList<TileZone> connectedTileZones;
+
     public void mergeTileZone(TileZone tileZone){
         if(!connectedTileZones.contains(tileZone)) {
             connectedTileZones.add(tileZone);
@@ -19,6 +20,7 @@ public class TileZone {
     public void insertPartOfEdge(int edgeNumber){
         tileParts.add(edgeNumber);
     }
+
     public void print(){
         for(int i=0;i<tileParts.size();i++){
             System.out.print(tileParts.get(i)+',');
