@@ -9,7 +9,7 @@ import Model.Map.Tile.Tile;
  */
 public class MapEditor {
     Map map;
-    MapEditor(Map map){
+    public MapEditor(Map map){
         this.map=map;
     }
     public void insertTile(Location location, Tile tile){
