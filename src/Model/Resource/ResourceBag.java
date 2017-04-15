@@ -2,11 +2,14 @@ package Model.Resource;
 
 import Model.Resource.PrimaryResource.*;
 import Model.Resource.SecondaryResource.*;
+import Model.ResourceHolder;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
-public class ResourceBag {
+public class ResourceBag implements ResourceHolder{
     // Resource counter keeps track of number of resources in bag
     private int counter;
 
@@ -26,6 +29,8 @@ public class ResourceBag {
     private Queue<Pearl> pearls;
     private Queue<StockBond> bonds;
 
+    private Map<ResourceEnum, Queue> resourceMap;
+
     // Constructor
     public ResourceBag() {
         counter = 0;
@@ -43,6 +48,23 @@ public class ResourceBag {
         papers = new LinkedList<>();
         pearls = new LinkedList<>();
         bonds = new LinkedList<>();
+
+        resourceMap = new HashMap<>();
+        createResourceMap();
+    }
+    private void createResourceMap(){
+        resourceMap.put(ResourceEnum.STONE, stones);
+        resourceMap.put(ResourceEnum.TRUNK, trunks);
+        resourceMap.put(ResourceEnum.FUEL, fuels);
+        resourceMap.put(ResourceEnum.IRON, irons);
+        resourceMap.put(ResourceEnum.GOLD, golds);
+        resourceMap.put(ResourceEnum.CLAY, clays);
+        resourceMap.put(ResourceEnum.BOARD, boards);
+        resourceMap.put(ResourceEnum.COIN, coins);
+        resourceMap.put(ResourceEnum.MARBLE, marbles);
+        resourceMap.put(ResourceEnum.PAPER, papers);
+        resourceMap.put(ResourceEnum.PEARL, pearls);
+        resourceMap.put(ResourceEnum.BOND, bonds);
     }
 
     // Accessors
@@ -75,67 +97,15 @@ public class ResourceBag {
     public void setPearls(Queue<Pearl> pearls) { this.pearls = pearls; }
     public void setBonds(Queue<StockBond> bonds) { this.bonds = bonds; }
 
-    // Adding resources to bag
-    public void addResource(Stone stone){ stones.offer(stone); counter++; }
-    public void addResource(Trunk trunk){ trunks.offer(trunk); counter++;}
-    public void addResource(Fuel fuel){ fuels.offer(fuel); counter++; }
-    public void addResource(Iron iron){ irons.offer(iron); counter++; }
-    public void addResource(Gold gold){ golds.offer(gold); counter++; }
-    public void addResource(Clay clay){ clays.offer(clay); counter++; }
-    public void addResource(Board board){ boards.offer(board); counter++; }
-    public void addResource(Coin coin){ coins.offer(coin); counter++; }
-    public void addResource(Marble marble){ marbles.offer(marble); counter++; }
-    public void addResource(Paper paper){ papers.offer(paper); counter++; }
-    public void addResource(Pearl pearl){ pearls.offer(pearl); counter++; }
-    public void addResource(StockBond bond){ bonds.offer(bond); counter++; }
-
-    // Removing resources from bag
-    public Stone removeStone(){
-        if (!stones.isEmpty()){ counter--; return stones.poll();  }
-        else return null;
+    // ResourceHolder
+    public void addResource(Resource resource){
+        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
+        resourceQueue.offer(resource);
+        counter++;
     }
-    public Trunk removeTrunk(){
-        if (!trunks.isEmpty()){ counter--; return trunks.poll(); }
-        else return null;
-    }
-    public Fuel removeFuel(){
-        if (!fuels.isEmpty()){ counter--; return fuels.poll(); }
-        else return null;
-    }
-    public Iron removeIron(){
-        if (!irons.isEmpty()){ counter--; return irons.poll(); }
-        else return null;
-    }
-    public Gold removeGold(){
-        if (!golds.isEmpty()){ counter--; return golds.poll(); }
-        else return null;
-    }
-    public Clay removeClay(){
-        if (!clays.isEmpty()){ counter--; return clays.poll(); }
-        else return null;
-    }
-    public Board removeBoard(){
-        if (!boards.isEmpty()){ counter--; return boards.poll(); }
-        else return null;
-    }
-    public Coin removeCoin(){
-        if (!coins.isEmpty()){ counter--; return coins.poll(); }
-        else return null;
-    }
-    public Marble removeMarble(){
-        if (!marbles.isEmpty()){ counter--; return marbles.poll(); }
-        else return null;
-    }
-    public Paper removePaper(){
-        if (!papers.isEmpty()){ counter--; return papers.poll(); }
-        else return null;
-    }
-    public Pearl removePearl(){
-        if (!pearls.isEmpty()){ counter--; return pearls.poll(); }
-        else return null;
-    }
-    public StockBond removeBond(){
-        if (!bonds.isEmpty()){ counter--; return bonds.poll(); }
+    public Resource removeResource(ResourceEnum resource){
+        Queue<Resource> resourceQueue = resourceMap.get(resource);
+        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
         else return null;
     }
 }
