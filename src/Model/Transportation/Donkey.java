@@ -8,7 +8,7 @@ public class Donkey extends Transportation {
 
     @Override
     public void getMovementAbilities() {
-        movementManager.getMovementAbilities(this);
+        movementAbilities=movementManager.getMovementAbilities(this);
     }
 
     @Override

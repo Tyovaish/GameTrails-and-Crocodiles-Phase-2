@@ -22,16 +22,13 @@ public abstract class Transportation {
  public abstract void getMovementAbilities();
  public abstract void getDropResourceAbilities();
  public abstract void getPickUpResourceAbilities();
- public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){
-     this.movementAbilities=movementAbilities;
- }
 
-
-  public void getAbilities(){
+  public ArrayList<ArrayList<Ability>> getAbilities(){
     getMovementAbilities();
-     ArrayList<ArrayList<MovementAbility>> listOfAbilities=new ArrayList<>();
-     listOfAbilities.add(movementAbilities);
-
+    ArrayList<ArrayList<Ability>> allAbilities=new ArrayList<ArrayList<Ability>>();
+     ArrayList<MovementAbility> movementAbilities=new ArrayList<MovementAbility>();
+     allAbilities.get(0).addAll(movementAbilities);
+     return allAbilities;
   }
   public void useAbility(Ability ability){
       ability.execute();
