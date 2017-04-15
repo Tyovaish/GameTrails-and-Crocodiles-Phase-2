@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a0905fd-0d0e-45a4-8e29-14f8f1d0bc72" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/Pasture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/Resource/ResourceManager.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Model/Abilities/GroundMovementAbility.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/TransportationController.java" afterPath="$PROJECT_DIR$/src/Controller/TransportationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/CarryResourceAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/CarryResourceAbility.java" />
@@ -13,8 +10,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/PickUpResourceAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/PickUpResourceAbility.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Abilities/ProduceStructureAbility.java" afterPath="$PROJECT_DIR$/src/Model/Abilities/ProduceStructureAbility.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Map.java" afterPath="$PROJECT_DIR$/src/Model/Map/Map.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/Pasture.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/Pasture.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map/Tile/TileFactory.java" afterPath="$PROJECT_DIR$/src/Model/Map/Tile/TileFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Movement/MovementManager.java" afterPath="$PROJECT_DIR$/src/Model/Movement/MovementManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java" afterPath="$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Resource/ResourceManager.java" afterPath="$PROJECT_DIR$/src/Model/Resource/ResourceManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Transportation/Donkey.java" afterPath="$PROJECT_DIR$/src/Model/Transportation/Donkey.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Transportation/Transportation.java" afterPath="$PROJECT_DIR$/src/Model/Transportation/Transportation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Transportation/TransportationManager.java" afterPath="$PROJECT_DIR$/src/Model/Transportation/TransportationManager.java" />
@@ -54,6 +54,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Trunks.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Trunks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Resource/SecondaryResource/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ViewObserver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/ViewObserver.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,16 +96,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CarryResourceAbility.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Abilities/CarryResourceAbility.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ResourceManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Resource/ResourceManager.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Wood.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Wood.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="297">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,21 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransportationManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TransportationManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Transportation/TransportationManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
               <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DropUpResourceAbility.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Abilities/DropUpResourceAbility.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -190,7 +190,6 @@
         <option value="$PROJECT_DIR$/src/Model/Location/TransportationLocation.java" />
         <option value="$PROJECT_DIR$/src/Model/Resource/Wood.java" />
         <option value="$PROJECT_DIR$/src/Model/Map/Tile/FeatureType/Wood.java" />
-        <option value="$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java" />
         <option value="$PROJECT_DIR$/src/Model/Map/Tile/FeatureType/Pasture.java" />
         <option value="$PROJECT_DIR$/src/Model/Map/Tile/FeatureType.java" />
         <option value="$PROJECT_DIR$/src/Controller/TransportationController.java" />
@@ -209,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/Model/Abilities/MovementAbility.java" />
         <option value="$PROJECT_DIR$/src/Model/Resource/ResourceManager.java" />
         <option value="$PROJECT_DIR$/src/Model/ViewObserver.java" />
+        <option value="$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java" />
       </list>
     </option>
   </component>
@@ -321,6 +321,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BAndR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BAndR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SecondaryResource" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -768,8 +794,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="3226" height="1746" extended-state="7" />
-    <editor active="true" />
+    <frame x="-13" y="-13" width="3226" height="1746" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -786,7 +812,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2446875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2446875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -967,22 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Trunks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Resource/SecondaryResource/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1170,16 +1180,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Transportation/Transportation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Transportation/Donkey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1192,14 +1192,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1226,6 +1218,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Transportation/Transportation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Resource/SecondaryResource/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Trunks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Resource/PrimaryResource/Wood.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
