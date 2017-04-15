@@ -28,8 +28,6 @@ public class Map {
         return map.get(location);
     }
     public void insertTile(Location location,Tile tile){
-
-
         map.put(location,tile);
 
     }

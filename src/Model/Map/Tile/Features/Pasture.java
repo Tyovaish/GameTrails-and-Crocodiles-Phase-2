@@ -1,4 +1,6 @@
-package Model;
+
+
+import Model.Map.Tile.FeatureType;
 
 /**
  * Created by Trevor on 4/14/2017.
