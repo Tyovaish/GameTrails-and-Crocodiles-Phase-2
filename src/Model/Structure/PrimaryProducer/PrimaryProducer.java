@@ -1,0 +1,9 @@
+package Model.Structure.PrimaryProducer;
+
+import Model.Structure.Structure;
+
+/**
+ * Created by khariollivierre on 4/15/17.
+ */
+public class PrimaryProducer extends Structure {
+}
