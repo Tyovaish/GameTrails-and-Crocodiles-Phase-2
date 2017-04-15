@@ -49,6 +49,7 @@ public class Tile {
         return feature;
     }
 
+
     public void setFeature(FeatureType feature) {
         this.feature = feature;
     }
