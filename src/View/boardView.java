@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 
+
 /**
  * Created by Lazaro on 4/11/2017.
  */
@@ -17,40 +18,49 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     final   int BSIZE = 5; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
+    private int flag = 0;
     private JScrollPane wholeBoard = new JScrollPane(this);
     private Map board;
 
 
+
+    private void drawCursor(Graphics2D g2){
+        hex.drawCursor(hoverP.x, hoverP.y, g2);
+    }
+
     private void fillInHex(Graphics2D g2){
-        //for (int i = 0; i < BSIZE; i++) {
+        for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
-                if(board.getTileAt(0,j) != null) {
+                if(board.getTileAt(i,j) != null) {
                     AffineTransform old = g2.getTransform();
-                    hex.fillHex(0, j, board, g2);
-                    hex.drawCursor(hoverP.x, hoverP.y, g2);
+                    hex.fillHex(i, j, board, g2);
                     g2.setTransform(old);
+
                 }
-                else {
-                    continue;
-                }
-           // }
+            }
         }
     }
 
+    private void draw(Graphics g){
+        System.out.println("HELLO");
+        Graphics2D g2 = (Graphics2D) g;
 
+        fillInHex(g2);
+
+
+
+
+    }
 
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        //draws GameBoard
+        Graphics2D cursor = (Graphics2D) g.create();
         //Fills In Hexes with Tile Images from the Board
-         fillInHex(g2);
+            draw(g);
 
 
-
+        drawCursor(cursor);
     }
 
     public JScrollPane returnBoard(){
@@ -62,10 +72,8 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     public void mouseMoved(MouseEvent e){
         hoverP = hex.pxtoHex(e.getX(),e.getY());
         if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
-            return;
+            System.out.println("OUTSIDE");
         }
-
-        repaint();
     }
 
     public void mouseClicked(MouseEvent e) {

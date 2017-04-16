@@ -14,7 +14,7 @@ public class TileFactory {
             case "mountain": {tileToBeInserted.setFeature(new Mountain()); break;}
             case "sea": {tileToBeInserted.setFeature(new Sea()); break;}
             case "rock": {tileToBeInserted.setFeature(new Rock()); break;}
-            case "wood": {tileToBeInserted.setFeature(new Woods()); break;}
+            case "woods": {tileToBeInserted.setFeature(new Woods()); break;}
         }
         TileOrientation orientation=new TileOrientation();
         orientation.setNumberOfRotations(rotation);

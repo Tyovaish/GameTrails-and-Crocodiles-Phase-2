@@ -16,14 +16,13 @@ import java.util.ArrayList;
  */
 public class ImportManager {
 
-    private TileFactory tilecreator = new TileFactory();
     private Map board;
     private MapEditor editor;
     private int rotation = 0;
     private int row;
     private int col;
     private String type;
-    private ArrayList<Integer> riverEdges = new ArrayList<Integer>();
+    private ArrayList<Integer> riverEdges;
 
     public ImportManager(Map board) {
         this.board = board;
@@ -83,9 +82,9 @@ public class ImportManager {
                     rotation = 2;
                 else if(riverEdges.get(0) == 4 && riverEdges.get(1)==6)
                     rotation = 3;
-                else if(riverEdges.get(0) == 5 && riverEdges.get(1)==1)
+                else if(riverEdges.get(0) == 1 && riverEdges.get(1)==5)
                     rotation = 4;
-                else if(riverEdges.get(0) == 6 && riverEdges.get(1)==2)
+                else if(riverEdges.get(0) == 2 && riverEdges.get(1)==6)
                     rotation = 5;
                 break;
             }
@@ -135,12 +134,11 @@ public class ImportManager {
         int index = 0;
         substr = text.substring(text.indexOf("("));
         int length = substr.length();
-        riverEdges.clear();
+        riverEdges = new ArrayList<Integer>();
         if(length != 2) {
             temp = substr.substring(1,2);
             face1 =  Integer.parseInt(temp); // first river face
             index++;
-
             if(length > 4) {
                 temp = substr.substring(3, 4);
                 face2 = Integer.parseInt(temp); // second river face
@@ -174,8 +172,7 @@ public class ImportManager {
 
         }
         else{
-            riverEdges.add(1);
-            setOrientation(riverEdges);
+            rotation = 0;
         }
 
 
@@ -189,7 +186,7 @@ public class ImportManager {
 
 
     private Tile createTile(){
-        return tilecreator.createTile(type, rotation, riverEdges);
+        return TileFactory.createTile(type, rotation, riverEdges);
     }
 }
 
