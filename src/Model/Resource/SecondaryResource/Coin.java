@@ -6,6 +6,6 @@ import Model.Resource.ResourceEnum;
 /**
  * Created by khariollivierre on 4/15/17.
  */
-public class Board extends SecondaryResource {
-    public Board() { setType(ResourceEnum.BOARD); }
+public class Coin extends SecondaryResource {
+    public Coin() { setType(ResourceEnum.COIN); }
 }

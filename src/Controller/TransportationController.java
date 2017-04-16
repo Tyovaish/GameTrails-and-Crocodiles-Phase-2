@@ -13,14 +13,24 @@ public class TransportationController implements Controller {
     Transportation currentTransportation;
     ArrayList<ArrayList<Ability>> currentAbilities;
     Controller prevController;
-    int currentAbility=0;
-    int currentSubAbility=0;
+    int currentAbilitySelected=0;
+    int currentSubAbilitySelected=0;
 
 
     @Override
     public void getKeyPress(int keyPressed) {
         if(keyPressed>=0 && keyPressed<currentAbilities.size()){
-          currentAbility=keyPressed;
+          currentSubAbilitySelected=keyPressed;
+        } else if(keyPressed=='l'){
+            currentSubAbilitySelected--;
+            if(currentSubAbilitySelected<0){
+                currentSubAbilitySelected=currentAbilities.get(currentAbilitySelected).size()-1;
+            }
+        } else if(keyPressed=='r'){
+            currentSubAbilitySelected++;
+            if(currentSubAbilitySelected>currentAbilities.get(currentAbilitySelected).size()){
+                currentSubAbilitySelected=0;
+            }
         }
     }
 
@@ -36,6 +46,6 @@ public class TransportationController implements Controller {
 
     @Override
     public void print() {
-        currentAbilities.get(currentAbility).get(currentSubAbility);
+        currentAbilities.get(currentAbilitySelected).get(currentSubAbilitySelected);
     }
 }
