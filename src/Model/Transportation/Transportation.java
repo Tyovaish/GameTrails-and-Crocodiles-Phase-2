@@ -14,24 +14,28 @@ public abstract class Transportation {
   ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
   ArrayList<DropUpResourceAbility> dropUpResourceAbilities;
   ArrayList<ProduceStructureAbility> produceStructureAbilities;
-  CarryResourceAbility carryResourceAbility;
+  ResourceBag resourceBag;
 
 
 
 
  public abstract void getMovementAbilities();
- public abstract void getDropResourceAbilities();
- public abstract void getPickUpResourceAbilities();
- public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){
-     this.movementAbilities=movementAbilities;
+ public void getDropResourceAbilities(){
+
+ }
+ public void getPickUpResourceAbilities(){
+
  }
 
-
-  public void getAbilities(){
+  public ArrayList<ArrayList<Ability>> getAbilities(){
     getMovementAbilities();
-     ArrayList<ArrayList<MovementAbility>> listOfAbilities=new ArrayList<>();
-     listOfAbilities.add(movementAbilities);
-
+    ArrayList<ArrayList<Ability>> allAbilities=new ArrayList<ArrayList<Ability>>();
+     ArrayList<MovementAbility> movementAbilities=new ArrayList<MovementAbility>();
+     allAbilities.get(0).addAll(movementAbilities);
+     return allAbilities;
+  }
+  public ResourceBag getResourceBag(){
+      return resourceBag;
   }
   public void useAbility(Ability ability){
       ability.execute();
