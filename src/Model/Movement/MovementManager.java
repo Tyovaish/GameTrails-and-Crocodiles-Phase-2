@@ -57,7 +57,6 @@ public class MovementManager {
                 if(northEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(northEastTileLocation.getX(),northEastTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     northEastTile.print();
-                    System.out.println("Can move NorthEast");
                 }
             }
         }
@@ -67,7 +66,6 @@ public class MovementManager {
                 if(southEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(southEastTileLocation.getX(),southEastTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     southEastTileLocation.print();
-                    System.out.println("Can move SouthEast");
                 }
             }
         }
@@ -77,7 +75,6 @@ public class MovementManager {
                 if(southTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(southTileLocation.getX(),southTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     southTileLocation.print();
-                    System.out.println("Can move South");
                 }
             }
         }
@@ -87,7 +84,6 @@ public class MovementManager {
                 if(southWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(southWestTileLocation.getX(),southWestTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     southWestTileLocation.print();
-                    System.out.println("Can move SouthWest");
                 }
             }
         }
@@ -97,7 +93,6 @@ public class MovementManager {
                 if(northWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(northWestTileLocation.getX(),northWestTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     northWestTileLocation.print();
-                    System.out.println("Can move NorthWest");
                 }
             }
         }

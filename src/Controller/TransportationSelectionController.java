@@ -8,19 +8,18 @@ import java.util.ArrayList;
 /**
  * Created by Trevor on 4/14/2017.
  */
-public class TransporationSelectionController implements Controller {
+public class TransportationSelectionController extends Controller{
     TransportationManager transportationManager;
     Transportation currentTransportation;
-    TransportationController transportationController;
-    ArrayList<Controller> controllerList;
+    TransportationAbilitiesController TransportationAbilitiesController;
     Controller nextController;
-    Controller previousController;
+    Controller prevController;
 
-    public TransporationSelectionController(TransportationManager transportationManager,Controller previousController){
+    public TransportationSelectionController(TransportationManager transportationManager,Controller previousController){
         this.transportationManager=transportationManager;
-        this.previousController=previousController;
-        this.transportationController=new TransportationController(this);
-        nextController=this.transportationController;
+        this.prevController=previousController;
+        this.TransportationAbilitiesController=new TransportationAbilitiesController(this);
+        nextController=this.TransportationAbilitiesController;
         currentTransportation=transportationManager.getTransportationList().get(0);
     }
     @Override
@@ -32,20 +31,20 @@ public class TransporationSelectionController implements Controller {
 
     @Override
     public Controller nextController() {
-    transportationController.setCurrentTransportation(currentTransportation);
-    transportationController.setCurrentAbilities();
+    TransportationAbilitiesController.setCurrentTransportation(currentTransportation);
     return nextController;
     }
 
     @Override
     public Controller previousController() {
         currentTransportation=transportationManager.getTransportationList().get(0);
-        return previousController;
+        return prevController;
     }
 
     @Override
     public void print() {
-        System.out.println("TransportationSelectionController");
-        System.out.println(currentTransportation.getType());
+        for(int i=0;i<transportationManager.getTransportationList().size();i++){
+            System.out.println(i+ ": "+transportationManager.getTransportationList().get(i).getType());
+        }
     }
 }

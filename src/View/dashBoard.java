@@ -1,10 +1,14 @@
 package View;
 
 import Controller.MainController;
+import Model.Location.ResourceLocation;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
 import Model.Map.Tile.TileZone;
 import Model.Movement.MovementManager;
+import Model.Resource.PrimaryResource.Trunk;
+import Model.Resource.Resource;
+import Model.Resource.ResourceManager;
 import Model.Transportation.Donkey;
 import Model.Transportation.TransportationManager;
 
@@ -76,8 +80,13 @@ MainController mainctrl;
         addKeyListener(this);
         setFocusable(true);
        TransportationManager transportationManager=new TransportationManager(board);
+        ResourceManager resourceManager=new ResourceManager(transportationManager);
+        Resource resource=new Trunk();
+        resourceManager.addResource(resource,new ResourceLocation(0,0,board.getTileAt(0,0).getTileZone(0)));
         MovementManager movementManager=new MovementManager(board,transportationManager);
-        transportationManager.addTransportation(new Donkey(movementManager), new TransportationLocation(0,0, board.getTileAt(0,0).getTileZone(0)));
+        Donkey donkey =new Donkey(movementManager);
+        donkey.addResource(resource);
+        transportationManager.addTransportation(donkey, new TransportationLocation(0,0, board.getTileAt(0,0).getTileZone(0)));
         mainctrl=new MainController(transportationManager);
     }
 }
