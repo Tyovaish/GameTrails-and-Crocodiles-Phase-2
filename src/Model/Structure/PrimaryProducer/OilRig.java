@@ -7,7 +7,7 @@ import Model.Resource.PrimaryResource.Trunk;
  * Created by khariollivierre on 4/15/17.
  */
 public class OilRig extends PrimaryProducer {
-    public OilRig() {}
+    public OilRig() { setPrimaryProducer(true); }
 
     @Override
     public Fuel produce(){

@@ -44,7 +44,18 @@ public class Tile implements ResourceHolder{
     public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
         Resource material = removeResource(resource);
         if (material != null) builder.addMaterial(material);
-        else System.out.printf("Material not found in bag!\n");
+        else System.out.printf("Material not found in Tile bag!\n");
+    }
+
+    public void produce(){
+        if (hasStructure){
+            addResource(structure.produce());
+        }
+    }
+
+    // Phases
+    public void productionPhase(){
+        if (hasStructure && structure.isPrimaryProducer()){ produce(); }
     }
 
     public void setTileZones(ArrayList<Integer> riverEdges) {
