@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a0905fd-0d0e-45a4-8e29-14f8f1d0bc72" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Images/desert.jpg" afterPath="$PROJECT_DIR$/src/View/Images/desert.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Images/mountain.jpg" afterPath="$PROJECT_DIR$/src/View/Images/mountain.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Images/pasture.jpg" afterPath="$PROJECT_DIR$/src/View/Images/pasture.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BAndR/View/Images/desert.jpg" afterPath="$PROJECT_DIR$/out/production/BAndR/View/Images/desert.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BAndR/View/Images/mountain.jpg" afterPath="$PROJECT_DIR$/out/production/BAndR/View/Images/mountain.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BAndR/View/Images/pasture.jpg" afterPath="$PROJECT_DIR$/out/production/BAndR/View/Images/pasture.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/boardView.java" afterPath="$PROJECT_DIR$/src/View/boardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/paintHex.java" afterPath="$PROJECT_DIR$/src/View/paintHex.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -445,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492303528152</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="made the view less laggy">
+      <created>1492309830851</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1492309830851</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -517,7 +522,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="latest code" />
-    <option name="LAST_COMMIT_MESSAGE" value="latest code" />
+    <MESSAGE value="made the view less laggy" />
+    <option name="LAST_COMMIT_MESSAGE" value="made the view less laggy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
