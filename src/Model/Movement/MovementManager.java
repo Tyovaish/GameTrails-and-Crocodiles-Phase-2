@@ -24,7 +24,7 @@ public class MovementManager {
     }
 
     public ArrayList<MovementAbility> getMovementAbilities(Donkey donkey) {
-        //map.print();
+        map.print();
         TransportationLocation donkeyLocation=transportationManager.getTransportationLocation(donkey);
 
         TileZone tileZoneToCheck=donkeyLocation.getTileZone();
@@ -45,9 +45,10 @@ public class MovementManager {
             for(int i=0;i<tileZones.size();i++){
                 if(northTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northTileLocation.getX(),northTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
+                  northTileLocation.print();
+                    System.out.println("Can move North");
                 }
             }
-            System.out.println("Can move North");
         }
 
         Tile northEastTile=map.getTileAt(northEastTileLocation.getX(),northEastTileLocation.getY());
@@ -55,6 +56,7 @@ public class MovementManager {
             for(int i=0;i<tileZones.size();i++){
                 if(northEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northEastTileLocation.getX(),northEastTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
+                    northEastTile.print();
                     System.out.println("Can move NorthEast");
                 }
             }
@@ -64,6 +66,7 @@ public class MovementManager {
             for(int i=0;i<tileZones.size();i++){
                 if(southEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southEastTileLocation.getX(),southEastTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
+                    southEastTileLocation.print();
                     System.out.println("Can move SouthEast");
                 }
             }
@@ -73,6 +76,7 @@ public class MovementManager {
             for(int i=0;i<tileZones.size();i++){
                 if(southTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southTileLocation.getX(),southTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
+                    southTileLocation.print();
                     System.out.println("Can move South");
                 }
             }
@@ -82,15 +86,17 @@ public class MovementManager {
             for(int i=0;i<tileZones.size();i++){
                 if(southWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southWestTileLocation.getX(),southWestTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
+                    southWestTileLocation.print();
                     System.out.println("Can move SouthWest");
                 }
             }
         }
-        Tile northWestTile=map.getTileAt(southWestTileLocation.getX(),southWestTileLocation.getY());
+        Tile northWestTile=map.getTileAt(northWestTileLocation.getX(),northWestTileLocation.getY());
         if(northWestTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
                     movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northWestTileLocation.getX(),northWestTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
+                    northWestTileLocation.print();
                     System.out.println("Can move NorthWest");
                 }
             }

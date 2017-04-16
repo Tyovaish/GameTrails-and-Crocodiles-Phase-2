@@ -171,6 +171,7 @@ public class Tile implements ResourceHolder{
         System.out.println("Tile");
        for(int i=0;i<containedTileZone.size();i++){
            System.out.println("TileZone: "+i);
+           System.out.println("Number of connections"+containedTileZone.get(i).getConnectedTileZones().size());
            containedTileZone.get(i).print();
            System.out.println();
        }

@@ -16,7 +16,7 @@ public class TileZone {
     public void mergeTileZone(TileZone tileZone){
         if(!connectedTileZones.contains(tileZone)) {
             System.out.println("Add new TileZone!");
-            connectedTileZones.add(tileZone);
+            this.addTileZone(tileZone);
             tileZone.addTileZone(this);
         }
         System.out.println(connectedTileZones.size());
