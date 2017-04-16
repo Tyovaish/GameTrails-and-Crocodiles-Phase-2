@@ -16,6 +16,10 @@ public class TransportationManager {
         transportationList=new ArrayList<Transportation>();
         transportationLocations=new HashMap<Transportation,TransportationLocation>();
     }
+    public void addTransportation(Transportation transportation,TransportationLocation transportationLocation){
+        transportationList.add(transportation);
+        transportationLocations.put(transportation,transportationLocation);
+    }
     public ArrayList<Transportation> getTransportationList() {
                 return transportationList;
     }

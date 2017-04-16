@@ -1,5 +1,7 @@
 package Model.Resource;
 
+import Model.Location.ResourceLocation;
+import Model.Location.TransportationLocation;
 import Model.Resource.PrimaryResource.*;
 import Model.Resource.SecondaryResource.*;
 import Model.ResourceHolder;
@@ -122,6 +124,15 @@ public class ResourceBag implements ResourceHolder{
         Resource material = removeResource(resource);
         if (material != null) builder.addMaterial(material);
         else System.out.printf("Material not found in bag!\n");
+    }
+
+    public void carry(TransportationLocation transportationLocation){
+       /* for(int i=0;i<this.size();i++){
+            ResourceLocation locationToChange=resourceManager.getResourceLocation(resourceBag.get(i));
+            locationToChange.setX(transportationLocation.getX());
+            locationToChange.setY(transportationLocation.getY());
+            locationToChange.setTileZone(transportationLocation.getTileZone());
+        } */
     }
 }
 

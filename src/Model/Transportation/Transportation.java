@@ -19,26 +19,27 @@ public abstract class Transportation implements ResourceHolder{
   ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
   ArrayList<DropUpResourceAbility> dropUpResourceAbilities;
   ArrayList<ProduceStructureAbility> produceStructureAbilities;
-  CarryResourceAbility carryResourceAbility;
 
   ResourceBag resourceBag;
   int bagSize;
 
- public abstract void getMovementAbilities();
- public abstract void getDropResourceAbilities();
- public abstract void getPickUpResourceAbilities();
- public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){ this.movementAbilities=movementAbilities; }
+
 
  public ResourceBag getResourceBag() { return resourceBag; }
  public void initResourceBag() { resourceBag = new ResourceBag(bagSize); }
  public int getBagSize() { return bagSize; }
  public void setBagSize(int bagSize) { this.bagSize = bagSize; }
 
-    public void getAbilities(){
+ public abstract void getMovementAbilities();
+ public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){ this.movementAbilities=movementAbilities; }
+ public void getDropResourceAbilities(){}
+ public void getPickUpResourceAbilities(){}
+  public ArrayList<ArrayList<Ability>> getAbilities(){
     getMovementAbilities();
-     ArrayList<ArrayList<MovementAbility>> listOfAbilities=new ArrayList<>();
-     listOfAbilities.add(movementAbilities);
-
+    ArrayList<ArrayList<Ability>> allAbilities=new ArrayList<ArrayList<Ability>>();
+     ArrayList<MovementAbility> movementAbilities=new ArrayList<MovementAbility>();
+     allAbilities.get(0).addAll(movementAbilities);
+     return allAbilities;
   }
   public void useAbility(Ability ability){
       ability.execute();
