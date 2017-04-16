@@ -7,15 +7,19 @@ import Model.Resource.SecondaryResource.*;
 import Model.ResourceHolder;
 import Model.Structure.StructureBuilder;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class ResourceBag implements ResourceHolder{
     // Resource counter keeps track of number of resources in bag. If counter >= size, no resources can be added
+    ResourceManager resourceManager;
     private int counter;
-    private int size;
+    private int size=6;
+    ArrayList<Resource> resourceList;
+    public ResourceBag(ResourceManager resourceManager){
+        resourceList=new ArrayList<Resource>();
+        this.resourceManager=resourceManager;
+    }
+
 
 
     // Primary Resources
@@ -40,6 +44,7 @@ public class ResourceBag implements ResourceHolder{
     public ResourceBag(int size) {
         counter = 0;
         this.size = size;
+        resourceList=new ArrayList<Resource>();
 
         stones = new LinkedList<>();
         trunks = new LinkedList<>();
@@ -105,21 +110,29 @@ public class ResourceBag implements ResourceHolder{
 
     // ResourceHolder
     public void addResource(Resource resource){
-        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
-        if (counter < size || size == -1){
-            resourceQueue.offer(resource);
-            counter++;
+//        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
+//        if (counter < size || size == -1){
+//            resourceQueue.offer(resource);
+//            counter++;
+//        }
+//        else System.out.printf("Bag is full! Resource not added.\n");
+        if(resourceList.size()<size){
+            resourceList.add(resource);
         }
-        else System.out.printf("Bag is full! Resource not added.\n");
+    }
+    public void removeResource(Resource  resource){
+        resourceList.remove(resource);
     }
     public Resource removeResource(ResourceEnum resource){
-        Queue<Resource> resourceQueue = resourceMap.get(resource);
-        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
-        else {
-            System.out.printf("No resources of this type in bag!\n");
-            return null;
-        }
+//        Queue<Resource> resourceQueue = resourceMap.get(resource);
+//        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
+//        else {
+//            System.out.printf("No resources of this type in bag!\n");
+//            return null;
+//        }
+        return null;
     }
+
     public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
         Resource material = removeResource(resource);
         if (material != null) builder.addMaterial(material);
@@ -127,13 +140,14 @@ public class ResourceBag implements ResourceHolder{
     }
 
     // Abilities
+
     public void carry(TransportationLocation transportationLocation){
-       /* for(int i=0;i<this.size();i++){
-            ResourceLocation locationToChange=resourceManager.getResourceLocation(resourceBag.get(i));
+       for(int i=0;i<resourceList.size();i++){
+            ResourceLocation locationToChange=resourceManager.getResourceLocation(resourceList.get(i));
             locationToChange.setX(transportationLocation.getX());
             locationToChange.setY(transportationLocation.getY());
             locationToChange.setTileZone(transportationLocation.getTileZone());
-        } */
+        }
     }
 }
 
