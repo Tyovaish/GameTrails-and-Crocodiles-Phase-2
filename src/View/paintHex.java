@@ -39,7 +39,7 @@ public class paintHex {
     public void drawCursor(int i, int j, Graphics2D g2){
 
         int vert;
-        int horiz = radius +(j*((width/4*3)));
+        int horiz = radius +(int)(j*((width/4*2.89)));
         if(j % 2 == 0)
             vert = radius +(i * height);
         else
@@ -47,13 +47,15 @@ public class paintHex {
 
 
         Polygon poly = setHex(horiz, vert);
+        g2.setClip(poly);
         g2.setColor(Color.RED);
-        g2.setStroke(new BasicStroke(5));
+        g2.setStroke(new BasicStroke(9));
         g2.drawPolygon(poly);
     }
 
 
     public void fillHex(int i, int j, Map board, Graphics2D g2) {
+
         String riverType;
         int rivers = board.getTileAt(i,j).getRiverEdges().size();
         String type = board.getTileAt(i,j).getFeature().getType();
@@ -67,9 +69,9 @@ public class paintHex {
         BufferedImage transparentImage = null;
 
         int vert;
-        int horiz = radius +(int)(j*((width/4*2.9)));
+        int horiz = radius +(int)(j*((width/4*2.89)));
         if(j % 2 == 0)
-            vert = radius +(int)(i * height*0.97);
+            vert = radius +(i * height);
         else
             vert = 10 + ((i+1) * (height));
 
@@ -94,7 +96,7 @@ public class paintHex {
             transparentImage = imageToBufferedImage(imageWithTransparency);
         }
 
-
+        g2.setPaintMode();
         if(rot > -1) {
             Polygon poly = setHex(horiz, vert);
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
@@ -110,6 +112,7 @@ public class paintHex {
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(15));
             g2.draw(poly);
+
         }
 
 
