@@ -1,8 +1,10 @@
 package View;
 
 import Model.Map.Map;
+import Model.Map.Tile.Features.*;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
@@ -16,6 +18,12 @@ public class paintHex {
     final int radius = 110; //radius
     final int width = radius * 2;
     final int height = (int) (Math.sqrt(3)/2 * width);
+    private BufferedImage pasturebi = null;
+    private BufferedImage desertbi = null;
+    private BufferedImage rockbi = null;
+    private BufferedImage woodsbi = null;
+    private BufferedImage mountainbi = null;
+    private BufferedImage seabi = null;
 
 
 
@@ -61,7 +69,7 @@ public class paintHex {
         String type = board.getTileAt(i,j).getFeature().getType();
         int rot = board.getTileAt(i,j).getOrientation().getNumberOfRotations();
         riverType = getRiverType(rivers);
-        File img = new File("./src/View/Images/" + type + ".jpg");
+
         File img2 = new File("./src/View/Images/" + riverType);
 
         BufferedImage bi = null;
@@ -76,14 +84,6 @@ public class paintHex {
             vert = 10 + ((i+1) * (height));
 
 
-        if(type == null) {return;}
-        else{
-            try {
-                bi = ImageIO.read(img);
-            } catch (IOException e) {
-                System.err.println("Could not load image file!");
-            }
-        }
         if(riverType != null){
             try {
                 bi2 = ImageIO.read(img2);
@@ -96,13 +96,12 @@ public class paintHex {
             transparentImage = imageToBufferedImage(imageWithTransparency);
         }
 
-        g2.setPaintMode();
+
         if(rot > -1) {
             Polygon poly = setHex(horiz, vert);
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
             g2.setClip(poly);
-            if(bi != null)
-                g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
+            g2.drawImage(getBufferedimage(type), horiz-radius, vert - 140, null);
             if(riverType != null && riverType.equals("source.PNG"))
                 g2.drawImage(transparentImage, horiz - 55, vert-100, null);
             else if(riverType != null && riverType.equals("sharpbend.PNG"))
@@ -119,6 +118,79 @@ public class paintHex {
 
 
 
+    }
+
+    public void createImages(){
+
+        File pasture = new File("./src/View/Images/pasture.jpg");
+        File desert = new File("./src/View/Images/desert.jpg");
+        File mountain = new File("./src/View/Images/mountain.jpg");
+        File sea = new File("./src/View/Images/sea.jpg");
+        File rock = new File("./src/View/Images/rock.jpg");
+        File woods = new File("./src/View/Images/woods.jpg");
+
+        try {
+            pasturebi = ImageIO.read(pasture);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            desertbi = ImageIO.read(desert);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            mountainbi = ImageIO.read(mountain);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            rockbi = ImageIO.read(rock);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            seabi = ImageIO.read(sea);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            woodsbi = ImageIO.read(woods);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+
+
+    }
+
+    private BufferedImage getBufferedimage(String type){
+        switch (type){
+            case "pasture":{
+                return  pasturebi;
+
+            }
+            case "mountain":{
+                return mountainbi;
+
+            }
+            case "sea":{
+                return seabi;
+
+            }
+            case "desert":{
+                return desertbi;
+
+            }
+            case "woods":{
+                return woodsbi;
+
+            }
+            case "rock":{
+                return rockbi;
+
+            }
+        }
+        return null;
     }
 
     private String getRiverType(int river){
