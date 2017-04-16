@@ -12,7 +12,7 @@ public class Tile {
     ArrayList<Integer> riverEdges;
     TileOrientation orientation;
 
-    Tile(){
+    public Tile(){
         containedTileZone=new ArrayList<TileZone>();
         riverEdges=new ArrayList<Integer>();
     }

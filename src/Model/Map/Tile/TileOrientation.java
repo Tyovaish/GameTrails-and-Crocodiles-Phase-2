@@ -14,6 +14,5 @@ public class TileOrientation {
         this.numberOfRotations = numberOfRotations;
     }
 
-    void rotate(){numberOfRotations++;}
 
 }
