@@ -30,6 +30,29 @@ public class Wonder {
         for (int i = 0; i < zone.length; i++) zone[i] = new WonderRow(size);
     }
 
+    public int[] brickToBuild(){
+        int[] brickInfo = new int[3];
+        for(int i = 0; i < 4; i++){
+            WonderRow[] zone = zones.get(i);
+            for (int j = 0; j < zone.length; j++){
+                WonderRow row = zone[j];
+                for (int k = 0; k < row.length(); k++){
+                    boolean brick = row.checkBrick(k);
+                    if (!brick){
+                        brickInfo[0] = i;
+                        brickInfo[1] = j;
+                        brickInfo[2] = k;
+                        return brickInfo;
+                    }
+                }
+            }
+        }
+        brickInfo[0] = -1;
+        brickInfo[1] = -1;
+        brickInfo[2] = -1;
+        return brickInfo;
+    }
+
     public void addBrick(){
         for (WonderRow[] zone : zones){
             if(!zoneComplete(zone)){

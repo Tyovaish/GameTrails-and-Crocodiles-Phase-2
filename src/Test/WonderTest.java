@@ -41,6 +41,11 @@ public class WonderTest {
         check = wonder.checkBrickInZone(0, 1, 0);
         System.out.printf("First brick in next row = %b\n", check);
 
+        // Check brick to build
+        System.out.printf("Checking brick to build...\n");
+        int[] brickInfo = wonder.brickToBuild();
+        System.out.printf("Brick to build = Zone: %d Row: %d Brick: %d\n", brickInfo[0], brickInfo[1], brickInfo[2]);
+
         // Check if row is complete
         System.out.printf("Checking row completion...\n");
         WonderRow[] zone = wonder.getZone(0);
@@ -80,7 +85,10 @@ public class WonderTest {
         check = wonder.zoneComplete(zone);
         System.out.printf("Zone completion = %b\n", check);
 
-
+        // Check brick to build
+        System.out.printf("Checking brick to build...\n");
+        brickInfo = wonder.brickToBuild();
+        System.out.printf("Brick to build = Zone: %d Row: %d Brick: %d\n", brickInfo[0], brickInfo[1], brickInfo[2]);
 
         return;
     }

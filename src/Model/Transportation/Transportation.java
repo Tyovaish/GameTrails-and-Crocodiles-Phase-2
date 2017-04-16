@@ -16,15 +16,16 @@ import java.util.ArrayList;
  * Created by Trevor on 4/14/2017.
  */
 public abstract class Transportation implements ResourceHolder{
-    MovementManager movementManager;
-  ArrayList<MovementAbility> movementAbilities;
-  ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
-  ArrayList<DropResourceAbility> dropResourceAbilities;
-  ArrayList<ProduceStructureAbility> produceStructureAbilities;
+    protected MovementManager movementManager;
+    protected ArrayList<MovementAbility> movementAbilities;
+    protected ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
+    protected ArrayList<DropResourceAbility> dropResourceAbilities;
+    protected ArrayList<ProduceStructureAbility> produceStructureAbilities;
 
-  ResourceBag resourceBag;
-  int bagSize;
-Transportation(MovementManager movementManager){
+    protected ResourceBag resourceBag;
+    protected int bagSize;
+
+    public Transportation(MovementManager movementManager){
     this.movementManager=movementManager;
     movementAbilities=new ArrayList<MovementAbility>();
     pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();

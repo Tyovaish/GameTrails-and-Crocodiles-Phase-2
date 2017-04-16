@@ -6,7 +6,6 @@ import Model.Location.TransportationLocation;
 import Model.Map.Map;
 import Model.Map.Tile.Tile;
 import Model.Map.Tile.TileZone;
-import Model.Transportation.Donkey;
 import Model.Transportation.Transportation;
 import Model.Transportation.TransportationManager;
 

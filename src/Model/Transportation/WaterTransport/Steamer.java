@@ -1,16 +1,17 @@
-package Model.Transportation;
+package Model.Transportation.WaterTransport;
 
 import Model.Movement.MovementManager;
+import Model.Transportation.WaterTransport.WaterTransport;
 
 /**
  * Created by khariollivierre on 4/16/17.
  */
-public class Raft extends Transportation {
-    String transportationType="raft";
+public class Steamer extends WaterTransport {
+    String transportationType="steamer";
 
-    public Raft(MovementManager movementManager) {
+    public Steamer(MovementManager movementManager) {
         super(movementManager);
-        setBagSize(3);
+        setBagSize(8);
         initResourceBag();
     }
 

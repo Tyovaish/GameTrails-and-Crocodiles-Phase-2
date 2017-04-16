@@ -1,20 +1,5 @@
 package Test;
 
-import Model.Location.Location;
-import Model.Location.TransportationLocation;
-import Model.Map.Map;
-import Model.Map.Tile.Tile;
-import Model.Map.Tile.TileZone;
-import Model.Resource.PrimaryResource.Trunk;
-import Model.Resource.ResourceBag;
-import Model.Resource.ResourceEnum;
-import Model.Transportation.Donkey;
-import Model.Transportation.Transportation;
-import Model.Transportation.TransportationManager;
-
-import java.util.ArrayList;
-import java.util.Queue;
-
 /**
  * Created by khariollivierre on 4/15/17.
  */

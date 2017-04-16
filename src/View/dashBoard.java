@@ -4,7 +4,6 @@ import Controller.MainController;
 import Model.Location.ResourceLocation;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
-import Model.Map.Tile.TileZone;
 import Model.Movement.MovementManager;
 import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;

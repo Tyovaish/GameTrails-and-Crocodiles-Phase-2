@@ -1,14 +1,15 @@
-package Model.Transportation;
+package Model.Transportation.RoadTransport;
 
 import Model.Movement.MovementManager;
+import Model.Transportation.RoadTransport.RoadTransport;
 
 /**
  * Created by khariollivierre on 4/16/17.
  */
-public class Wagon extends Transportation {
-    String transportationType="wagon";
+public class Truck extends RoadTransport{
+    String transportationType="truck";
 
-    public Wagon(MovementManager movementManager) {
+    public Truck(MovementManager movementManager) {
         super(movementManager);
         setBagSize(3);
         initResourceBag();
@@ -18,5 +19,4 @@ public class Wagon extends Transportation {
     public void getMovementAbilities() {
         movementAbilities=movementManager.getMovementAbilities(this);
     }
-
 }

@@ -23,7 +23,7 @@ public class TransportationManager {
         transportationLocationList=new HashMap<Transportation,TransportationLocation>();
         this.gameMap = gameMap;
     }
-    TransportationManager(){
+    public TransportationManager(){
         transportationList=new ArrayList<Transportation>();
         transportationLocationList = new HashMap<Transportation, TransportationLocation>();
     }

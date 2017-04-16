@@ -1,16 +1,17 @@
-package Model.Transportation;
+package Model.Transportation.RoadTransport;
 
 import Model.Movement.MovementManager;
+import Model.Transportation.RoadTransport.RoadTransport;
 
 /**
  * Created by khariollivierre on 4/16/17.
  */
-public class Rowboat extends Transportation {
-    String transportationType="rowboat";
+public class Wagon extends RoadTransport {
+    String transportationType="wagon";
 
-    public Rowboat(MovementManager movementManager) {
+    public Wagon(MovementManager movementManager) {
         super(movementManager);
-        setBagSize(5);
+        setBagSize(3);
         initResourceBag();
     }
 
@@ -18,4 +19,5 @@ public class Rowboat extends Transportation {
     public void getMovementAbilities() {
         movementAbilities=movementManager.getMovementAbilities(this);
     }
+
 }
