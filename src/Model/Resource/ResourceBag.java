@@ -126,6 +126,7 @@ public class ResourceBag implements ResourceHolder{
         else System.out.printf("Material not found in bag!\n");
     }
 
+    // Abilities
     public void carry(TransportationLocation transportationLocation){
        /* for(int i=0;i<this.size();i++){
             ResourceLocation locationToChange=resourceManager.getResourceLocation(resourceBag.get(i));
