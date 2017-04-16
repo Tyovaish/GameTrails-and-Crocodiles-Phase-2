@@ -5,6 +5,7 @@ import Model.Resource.Resource;
 import Model.Resource.ResourceBag;
 import Model.Resource.ResourceEnum;
 import Model.ResourceHolder;
+import Model.Structure.PrimaryProducer.PrimaryProducer;
 import Model.Structure.Structure;
 import Model.Structure.StructureBuilder;
 
@@ -48,15 +49,25 @@ public class Tile implements ResourceHolder{
     }
 
     public void produce(){
-        if (hasStructure){
-            addResource(structure.produce());
+        if (canProduce()){
+            Resource resource = structure.produce();
+            if (resource != null) addResource(resource);
         }
+    }
+    public boolean canProduce(){
+        if (feature == null) return false;
+        if (hasStructure){
+            FeatureType productionFeature = structure.getProductionFeature();
+            if (structure.isPrimaryProducer() && productionFeature != null){
+                return (feature.getType() == productionFeature.getType());
+            }
+            return true;
+        }
+        return false;
     }
 
     // Phases
-    public void productionPhase(){
-        if (hasStructure && structure.isPrimaryProducer()){ produce(); }
-    }
+    public void productionPhase(){ if (canProduce()) produce(); }
 
     public void setTileZones(ArrayList<Integer> riverEdges) {
         TileZone temp = new TileZone();
