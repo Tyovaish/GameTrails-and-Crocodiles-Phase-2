@@ -15,24 +15,28 @@ import java.util.HashMap;
  */
 public class TransportationManager {
     ArrayList<Transportation> transportationList;
-    HashMap<Transportation,TransportationLocation> transportationLocations;
+    HashMap<Transportation,TransportationLocation> transportationLocationList;
     Map gameMap;
 
     public TransportationManager(Map gameMap){
         transportationList=new ArrayList<Transportation>();
-        transportationLocations=new HashMap<Transportation,TransportationLocation>();
+        transportationLocationList=new HashMap<Transportation,TransportationLocation>();
         this.gameMap = gameMap;
+    }
+    TransportationManager(){
+        transportationList=new ArrayList<Transportation>();
+        transportationLocationList = new HashMap<Transportation, TransportationLocation>();
     }
     public void addTransportation(Transportation transportation,TransportationLocation transportationLocation){
         transportationList.add(transportation);
-        transportationLocations.put(transportation,transportationLocation);
+        transportationLocationList.put(transportation,transportationLocation);
     }
     public ArrayList<Transportation> getTransportationList() {
                 return transportationList;
     }
 
     public TransportationLocation getTransportationLocation(Transportation transportation){
-        return transportationLocations.get(transportation);
+        return transportationLocationList.get(transportation);
     }
 
     public Tile getTileOfTransporter(Transportation transportation){

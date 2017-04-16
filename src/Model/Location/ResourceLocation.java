@@ -9,8 +9,9 @@ import Model.Map.Tile.TileZone;
 public class ResourceLocation extends Location{
     TileZone tileZone;
 
-    public ResourceLocation(int row, int col) {
+    public ResourceLocation(int row, int col, TileZone tileZone) {
         super(row, col);
+        this.tileZone=tileZone;
     }
     public void setTileZone(TileZone tileZone){
         this.tileZone=tileZone;

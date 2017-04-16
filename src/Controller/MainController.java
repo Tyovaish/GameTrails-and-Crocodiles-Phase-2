@@ -8,14 +8,14 @@ import java.util.ArrayList;
 /**
  * Created by Trevor on 4/14/2017.
  */
-public class MainController implements Controller {
+public class MainController extends Controller {
     ArrayList<Controller> controller;
     Controller currentController;
     //currentKeySet();
    public MainController(TransportationManager transportationManager) {
        controller=new ArrayList<Controller>();
        currentController=this;
-       controller.add(new TransporationSelectionController(transportationManager, this));
+       controller.add(new TransportationSelectionController(transportationManager, this));
    }
     public void getKeyPress(int keyPressed){
         if(currentController!=this){
@@ -26,7 +26,7 @@ public class MainController implements Controller {
             }
             System.out.println(keyPressed);
         }
-        currentController.print();
+        //currentController.print();
     }
     public void getEnter(){
         currentController=nextController();
