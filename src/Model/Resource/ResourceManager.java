@@ -13,6 +13,13 @@ public class ResourceManager {
     HashMap<Resource,ResourceLocation> resourceLocationList;
     ResourceManager(){
         resourceList=new ArrayList<Resource>();
-
     }
+    public void addResource(Resource resource,ResourceLocation resourceLocation){
+        resourceList.add(resource);
+        resourceLocationList.put(resource,resourceLocation);
+    }
+    public ResourceLocation getResourceLocation(Resource resource){
+        return resourceLocationList.get(resource);
+    }
+
 }

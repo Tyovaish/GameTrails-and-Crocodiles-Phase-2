@@ -43,7 +43,7 @@ public class MovementManager {
         if(northTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northTileLocation.getX(),northTileLocation.getY(),tileZones.get(i))));
+                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northTileLocation.getX(),northTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
                 }
             }
         }
@@ -52,7 +52,7 @@ public class MovementManager {
         if(northEastTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northEastTileLocation.getX(),northEastTileLocation.getY(),tileZones.get(i))));
+                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northEastTileLocation.getX(),northEastTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
                 }
             }
         }
@@ -60,7 +60,7 @@ public class MovementManager {
         if(southEastTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(southEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southEastTileLocation.getX(),southEastTileLocation.getY(),tileZones.get(i))));
+                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southEastTileLocation.getX(),southEastTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
                 }
             }
         }
@@ -68,7 +68,7 @@ public class MovementManager {
         if(southTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(southTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southTileLocation.getX(),southTileLocation.getY(),tileZones.get(i))));
+                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southTileLocation.getX(),southTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
                 }
             }
         }
@@ -76,7 +76,7 @@ public class MovementManager {
         if(southWestTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(southWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southWestTileLocation.getX(),southWestTileLocation.getY(),tileZones.get(i))));
+                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(southWestTileLocation.getX(),southWestTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
                 }
             }
         }
@@ -84,7 +84,7 @@ public class MovementManager {
         if(northWestTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northWestTileLocation.getX(),northWestTileLocation.getY(),tileZones.get(i))));
+                    movementAbilities.add(new MovementAbility(donkeyLocation,new TransportationLocation(northWestTileLocation.getX(),northWestTileLocation.getY(),tileZones.get(i)),donkey.getResourceBag()));
                 }
             }
         }
