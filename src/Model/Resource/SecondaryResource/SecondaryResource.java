@@ -3,7 +3,7 @@ package Model.Resource.SecondaryResource;
 import Model.Resource.Resource;
 
 /**
- * Created by Trevor on 4/15/2017.
+ * Created by khariollivierre on 4/15/17.
  */
-public class SecondaryResource extends Resource {
+public abstract class SecondaryResource extends Resource {
 }

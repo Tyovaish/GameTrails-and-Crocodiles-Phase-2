@@ -3,6 +3,7 @@ package Model.Abilities;
 import Model.Movement.MovementManager;
 import Model.Location.TransportationLocation;
 import Model.Resource.Resource;
+import Model.Resource.ResourceBag;
 import Model.Transportation.Transportation;
 
 import java.util.ArrayList;

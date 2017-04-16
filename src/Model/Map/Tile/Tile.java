@@ -1,22 +1,51 @@
 package Model.Map.Tile;
 
+import Model.Resource.PrimaryResource.Trunk;
+import Model.Resource.Resource;
+import Model.Resource.ResourceBag;
+import Model.Resource.ResourceEnum;
+import Model.ResourceHolder;
+import Model.Structure.Structure;
+import Model.Structure.StructureBuilder;
+
 import java.util.ArrayList;
 
 /**
  * Created by Trevor on 4/14/2017.
  */
-public class Tile {
+public class Tile implements ResourceHolder{
     public static int SIZE = 6;
     FeatureType feature;
     ArrayList<TileZone> containedTileZone;
     ArrayList<Integer> riverEdges;
     TileOrientation orientation;
+    ResourceBag resourceBag;
+
+    boolean hasStructure;
+    Structure structure;
 
     public Tile(){
         containedTileZone=new ArrayList<TileZone>();
+        resourceBag = new ResourceBag(-1);
+        hasStructure = false;
         riverEdges=new ArrayList<Integer>();
     }
 
+    public Structure getStructure() { return structure; }
+    public void addStructure(Structure structure) { this.structure = structure; hasStructure = true; }
+    public void removeStructure() { this.structure = null; hasStructure = false; }
+    public boolean hasStructure() { return hasStructure; }
+
+    public ResourceBag getResourceBag() { return resourceBag; }
+
+    // ResourceHolder
+    public void addResource(Resource resource){ resourceBag.addResource(resource); }
+    public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
+    public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
+        Resource material = removeResource(resource);
+        if (material != null) builder.addMaterial(material);
+        else System.out.printf("Material not found in bag!\n");
+    }
 
     public void setTileZones(ArrayList<Integer> riverEdges) {
         TileZone temp = new TileZone();
@@ -71,7 +100,4 @@ public class Tile {
     public boolean checkIfTileZoneContainsIn(TileZone tileZone){
         return containedTileZone.contains(tileZone);
     }
-
-
-
 }
