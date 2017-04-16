@@ -9,17 +9,30 @@ import Model.Structure.StructureBuilder;
 
 import java.util.*;
 
-public class ResourceBag implements ResourceHolder{
+public class ResourceBag implements ResourceHolder {
     // Resource counter keeps track of number of resources in bag. If counter >= size, no resources can be added
     ResourceManager resourceManager;
     private int counter;
-    private int size=6;
+    private int size = 6;
     ArrayList<Resource> resourceList;
-    public ResourceBag(ResourceManager resourceManager){
-        resourceList=new ArrayList<Resource>();
-        this.resourceManager=resourceManager;
+
+    public ResourceBag(ResourceManager resourceManager) {
+        resourceList = new ArrayList<Resource>();
+        this.resourceManager = resourceManager;
     }
 
+    public ArrayList<Resource> getResourceList() {
+        return resourceList;
+    }
+
+    public void carry(TransportationLocation transportationLocation) {
+        for (int i = 0; i < resourceList.size(); i++) {
+            ResourceLocation locationToChange = resourceManager.getResourceLocation(resourceList.get(i));
+            locationToChange.setX(transportationLocation.getX());
+            locationToChange.setY(transportationLocation.getY());
+            locationToChange.setTileZone(transportationLocation.getTileZone());
+        }
+    }
 
 
     // Primary Resources
@@ -44,7 +57,7 @@ public class ResourceBag implements ResourceHolder{
     public ResourceBag(int size) {
         counter = 0;
         this.size = size;
-        resourceList=new ArrayList<Resource>();
+        resourceList = new ArrayList<Resource>();
 
         stones = new LinkedList<>();
         trunks = new LinkedList<>();
@@ -63,7 +76,8 @@ public class ResourceBag implements ResourceHolder{
         resourceMap = new HashMap<>();
         createResourceMap();
     }
-    private void createResourceMap(){
+
+    private void createResourceMap() {
         resourceMap.put(ResourceEnum.STONE, stones);
         resourceMap.put(ResourceEnum.TRUNK, trunks);
         resourceMap.put(ResourceEnum.FUEL, fuels);
@@ -79,51 +93,129 @@ public class ResourceBag implements ResourceHolder{
     }
 
     // Accessors
-    public int getCounter() { return counter;}
-    public Queue<Stone> getStones() { return stones; }
-    public Queue<Trunk> getTrunks() { return trunks; }
-    public Queue<Fuel> getFuels() { return fuels; }
-    public Queue<Iron> getIrons() { return irons; }
-    public Queue<Gold> getGolds() { return golds; }
-    public Queue<Clay> getClays() { return clays; }
-    public Queue<Board> getBoards() { return boards; }
-    public Queue<Coin> getCoins() { return coins; }
-    public Queue<Marble> getMarbles() { return marbles; }
-    public Queue<Paper> getPapers() { return papers; }
-    public Queue<Pearl> getPearls() { return pearls; }
-    public Queue<StockBond> getBonds() { return bonds; }
+    public int getCounter() {
+        return counter;
+    }
+
+    public Queue<Stone> getStones() {
+        return stones;
+    }
+
+    public Queue<Trunk> getTrunks() {
+        return trunks;
+    }
+
+    public Queue<Fuel> getFuels() {
+        return fuels;
+    }
+
+    public Queue<Iron> getIrons() {
+        return irons;
+    }
+
+    public Queue<Gold> getGolds() {
+        return golds;
+    }
+
+    public Queue<Clay> getClays() {
+        return clays;
+    }
+
+    public Queue<Board> getBoards() {
+        return boards;
+    }
+
+    public Queue<Coin> getCoins() {
+        return coins;
+    }
+
+    public Queue<Marble> getMarbles() {
+        return marbles;
+    }
+
+    public Queue<Paper> getPapers() {
+        return papers;
+    }
+
+    public Queue<Pearl> getPearls() {
+        return pearls;
+    }
+
+    public Queue<StockBond> getBonds() {
+        return bonds;
+    }
 
     // Mutators
-    public void setCounter(int counter) { this.counter = counter;}
-    public void setStones(Queue<Stone> stones) { this.stones = stones; }
-    public void setTrunks(Queue<Trunk> trunks) { this.trunks = trunks; }
-    public void setFuel(Queue<Fuel> fuel) { this.fuels = fuel; }
-    public void setIron(Queue<Iron> iron) { this.irons = iron; }
-    public void setGold(Queue<Gold> gold) { this.golds = gold; }
-    public void setClay(Queue<Clay> clay) { this.clays = clay; }
-    public void setBoards(Queue<Board> boards) { this.boards = boards; }
-    public void setCoins(Queue<Coin> coins) { this.coins = coins; }
-    public void setMarbles(Queue<Marble> marbles) { this.marbles = marbles; }
-    public void setPapers(Queue<Paper> papers) { this.papers = papers; }
-    public void setPearls(Queue<Pearl> pearls) { this.pearls = pearls; }
-    public void setBonds(Queue<StockBond> bonds) { this.bonds = bonds; }
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public void setStones(Queue<Stone> stones) {
+        this.stones = stones;
+    }
+
+    public void setTrunks(Queue<Trunk> trunks) {
+        this.trunks = trunks;
+    }
+
+    public void setFuel(Queue<Fuel> fuel) {
+        this.fuels = fuel;
+    }
+
+    public void setIron(Queue<Iron> iron) {
+        this.irons = iron;
+    }
+
+    public void setGold(Queue<Gold> gold) {
+        this.golds = gold;
+    }
+
+    public void setClay(Queue<Clay> clay) {
+        this.clays = clay;
+    }
+
+    public void setBoards(Queue<Board> boards) {
+        this.boards = boards;
+    }
+
+    public void setCoins(Queue<Coin> coins) {
+        this.coins = coins;
+    }
+
+    public void setMarbles(Queue<Marble> marbles) {
+        this.marbles = marbles;
+    }
+
+    public void setPapers(Queue<Paper> papers) {
+        this.papers = papers;
+    }
+
+    public void setPearls(Queue<Pearl> pearls) {
+        this.pearls = pearls;
+    }
+
+    public void setBonds(Queue<StockBond> bonds) {
+        this.bonds = bonds;
+    }
 
     // ResourceHolder
-    public void addResource(Resource resource){
+    public void addResource(Resource resource) {
 //        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
 //        if (counter < size || size == -1){
 //            resourceQueue.offer(resource);
 //            counter++;
 //        }
 //        else System.out.printf("Bag is full! Resource not added.\n");
-        if(resourceList.size()<size){
+        if (resourceList.size() < size) {
             resourceList.add(resource);
         }
     }
-    public void removeResource(Resource  resource){
+
+    public void removeResource(Resource resource) {
         resourceList.remove(resource);
     }
-    public Resource removeResource(ResourceEnum resource){
+
+    public Resource removeResource(ResourceEnum resource) {
 //        Queue<Resource> resourceQueue = resourceMap.get(resource);
 //        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
 //        else {
@@ -133,21 +225,11 @@ public class ResourceBag implements ResourceHolder{
         return null;
     }
 
-    public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
+    public void giveMaterial(StructureBuilder builder, ResourceEnum resource) {
         Resource material = removeResource(resource);
         if (material != null) builder.addMaterial(material);
         else System.out.printf("Material not found in bag!\n");
     }
-
-    // Abilities
-
-    public void carry(TransportationLocation transportationLocation){
-       for(int i=0;i<resourceList.size();i++){
-            ResourceLocation locationToChange=resourceManager.getResourceLocation(resourceList.get(i));
-            locationToChange.setX(transportationLocation.getX());
-            locationToChange.setY(transportationLocation.getY());
-            locationToChange.setTileZone(transportationLocation.getTileZone());
-        }
-    }
 }
 
+    // Abilities

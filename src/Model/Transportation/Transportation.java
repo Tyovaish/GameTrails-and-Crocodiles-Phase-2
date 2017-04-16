@@ -8,6 +8,7 @@ import Model.Resource.ResourceBag;
 import Model.Resource.ResourceEnum;
 import Model.ResourceHolder;
 import Model.Structure.StructureBuilder;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public abstract class Transportation implements ResourceHolder{
     MovementManager movementManager;
   ArrayList<MovementAbility> movementAbilities;
   ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
-  ArrayList<DropUpResourceAbility> dropUpResourceAbilities;
+  ArrayList<DropResourceAbility> dropResourceAbilities;
   ArrayList<ProduceStructureAbility> produceStructureAbilities;
 
   ResourceBag resourceBag;
@@ -26,6 +27,10 @@ public abstract class Transportation implements ResourceHolder{
 Transportation(MovementManager movementManager){
     this.movementManager=movementManager;
     movementAbilities=new ArrayList<MovementAbility>();
+    pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
+    dropResourceAbilities=new ArrayList<DropResourceAbility>();
+    produceStructureAbilities=new ArrayList<ProduceStructureAbility>();
+
 }
 
 
@@ -35,12 +40,29 @@ Transportation(MovementManager movementManager){
  public void setBagSize(int bagSize) { this.bagSize = bagSize; }
 
  public  abstract void getMovementAbilities();
- public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){ this.movementAbilities=movementAbilities; }
- public void getDropResourceAbilities(){}
- public void getPickUpResourceAbilities(){}
-  public ArrayList<MovementAbility> getMovementSet(){
+ private void getDropResourceAbilities(){
+     dropResourceAbilities=new ArrayList<DropResourceAbility>();
+     for(int i=0;i<resourceBag.getResourceList().size();i++){
+         System.out.println("Current Resource In Bag To Drop: "+resourceBag.getResourceList().get(i));
+         dropResourceAbilities.add(new DropResourceAbility(this.resourceBag,resourceBag.getResourceList().get(i)));
+     }
+ }
+ private void getPickUpResourceAbilities(){
+
+ }
+
+ public ArrayList<MovementAbility> getMovementSet(){
      getMovementAbilities();
      return movementAbilities;
+  }
+
+  public ArrayList<PickUpResourceAbility> getPickUpResourceSet(){
+      getPickUpResourceAbilities();
+      return pickUpResourceAbilities;
+ }
+  public ArrayList<DropResourceAbility> getDropResourceSet(){
+      getDropResourceAbilities();
+      return dropResourceAbilities;
   }
   public void useAbility(Ability ability){
       ability.execute();

@@ -24,7 +24,6 @@ public class MovementManager {
     }
 
     public ArrayList<MovementAbility> getMovementAbilities(Donkey donkey) {
-        map.print();
         TransportationLocation donkeyLocation=transportationManager.getTransportationLocation(donkey);
 
         TileZone tileZoneToCheck=donkeyLocation.getTileZone();

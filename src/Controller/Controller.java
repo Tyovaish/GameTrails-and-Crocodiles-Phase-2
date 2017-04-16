@@ -3,10 +3,10 @@ package Controller;
 /**
  * Created by Trevor on 4/14/2017.
  */
-public interface Controller{
+public abstract class Controller{
 
-    public void getKeyPress(int keyPressed);
-    public Controller nextController();
-    public Controller previousController();
-    public void print();
+    abstract public void getKeyPress(int keyPressed);
+    abstract public Controller nextController();
+    abstract public Controller previousController();
+    abstract public void print();
 }
