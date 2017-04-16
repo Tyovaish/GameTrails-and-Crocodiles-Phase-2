@@ -1,5 +1,6 @@
 package Model.Structure.PrimaryProducer;
 
+import Model.Map.Tile.FeatureType;
 import Model.Resource.Resource;
 import Model.Structure.Structure;
 

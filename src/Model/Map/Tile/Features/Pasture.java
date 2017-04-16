@@ -7,6 +7,8 @@ import Model.Map.Tile.FeatureType;
 public class Pasture extends FeatureType {
     String name="pasture";
 
+    public Pasture() {}
+
     @Override
     public String getType() {
         return name;

@@ -3,6 +3,8 @@ package Test;
 import Model.Location.Location;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
+import Model.Map.Tile.Features.Rock;
+import Model.Map.Tile.Features.Woods;
 import Model.Map.Tile.Tile;
 import Model.Map.Tile.TileZone;
 import Model.Resource.PrimaryResource.Trunk;
@@ -34,6 +36,7 @@ public class StructureBuildTest {
         Tile tile = new Tile();
         ArrayList<Integer> rivers = new ArrayList<>();
         tile.setTileZones(rivers);
+        tile.setFeature(new Woods());
         TileZone zone = tile.getTileZone(0);
 
         // Initialize transporter and transportation manager
@@ -51,7 +54,6 @@ public class StructureBuildTest {
         // Create Structure builder
         StructureBuilder structureBuilder = new StructureBuilder(transManager);
         Board board = new Board();
-
 
         // Attempt to create woodcutter with no materials on donkey
         System.out.println("Attempting to create woodcutter with no materials on donkey...");
@@ -73,6 +75,12 @@ public class StructureBuildTest {
 
         // Verify that woodcutter is producing
         System.out.println("Verifying that woodcutter is producing...");
+        tile.produce();
+        checkTrunks(tile);
+
+        // Verify that woodcutter can't produce when on the wrong terrain
+        System.out.println("Verifying that woodcutter can only produce on woods...");
+        tile.setFeature(new Rock());
         tile.produce();
         checkTrunks(tile);
 
