@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * Created by Trevor on 4/14/2017.
  */
 public abstract class Transportation implements ResourceHolder{
-    MovementManager movementManager;
   ArrayList<MovementAbility> movementAbilities;
   ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
   ArrayList<DropResourceAbility> dropResourceAbilities;
@@ -24,12 +23,12 @@ public abstract class Transportation implements ResourceHolder{
 
   ResourceBag resourceBag;
   int bagSize;
-Transportation(MovementManager movementManager){
-    this.movementManager=movementManager;
+Transportation(ResourceBag resourceBag){
     movementAbilities=new ArrayList<MovementAbility>();
     pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
     dropResourceAbilities=new ArrayList<DropResourceAbility>();
     produceStructureAbilities=new ArrayList<ProduceStructureAbility>();
+    this.resourceBag=resourceBag;
 
 }
 
@@ -39,36 +38,39 @@ Transportation(MovementManager movementManager){
  public int getBagSize() { return bagSize; }
  public void setBagSize(int bagSize) { this.bagSize = bagSize; }
 
- public  abstract void getMovementAbilities();
- private void getDropResourceAbilities(){
-     dropResourceAbilities=new ArrayList<DropResourceAbility>();
-     for(int i=0;i<resourceBag.getResourceList().size();i++){
-         System.out.println("Current Resource In Bag To Drop: "+resourceBag.getResourceList().get(i));
-         dropResourceAbilities.add(new DropResourceAbility(this.resourceBag,resourceBag.getResourceList().get(i)));
-     }
- }
- private void getPickUpResourceAbilities(){
 
+ public void setPickUpResourceAbilities(ArrayList<PickUpResourceAbility> pickUpResourceAbilities){
+    this.pickUpResourceAbilities=pickUpResourceAbilities;
  }
+    public void setDropResourceAbilities(ArrayList<DropResourceAbility> dropResourceAbilities){
+        this.dropResourceAbilities=dropResourceAbilities;
+    }
+    public void setMovementAbilities(ArrayList<MovementAbility> movementAbilities){
+        this.movementAbilities=movementAbilities;
+    }
+
 
  public ArrayList<MovementAbility> getMovementSet(){
-     getMovementAbilities();
      return movementAbilities;
   }
-
   public ArrayList<PickUpResourceAbility> getPickUpResourceSet(){
-      getPickUpResourceAbilities();
       return pickUpResourceAbilities;
  }
   public ArrayList<DropResourceAbility> getDropResourceSet(){
-      getDropResourceAbilities();
       return dropResourceAbilities;
   }
   public void useAbility(Ability ability){
       ability.execute();
   }
 
+
+
+
+
   // ResourceHolder
+
+
+
   public void addResource(Resource resource){ resourceBag.addResource(resource); }
   public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
   public void giveMaterial(StructureBuilder builder, ResourceEnum resource){

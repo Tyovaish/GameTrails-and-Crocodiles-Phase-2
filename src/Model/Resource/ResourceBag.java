@@ -207,11 +207,13 @@ public class ResourceBag implements ResourceHolder {
 //        }
 //        else System.out.printf("Bag is full! Resource not added.\n");
         if (resourceList.size() < size) {
+            resource.setOnGround(false);
             resourceList.add(resource);
         }
     }
 
     public void removeResource(Resource resource) {
+        resource.setOnGround(true);
         resourceList.remove(resource);
     }
 

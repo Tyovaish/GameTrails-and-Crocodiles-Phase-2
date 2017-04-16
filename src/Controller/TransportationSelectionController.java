@@ -18,7 +18,7 @@ public class TransportationSelectionController extends Controller{
     public TransportationSelectionController(TransportationManager transportationManager,Controller previousController){
         this.transportationManager=transportationManager;
         this.prevController=previousController;
-        this.TransportationAbilitiesController=new TransportationAbilitiesController(this);
+        this.TransportationAbilitiesController=new TransportationAbilitiesController(transportationManager,this);
         nextController=this.TransportationAbilitiesController;
         currentTransportation=transportationManager.getTransportationList().get(0);
     }

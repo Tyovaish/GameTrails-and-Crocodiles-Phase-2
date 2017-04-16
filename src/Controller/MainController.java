@@ -26,7 +26,7 @@ public class MainController extends Controller {
             }
             System.out.println(keyPressed);
         }
-        //currentController.print();
+        currentController.print();
     }
     public void getEnter(){
         currentController=nextController();

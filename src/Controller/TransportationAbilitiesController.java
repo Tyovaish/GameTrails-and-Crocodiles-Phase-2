@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Abilities.Ability;
 import Model.Abilities.MovementAbility;
 import Model.Transportation.Transportation;
+import Model.Transportation.TransportationManager;
 
 import java.util.ArrayList;
 
@@ -17,13 +18,13 @@ public class TransportationAbilitiesController extends Controller {
     int currentControllerSelected;
 
 
-    public TransportationAbilitiesController(Controller prevController){
+    public TransportationAbilitiesController(TransportationManager transportationManager, Controller prevController){
         currentControllerSelected=0;
         this.prevController=prevController;
         controllerList=new ArrayList<TransportationController>();
-        controllerList.add(new TransportationMovementController(this));
-        controllerList.add(new TransportationPickUpResourceController(this));
-        controllerList.add(new TransportationDropResourceController(this));
+        controllerList.add(new TransportationMovementController(transportationManager,this));
+        controllerList.add(new TransportationPickUpResourceController(transportationManager,this));
+        controllerList.add(new TransportationDropResourceController(transportationManager,this));
 }
     @Override
     public void getKeyPress(int keyPressed) {

@@ -9,9 +9,9 @@ import Model.Resource.ResourceBag;
 public class PickUpResourceAbility implements Ability {
     ResourceBag resourceBag;
     Resource resourceToPickUp;
-    PickUpResourceAbility(ResourceBag resourceBag,Resource resourceToPickUp){
+    public PickUpResourceAbility(ResourceBag resourceBag, Resource resourceToPickUp){
         this.resourceBag=resourceBag;
-        resourceToPickUp=resourceToPickUp;
+        this.resourceToPickUp=resourceToPickUp;
     }
     @Override
     public void execute() {
