@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Abilities.DropResourceAbility;
 import Model.Transportation.Transportation;
+import Model.Transportation.TransportationManager;
 
 import java.util.ArrayList;
 
@@ -9,26 +10,26 @@ import java.util.ArrayList;
  * Created by Trevor on 4/16/2017.
  */
 public class TransportationDropResourceController extends TransportationController{
+    TransportationManager transportationManager;
     Transportation currentTransportation;
-    ArrayList<DropResourceAbility> dropResourceAbilities;
     Controller prevController;
     int currentResourceDropAbility;
 
-    TransportationDropResourceController(Controller prevController ){
+    TransportationDropResourceController(TransportationManager transportationManager,Controller prevController ){
+        this.transportationManager=transportationManager;
         this.prevController=prevController;
     }
     @Override
     public void getKeyPress(int keyPressed) {
-        if(keyPressed>=0 && keyPressed<dropResourceAbilities.size()){
+        if(keyPressed>=0 && keyPressed<currentTransportation.getDropResourceSet().size()){
             currentResourceDropAbility=keyPressed;
         }
-        print();
     }
 
     @Override
     public Controller nextController() {
-        if(!dropResourceAbilities.isEmpty()){
-            dropResourceAbilities.get(currentResourceDropAbility).execute();
+        if(!currentTransportation.getDropResourceSet().isEmpty()){
+            currentTransportation.getDropResourceSet().get(currentResourceDropAbility).execute();
         }
         return prevController;
     }
@@ -39,15 +40,16 @@ public class TransportationDropResourceController extends TransportationControll
     }
 
     @Override
-    public String print() {
-        for(int i=0;i<dropResourceAbilities.size();i++){
+    public void print() {
+        System.out.println("Drop Resource");
+       for(int i=0;i<currentTransportation.getDropResourceSet().size();i++){
+           System.out.println(i+": "+currentTransportation.getDropResourceSet().get(i).toString());
+       }
 
-        }
-        return "";
     }
     public void setCurrentTransportation(Transportation transportation){
         currentTransportation=transportation;
-        dropResourceAbilities=transportation.getDropResourceSet();
+       transportationManager.setDropResourceAbilities(currentTransportation);
     }
     public String  printType(){
        return "Drop Resource Controller";
