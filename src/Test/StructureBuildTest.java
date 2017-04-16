@@ -1,3 +1,4 @@
+
 package Test;
 
 import Model.Location.Location;
@@ -27,6 +28,7 @@ import java.util.Queue;
 /**
  * Created by khariollivierre on 4/15/17.
  */
+/*
 public class StructureBuildTest {
     public static void main(String[] args) {
         // Initialize game map
@@ -146,3 +148,4 @@ public class StructureBuildTest {
         else System.out.printf("Tile has structure.\n");
     }
 }
+*/

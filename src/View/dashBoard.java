@@ -75,9 +75,9 @@ MainController mainctrl;
         setPreferredSize(new Dimension(500,1000));
         addKeyListener(this);
         setFocusable(true);
-        transportationManager=new TransportationManager();
+       // transportationManager=new TransportationManager();
         MovementManager movementManager=new MovementManager(board,transportationManager);
-        transportationManager.addTransportation(new Donkey(movementManager), new TransportationLocation(0,0, new TileZone()));
+        transportationManager.addTransportation(new Donkey(movementManager), new TransportationLocation(0,5, new TileZone()));
         mainctrl=new MainController(transportationManager);
     }
 }

@@ -18,6 +18,7 @@ import java.util.Queue;
 /**
  * Created by khariollivierre on 4/15/17.
  */
+/*
 public class LoadingTest {
     public static void main(String[] args) {
         // Initialize game map
@@ -90,3 +91,4 @@ public class LoadingTest {
         else System.out.printf("Trunks in Transportation bag! Counter = %d\n", bag.getCounter());
     }
 }
+*/
