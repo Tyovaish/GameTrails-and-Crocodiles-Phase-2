@@ -1,6 +1,7 @@
 package Model;
 
 import Model.Resource.Resource;
+import Model.Resource.ResourceBag;
 import Model.Resource.ResourceEnum;
 
 /**

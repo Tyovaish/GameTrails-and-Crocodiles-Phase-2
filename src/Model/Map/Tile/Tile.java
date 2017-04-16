@@ -25,7 +25,7 @@ public class Tile implements ResourceHolder{
 
     public Tile(){
         containedTileZone=new ArrayList<TileZone>();
-        resourceBag = new ResourceBag();
+        resourceBag = new ResourceBag(-1);
         hasStructure = false;
         riverEdges=new ArrayList<Integer>();
     }

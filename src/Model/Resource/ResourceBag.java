@@ -10,8 +10,10 @@ import java.util.Map;
 import java.util.Queue;
 
 public class ResourceBag implements ResourceHolder{
-    // Resource counter keeps track of number of resources in bag
+    // Resource counter keeps track of number of resources in bag. If counter >= size, no resources can be added
     private int counter;
+    private int size;
+
 
     // Primary Resources
     private Queue<Stone> stones;
@@ -32,8 +34,9 @@ public class ResourceBag implements ResourceHolder{
     private Map<ResourceEnum, Queue> resourceMap;
 
     // Constructor
-    public ResourceBag() {
+    public ResourceBag(int size) {
         counter = 0;
+        this.size = size;
 
         stones = new LinkedList<>();
         trunks = new LinkedList<>();
@@ -100,13 +103,19 @@ public class ResourceBag implements ResourceHolder{
     // ResourceHolder
     public void addResource(Resource resource){
         Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
-        resourceQueue.offer(resource);
-        counter++;
+        if (counter < size || size == -1){
+            resourceQueue.offer(resource);
+            counter++;
+        }
+        else System.out.printf("Bag is full! Resource not added.\n");
     }
     public Resource removeResource(ResourceEnum resource){
         Queue<Resource> resourceQueue = resourceMap.get(resource);
         if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
-        else return null;
+        else {
+            System.out.printf("No resources of this type in bag!\n");
+            return null;
+        }
     }
 }
 
