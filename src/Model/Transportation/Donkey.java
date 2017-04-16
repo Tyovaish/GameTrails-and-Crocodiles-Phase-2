@@ -11,14 +11,4 @@ public class Donkey extends Transportation {
         movementAbilities=movementManager.getMovementAbilities(this);
     }
 
-    @Override
-    public void getDropResourceAbilities() {
-
-    }
-
-    @Override
-    public void getPickUpResourceAbilities() {
-
-    }
-
 }

@@ -20,8 +20,12 @@ public abstract class Transportation {
 
 
  public abstract void getMovementAbilities();
- public abstract void getDropResourceAbilities();
- public abstract void getPickUpResourceAbilities();
+ public void getDropResourceAbilities(){
+
+ }
+ public void getPickUpResourceAbilities(){
+
+ }
 
   public ArrayList<ArrayList<Ability>> getAbilities(){
     getMovementAbilities();
