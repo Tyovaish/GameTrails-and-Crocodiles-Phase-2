@@ -8,6 +8,8 @@ import Model.Map.Tile.FeatureType;
 public class Desert extends FeatureType {
     String name="desert";
 
+    public Desert() {}
+
     @Override
     public String getType() {
         return name;

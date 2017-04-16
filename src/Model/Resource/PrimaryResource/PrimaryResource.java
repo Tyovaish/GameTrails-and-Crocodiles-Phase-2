@@ -1,6 +1,7 @@
 package Model.Resource.PrimaryResource;
 
 
+import Model.Map.Tile.FeatureType;
 import Model.Resource.Resource;
 
 /**

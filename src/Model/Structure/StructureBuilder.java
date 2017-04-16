@@ -1,5 +1,7 @@
 package Model.Structure;
 
+import Model.Location.TransportationLocation;
+import Model.Map.Tile.Tile;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.ResourceHolder;
@@ -7,6 +9,7 @@ import Model.Structure.PrimaryProducer.*;
 import Model.Structure.SecondaryProducer.*;
 import Model.Structure.TransportProducer.*;
 import Model.Transportation.Transportation;
+import Model.Transportation.TransportationManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +20,7 @@ import java.util.Map;
  * Created by khariollivierre on 4/15/17.
  */
 public class StructureBuilder {
+    private TransportationManager transManager;
     private ArrayList<ResourceEnum> materials;
 
     private ArrayList<ResourceEnum> clayPitRecipe;
@@ -40,8 +44,10 @@ public class StructureBuilder {
     private Map<StructureEnum, ArrayList> recipeMap;
     private Map<StructureEnum, Structure> structureMap;
 
-    public StructureBuilder() {
+    public StructureBuilder(TransportationManager transManager) {
+        this.transManager = transManager;
         materials = new ArrayList<>();
+
         // Primary producer recipes
         clayPitRecipe = new ArrayList<>(Arrays.asList(ResourceEnum.BOARD, ResourceEnum.BOARD, ResourceEnum.BOARD));
         mineRecipe = new ArrayList<>(Arrays.asList(ResourceEnum.BOARD, ResourceEnum.BOARD, ResourceEnum.BOARD, ResourceEnum.STONE));
@@ -112,15 +118,20 @@ public class StructureBuilder {
         materials.add(resource.getType());
     }
 
-    public Structure build(Transportation transportation, StructureEnum structure){
+    public void build(Transportation transportation, StructureEnum structure){
         ArrayList<ResourceEnum> recipe = recipeMap.get(structure);
+        Tile tile = transManager.getTileOfTransporter(transportation);
+
         for (ResourceEnum resource : recipe){
-            acceptMaterial(transportation, resource);
+            acceptMaterial(tile, resource);
             if (!materials.remove(resource)){
-                System.out.printf("Not enough resources! Structure not built.\n");
-                return null;
+                acceptMaterial(transportation, resource);
+                if (!materials.remove(resource)) {
+                    System.out.printf("Not enough resources! Structure not built.\n");
+                    return;
+                }
             }
         }
-        return structureMap.get(structure);
+        tile.addStructure(structureMap.get(structure));
     }
 }

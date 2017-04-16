@@ -77,10 +77,10 @@ public class ResourceBag implements ResourceHolder{
     public int getCounter() { return counter;}
     public Queue<Stone> getStones() { return stones; }
     public Queue<Trunk> getTrunks() { return trunks; }
-    public Queue<Fuel> getFuel() { return fuels; }
-    public Queue<Iron> getIron() { return irons; }
-    public Queue<Gold> getGold() { return golds; }
-    public Queue<Clay> getClay() { return clays; }
+    public Queue<Fuel> getFuels() { return fuels; }
+    public Queue<Iron> getIrons() { return irons; }
+    public Queue<Gold> getGolds() { return golds; }
+    public Queue<Clay> getClays() { return clays; }
     public Queue<Board> getBoards() { return boards; }
     public Queue<Coin> getCoins() { return coins; }
     public Queue<Marble> getMarbles() { return marbles; }
