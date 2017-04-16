@@ -42,9 +42,12 @@ public class TransportationSelectionController extends Controller{
     }
 
     @Override
-    public void print() {
+    public String print() {
+        String output = "";
         for(int i=0;i<transportationManager.getTransportationList().size();i++){
-            System.out.println(i+ ": "+transportationManager.getTransportationList().get(i).getType());
+            output = i+ ": "+transportationManager.getTransportationList().get(i).getType();
+            return output;
         }
+        return output;
     }
 }

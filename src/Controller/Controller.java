@@ -8,5 +8,5 @@ public abstract class Controller{
     abstract public void getKeyPress(int keyPressed);
     abstract public Controller nextController();
     abstract public Controller previousController();
-    abstract public void print();
+    abstract public String print();
 }

@@ -27,7 +27,7 @@ public class ResourceBag implements ResourceHolder {
 
     public void carry(TransportationLocation transportationLocation) {
         for (int i = 0; i < resourceList.size(); i++) {
-            ResourceLocation locationToChange = resourceManager.getResourceLocation(resourceList.get(i));
+            ResourceLocation locationToChange = this.resourceManager.getResourceLocation(resourceList.get(i));
             locationToChange.setX(transportationLocation.getX());
             locationToChange.setY(transportationLocation.getY());
             locationToChange.setTileZone(transportationLocation.getTileZone());

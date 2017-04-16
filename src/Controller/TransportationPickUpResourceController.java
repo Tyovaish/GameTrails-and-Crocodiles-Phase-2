@@ -40,8 +40,8 @@ public class TransportationPickUpResourceController extends TransportationContro
     }
 
     @Override
-    public void print() {
-        System.out.println("In Pick Up Resource Controller");
+    public String print() {
+        return "In Pick Up Resource Controller";
 
     }
     public void setCurrentTransportation(Transportation transportation){
