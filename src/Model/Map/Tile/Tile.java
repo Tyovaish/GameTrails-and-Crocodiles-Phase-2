@@ -6,6 +6,7 @@ import Model.Resource.ResourceBag;
 import Model.Resource.ResourceEnum;
 import Model.ResourceHolder;
 import Model.Structure.Structure;
+import Model.Structure.StructureBuilder;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,11 @@ public class Tile implements ResourceHolder{
     // ResourceHolder
     public void addResource(Resource resource){ resourceBag.addResource(resource); }
     public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
+    public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
+        Resource material = removeResource(resource);
+        if (material != null) builder.addMaterial(material);
+        else System.out.printf("Material not found in bag!\n");
+    }
 
     public void setTileZones(ArrayList<Integer> riverEdges) {
         TileZone temp = new TileZone();

@@ -21,22 +21,24 @@ public class ResourceTest {
         tile.addStructure(woodcutter);
         checkTrunks(tile);
 
-        // Produce trunk from woodcutter and add it to tile
+        // Produce trunks from woodcutter
         Trunk trunk1 = woodcutter.produce();
         Trunk trunk2 = woodcutter.produce();
         Trunk trunk3 = woodcutter.produce();
+
+        // Add trunks to tile. There is no limit to the resources that can be placed on a tile.
         tile.addResource(trunk1);
         tile.addResource(trunk2);
         tile.addResource(trunk3);
         checkTrunks(tile);
+
+        // Add trunks to donkey. Donkey can only hold 2 resources at a time
         donkey.addResource(trunk1);
         donkey.addResource(trunk2);
         donkey.addResource(trunk3);
         checkTrunks(donkey);
 
-
-
-        // Remove trunk from bag
+        // Remove trunks ResourceHolders
         tile.removeResource(ResourceEnum.TRUNK);
         checkTrunks(tile);
         tile.removeResource(ResourceEnum.TRUNK);

@@ -6,6 +6,7 @@ import Model.Resource.Resource;
 import Model.Resource.ResourceBag;
 import Model.Resource.ResourceEnum;
 import Model.ResourceHolder;
+import Model.Structure.StructureBuilder;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,7 @@ public abstract class Transportation implements ResourceHolder{
  public abstract void getMovementAbilities();
  public abstract void getDropResourceAbilities();
  public abstract void getPickUpResourceAbilities();
- public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){
-     this.movementAbilities=movementAbilities;
- }
+ public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){ this.movementAbilities=movementAbilities; }
 
  public ResourceBag getResourceBag() { return resourceBag; }
  public void initResourceBag() { resourceBag = new ResourceBag(bagSize); }
@@ -48,4 +47,9 @@ public abstract class Transportation implements ResourceHolder{
   // ResourceHolder
   public void addResource(Resource resource){ resourceBag.addResource(resource); }
   public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
+  public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
+      Resource material = removeResource(resource);
+      if (material != null) builder.addMaterial(material);
+      else System.out.printf("Material not found in bag!\n");
+  }
 }

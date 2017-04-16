@@ -3,6 +3,7 @@ package Model.Resource;
 import Model.Resource.PrimaryResource.*;
 import Model.Resource.SecondaryResource.*;
 import Model.ResourceHolder;
+import Model.Structure.StructureBuilder;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -116,6 +117,11 @@ public class ResourceBag implements ResourceHolder{
             System.out.printf("No resources of this type in bag!\n");
             return null;
         }
+    }
+    public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
+        Resource material = removeResource(resource);
+        if (material != null) builder.addMaterial(material);
+        else System.out.printf("Material not found in bag!\n");
     }
 }
 
