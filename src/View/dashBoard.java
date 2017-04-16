@@ -4,7 +4,6 @@ import Controller.MainController;
 import Model.Location.ResourceLocation;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
-import Model.Map.Tile.TileZone;
 import Model.Movement.MovementManager;
 import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
@@ -25,13 +24,17 @@ public class dashBoard extends JPanel implements KeyListener{
 
    private  TransportationManager transportationManager;
    MainController mainctrl;
+   DisplayManager manager;
+   Graphics2D g2;
+   String str = "";
 
     public void keyPressed(KeyEvent e){
 
         switch (e.getKeyCode()){
             case KeyEvent.VK_0:{
                 mainctrl.getKeyPress(0);
-                System.out.println(mainctrl.print());
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_1:{
@@ -60,11 +63,14 @@ public class dashBoard extends JPanel implements KeyListener{
             }
             case KeyEvent.VK_ENTER:{
                 mainctrl.getEnter();
-                System.out.println(mainctrl.print());
+                str = mainctrl.print();
+               this.repaint();
                 break;
             }
             case KeyEvent.VK_SHIFT:{
                 mainctrl.getShift();
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
         }
@@ -78,14 +84,19 @@ public class dashBoard extends JPanel implements KeyListener{
     }
 
     public void paintComponent(Graphics g){
+
         super.paintComponent(g);
+        g2 = (Graphics2D) g;
+        g2.setFont(new Font("Times New Roman",Font.BOLD,50));
+        g2.drawString(str,100,150);
 
     }
 
-    dashBoard(Map board){
-        setPreferredSize(new Dimension(500,1000));
+    dashBoard(Map board, DisplayManager manger){
+        setPreferredSize(new Dimension(700,1000));
         addKeyListener(this);
         setFocusable(true);
+        manager = manger;
 
 
         TransportationManager transportationManager=new TransportationManager(board);

@@ -29,6 +29,7 @@ public class ResourceManager {
         resourceList.add(resource);
         resourceLocationList.put(resource,resourceLocation);
     }
+
     public ResourceLocation getResourceLocation(Resource resource){
         return resourceLocationList.get(resource);
     }

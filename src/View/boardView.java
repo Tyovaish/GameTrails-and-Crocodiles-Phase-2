@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 
 
 /**
@@ -16,13 +17,18 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     final   int BSIZE = 6; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
-    private JScrollPane wholeBoard = new JScrollPane(this);
+    private JScrollPane wholeBoard;
+    boolean clickCheck = false;
+    private int pointX = -1, pointY = -1;
     private Map board;
 
 
 
     private void drawCursor(Graphics2D g2){
-        hex.drawCursor(hoverP.x, hoverP.y, g2);
+        if(!clickCheck)
+            hex.drawCursor(hoverP.x, hoverP.y, g2);
+        else
+            hex.drawCursorLockOn(hoverP.x,hoverP.y,g2);
     }
 
     private void fillInHex(Graphics2D g2){
@@ -48,18 +54,20 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     }
 
     public JScrollPane returnBoard(){
+        wholeBoard = new JScrollPane(this);
         wholeBoard.getVerticalScrollBar().setUnitIncrement(16);
-        wholeBoard.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        wholeBoard.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         wholeBoard.setPreferredSize(new Dimension(2000, 800));
         return wholeBoard;
     }
     public void mouseMoved(MouseEvent e){
-        hoverP = hex.pxtoHex(e.getX(),e.getY());
-        if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
-            return;
+        if(!clickCheck) {
+            hoverP = hex.pxtoHex(e.getX(), e.getY());
+            if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE) {
+                return;
+            }
+            this.repaint();
         }
-
-        this.repaint();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -69,6 +77,16 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
                 return;
             }
 
+            if(pointX == hoverP.x && pointY == hoverP.y) {
+                pointX = -1;
+                pointY = -1;
+                clickCheck = false;
+            }
+            else{
+                pointX = hoverP.x;
+                pointY = hoverP.y;
+                clickCheck = true;
+            }
             repaint();
 
     }//end of mouseClicked method
