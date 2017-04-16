@@ -22,7 +22,10 @@ public abstract class Transportation implements ResourceHolder{
 
   ResourceBag resourceBag;
   int bagSize;
-
+Transportation(MovementManager movementManager){
+    this.movementManager=movementManager;
+    movementAbilities=new ArrayList<MovementAbility>();
+}
 
 
  public ResourceBag getResourceBag() { return resourceBag; }
@@ -30,16 +33,13 @@ public abstract class Transportation implements ResourceHolder{
  public int getBagSize() { return bagSize; }
  public void setBagSize(int bagSize) { this.bagSize = bagSize; }
 
- public abstract void getMovementAbilities();
+ public  abstract void getMovementAbilities();
  public void addMovementAbilities(ArrayList<MovementAbility> movementAbilities){ this.movementAbilities=movementAbilities; }
  public void getDropResourceAbilities(){}
  public void getPickUpResourceAbilities(){}
-  public ArrayList<ArrayList<Ability>> getAbilities(){
-    getMovementAbilities();
-    ArrayList<ArrayList<Ability>> allAbilities=new ArrayList<ArrayList<Ability>>();
-     ArrayList<MovementAbility> movementAbilities=new ArrayList<MovementAbility>();
-     allAbilities.get(0).addAll(movementAbilities);
-     return allAbilities;
+  public ArrayList<MovementAbility> getMovementSet(){
+     getMovementAbilities();
+     return movementAbilities;
   }
   public void useAbility(Ability ability){
       ability.execute();
@@ -52,5 +52,8 @@ public abstract class Transportation implements ResourceHolder{
       Resource material = removeResource(resource);
       if (material != null) builder.addMaterial(material);
       else System.out.printf("Material not found in bag!\n");
+  }
+  public String getType(){
+      return "donkey";
   }
 }

@@ -3,6 +3,7 @@ package Model.Map;
 import Model.Location.Location;
 import Model.Map.Tile.Tile;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -11,8 +12,10 @@ import java.util.Set;
  */
 public class Map {
     HashMap<Location, Tile> map;
+    ArrayList<Tile> tileList;
     public Map(){
         map=new HashMap<Location,Tile>();
+        tileList=new ArrayList<Tile>();
     }
     public Tile getTileAt(int x, int y){
         Location location=getLocation(x,y);
@@ -28,10 +31,17 @@ public class Map {
         }
         return locationAt;
     }
+    public void print(){
+        for(int i=0;i<tileList.size();i++){
+            tileList.get(i).print();
+        }
+    }
     private Tile getTile(Location location){
         return map.get(location);
     }
     public void insertTile(Location location,Tile tile){
+        System.out.println("Inserting Tile");
+        tileList.add(tile);
         map.put(location,tile);
         Location northTileLocation=location.getNorth();
         Location northEastTileLocation=location.getNorthEast();
@@ -45,7 +55,6 @@ public class Map {
           tile.mergeTileZone(0,northTile.getTileZone(7));
             tile.mergeTileZone(1,northTile.getTileZone(6));
         }
-
         Tile northEastTile=getTileAt(northEastTileLocation.getX(),northEastTileLocation.getY());
         if(northEastTile!=null){
             tile.mergeTileZone(2,northEastTile.getTileZone(9));

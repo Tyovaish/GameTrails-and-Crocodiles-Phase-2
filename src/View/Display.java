@@ -10,8 +10,8 @@ import java.awt.*;
  */
 public class Display extends JFrame {
 
-    private void createDisplay(boardView board){
-        dashBoard dash = new dashBoard();
+    private void createDisplay(boardView board,Map map){
+        dashBoard dash = new dashBoard(map);
         setTitle("PHASE 02");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
@@ -26,6 +26,6 @@ public class Display extends JFrame {
 
     public Display(Map board){
         boardView map = new boardView(board);
-        createDisplay(map);
+        createDisplay(map,board);
     }
 }

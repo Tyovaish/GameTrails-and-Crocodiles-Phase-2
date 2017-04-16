@@ -48,17 +48,60 @@ public class Tile implements ResourceHolder{
     }
 
     public void setTileZones(ArrayList<Integer> riverEdges) {
-        TileZone temp = new TileZone();
-        for (int i = 0; i < 2 * Tile.SIZE; i++) {
-            if (riverEdges.contains(i / 2)) {
-                temp.insertPartOfEdge(i);
-                containedTileZone.add(temp);
-                temp = new TileZone();
-                i++;
+            if(riverEdges.size()==0){
+                TileZone tileZone=new TileZone();
+                for(int i=0;i<2*Tile.SIZE;i++){
+                    tileZone.insertPartOfEdge(i);
+                }
+                containedTileZone.add(tileZone);
             }
-            temp.insertPartOfEdge(i);
-        }
-        containedTileZone.add(temp);
+            if(riverEdges.size()==1){
+                TileZone tileZone=new TileZone();
+                for(int i=0;i<2*Tile.SIZE;i++){
+                    tileZone.insertPartOfEdge(i);
+                }
+                containedTileZone.add(tileZone);
+            }
+            if(riverEdges.size()==2){
+                TileZone tileZone1=new TileZone();
+                TileZone tileZone2=new TileZone();
+                tileZone1.insertPartOfEdge(1);
+                tileZone1.insertPartOfEdge(2);
+                tileZone1.insertPartOfEdge(3);
+                tileZone1.insertPartOfEdge(4);
+               for(int i=5;i<2*Tile.SIZE;i++){
+                   tileZone2.insertPartOfEdge(i);
+               }
+               tileZone2.insertPartOfEdge(0);
+                tileZone1.rotate(orientation.getNumberOfRotations());
+                tileZone2.rotate(orientation.getNumberOfRotations());
+                containedTileZone.add(tileZone1);
+                containedTileZone.add(tileZone2);
+            }
+            if(riverEdges.size()==3){
+                TileZone tileZone1=new TileZone();
+                TileZone tileZone2=new TileZone();
+                TileZone tileZone3=new TileZone();
+
+                tileZone1.insertPartOfEdge(11);
+                tileZone1.insertPartOfEdge(0);
+                tileZone1.insertPartOfEdge(1);
+                tileZone1.insertPartOfEdge(2);
+                tileZone2.insertPartOfEdge(3);
+                tileZone2.insertPartOfEdge(4);
+                tileZone2.insertPartOfEdge(5);
+                tileZone2.insertPartOfEdge(6);
+                tileZone3.insertPartOfEdge(7);
+                tileZone3.insertPartOfEdge(8);
+                tileZone3.insertPartOfEdge(9);
+                tileZone3.insertPartOfEdge(10);
+                tileZone1.rotate(orientation.getNumberOfRotations());
+                tileZone2.rotate(orientation.getNumberOfRotations());
+                tileZone3.rotate(orientation.getNumberOfRotations());
+                containedTileZone.add(tileZone1);
+                containedTileZone.add(tileZone2);
+                containedTileZone.add(tileZone3);
+            }
     }
     public ArrayList<Integer> getRiverEdges() {
         return riverEdges;
@@ -74,10 +117,11 @@ public class Tile implements ResourceHolder{
     public void setOrientation(TileOrientation orientation) {
         this.orientation = orientation;
     }
-    public ArrayList<TileZone> getConnectedTileZones(){return this.containedTileZone;}
+    public ArrayList<TileZone> getContainedTileZone(){return this.containedTileZone;}
     public FeatureType getFeature() {
         return feature;
     }
+
     public void mergeTileZone(int tileZoneNumber,TileZone tileZone){
         for(int i=0;i<containedTileZone.size();i++){
             if(containedTileZone.get(i).containsTileZoneNumber(tileZoneNumber)){
@@ -99,5 +143,14 @@ public class Tile implements ResourceHolder{
     }
     public boolean checkIfTileZoneContainsIn(TileZone tileZone){
         return containedTileZone.contains(tileZone);
+    }
+    public void print(){
+        System.out.println(containedTileZone.size());
+        System.out.println("Tile");
+       for(int i=0;i<containedTileZone.size();i++){
+           System.out.println("TileZone: "+i);
+           containedTileZone.get(i).print();
+           System.out.println();
+       }
     }
 }

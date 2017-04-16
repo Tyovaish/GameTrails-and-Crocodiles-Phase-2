@@ -1,6 +1,7 @@
 package Controller;
 
 import Controller.Controller;
+import Model.Transportation.TransportationManager;
 
 import java.util.ArrayList;
 
@@ -11,9 +12,11 @@ public class MainController implements Controller {
     ArrayList<Controller> controller;
     Controller currentController;
     //currentKeySet();
-    MainController(){
-
-    }
+   public MainController(TransportationManager transportationManager) {
+       controller=new ArrayList<Controller>();
+       currentController=this;
+       controller.add(new TransporationSelectionController(transportationManager, this));
+   }
     public void getKeyPress(int keyPressed){
         if(currentController!=this){
             currentController.getKeyPress(keyPressed);
@@ -21,7 +24,9 @@ public class MainController implements Controller {
             if(keyPressed>=0&&keyPressed<controller.size()){
                 currentController=controller.get(keyPressed);
             }
+            System.out.println(keyPressed);
         }
+        currentController.print();
     }
     public void getEnter(){
         currentController=nextController();
@@ -55,5 +60,6 @@ public class MainController implements Controller {
         if(currentController!=this) {
             currentController.print();
         }
+        System.out.println("In Main controller");
     }
 }

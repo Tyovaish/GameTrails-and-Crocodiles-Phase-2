@@ -11,10 +11,18 @@ import java.util.ArrayList;
 public class TransporationSelectionController implements Controller {
     TransportationManager transportationManager;
     Transportation currentTransportation;
+    TransportationController transportationController;
     ArrayList<Controller> controllerList;
     Controller nextController;
     Controller previousController;
 
+    public TransporationSelectionController(TransportationManager transportationManager,Controller previousController){
+        this.transportationManager=transportationManager;
+        this.previousController=previousController;
+        this.transportationController=new TransportationController(this);
+        nextController=this.transportationController;
+        currentTransportation=transportationManager.getTransportationList().get(0);
+    }
     @Override
     public void getKeyPress(int keyPressed) {
         if(keyPressed>=0&&keyPressed<transportationManager.getTransportationList().size()){
@@ -23,7 +31,10 @@ public class TransporationSelectionController implements Controller {
     }
 
     @Override
-    public Controller nextController() {return nextController;
+    public Controller nextController() {
+    transportationController.setCurrentTransportation(currentTransportation);
+    transportationController.setCurrentAbilities();
+    return nextController;
     }
 
     @Override
@@ -34,6 +45,7 @@ public class TransporationSelectionController implements Controller {
 
     @Override
     public void print() {
-
+        System.out.println("TransportationSelectionController");
+        System.out.println(currentTransportation.getType());
     }
 }

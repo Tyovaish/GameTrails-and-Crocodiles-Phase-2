@@ -89,8 +89,6 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         addMouseListener(this);
         setPreferredSize(new Dimension(2200,2100));
         hex.createImages();
-
-
-
     }
+
 }

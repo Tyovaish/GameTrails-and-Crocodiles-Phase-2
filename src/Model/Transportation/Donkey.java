@@ -1,5 +1,6 @@
 package Model.Transportation;
 
+import Model.Movement.MovementManager;
 import Model.Resource.ResourceBag;
 
 /**
@@ -8,7 +9,8 @@ import Model.Resource.ResourceBag;
 public class Donkey extends Transportation {
     String transportationType="donkey";
 
-    public Donkey() {
+    public Donkey(MovementManager movementManager) {
+        super(movementManager);
         setBagSize(2);
         initResourceBag();
     }
