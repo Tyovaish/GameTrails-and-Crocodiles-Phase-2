@@ -40,9 +40,10 @@ public class TransportationMovementController extends TransportationController{
     }
 
     @Override
-    public void print() {
-        printType();
+    public String print() {
+        return printType();
     }
+
     public void setCurrentTransportation(Transportation transportation){
             currentTransportation=transportation;
             transportationManager.setMovementAbilities(currentTransportation);

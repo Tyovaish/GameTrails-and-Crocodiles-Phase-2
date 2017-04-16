@@ -24,14 +24,14 @@ import java.awt.event.KeyListener;
 public class dashBoard extends JPanel implements KeyListener{
 
    private  TransportationManager transportationManager;
-
-MainController mainctrl;
+   MainController mainctrl;
 
     public void keyPressed(KeyEvent e){
 
         switch (e.getKeyCode()){
             case KeyEvent.VK_0:{
                 mainctrl.getKeyPress(0);
+                System.out.println(mainctrl.print());
                 break;
             }
             case KeyEvent.VK_1:{
@@ -60,6 +60,7 @@ MainController mainctrl;
             }
             case KeyEvent.VK_ENTER:{
                 mainctrl.getEnter();
+                System.out.println(mainctrl.print());
                 break;
             }
             case KeyEvent.VK_SHIFT:{
@@ -76,10 +77,16 @@ MainController mainctrl;
     public void keyTyped(KeyEvent e){
     }
 
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+    }
+
     dashBoard(Map board){
         setPreferredSize(new Dimension(500,1000));
         addKeyListener(this);
         setFocusable(true);
+
 
         TransportationManager transportationManager=new TransportationManager(board);
         ResourceManager resourceManager=new ResourceManager(transportationManager);

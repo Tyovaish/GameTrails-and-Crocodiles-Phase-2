@@ -24,6 +24,9 @@ public class paintHex {
     private BufferedImage woodsbi = null;
     private BufferedImage mountainbi = null;
     private BufferedImage seabi = null;
+    private BufferedImage source = null;
+    private BufferedImage bend = null;
+    private BufferedImage Y = null;
 
 
 
@@ -70,11 +73,7 @@ public class paintHex {
         int rot = board.getTileAt(i,j).getOrientation().getNumberOfRotations();
         riverType = getRiverType(rivers);
 
-        File img2 = new File("./src/View/Images/" + riverType);
 
-        BufferedImage bi = null;
-        BufferedImage bi2 = null;
-        BufferedImage transparentImage = null;
 
         int vert;
         int horiz = radius +(int)(j*((width/4*2.89)));
@@ -84,17 +83,7 @@ public class paintHex {
             vert = 10 + ((i+1) * (height));
 
 
-        if(riverType != null){
-            try {
-                bi2 = ImageIO.read(img2);
 
-            } catch (IOException e) {
-                System.err.println("Could not load image file!");
-            }
-
-            Image imageWithTransparency = makeColorTransparent(bi2);
-            transparentImage = imageToBufferedImage(imageWithTransparency);
-        }
 
 
         if(rot > -1) {
@@ -103,11 +92,11 @@ public class paintHex {
             g2.setClip(poly);
             g2.drawImage(getBufferedimage(type), horiz-radius, vert - 140, null);
             if(riverType != null && riverType.equals("source.PNG"))
-                g2.drawImage(transparentImage, horiz - 55, vert-100, null);
+                g2.drawImage(source, horiz - 55, vert-100, null);
             else if(riverType != null && riverType.equals("sharpbend.PNG"))
-                g2.drawImage(transparentImage, horiz-77, vert-190, null);
+                g2.drawImage(bend, horiz-77, vert-190, null);
             else if(riverType != null && riverType.equals("Y.PNG"))
-                g2.drawImage(transparentImage, horiz-120, vert-110, null);
+                g2.drawImage(Y, horiz-120, vert-110, null);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(15));
             g2.draw(poly);
@@ -117,6 +106,45 @@ public class paintHex {
 
 
 
+
+    }
+
+    public void CreateRiver(){
+        BufferedImage bi2 = null;
+        File  sourcefile= new File("./src/View/Images/source.PNG");
+        File  sharpBendfile= new File("./src/View/Images/sharpbend.PNG");
+        File  Yfile= new File("./src/View/Images/Y.PNG");
+
+
+            try {
+                bi2 = ImageIO.read(sourcefile);
+
+            } catch (IOException e) {
+                System.err.println("Could not load image file!");
+            }
+
+            Image imageWithTransparency = makeColorTransparent(bi2);
+            source = imageToBufferedImage(imageWithTransparency);
+
+            try {
+                bi2 = ImageIO.read(sharpBendfile);
+
+            } catch (IOException e) {
+                System.err.println("Could not load image file!");
+            }
+
+            imageWithTransparency = makeColorTransparent(bi2);
+            bend = imageToBufferedImage(imageWithTransparency);
+
+            try {
+                bi2 = ImageIO.read(Yfile);
+
+            } catch (IOException e) {
+                System.err.println("Could not load image file!");
+            }
+
+            imageWithTransparency = makeColorTransparent(bi2);
+            Y = imageToBufferedImage(imageWithTransparency);
 
     }
 
@@ -159,7 +187,6 @@ public class paintHex {
         } catch (IOException e) {
             System.err.println("Could not load image file!");
         }
-
 
     }
 

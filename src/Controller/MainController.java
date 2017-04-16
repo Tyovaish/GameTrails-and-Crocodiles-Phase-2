@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class MainController extends Controller {
     ArrayList<Controller> controller;
     Controller currentController;
-    //currentKeySet();
+
    public MainController(TransportationManager transportationManager) {
        controller=new ArrayList<Controller>();
        currentController=this;
@@ -24,8 +24,8 @@ public class MainController extends Controller {
             if(keyPressed>=0&&keyPressed<controller.size()){
                 currentController=controller.get(keyPressed);
             }
-            System.out.println(keyPressed);
         }
+
         currentController.print();
     }
     public void getEnter(){
@@ -56,10 +56,8 @@ public class MainController extends Controller {
         }
     }
 
-    public void print() {
-        if(currentController!=this) {
-            currentController.print();
-        }
-        System.out.println("In Main controller");
+    public String print() {
+           return currentController.print();
+
     }
 }

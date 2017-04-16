@@ -45,6 +45,7 @@ public class TransportationDropResourceController extends TransportationControll
        for(int i=0;i<currentTransportation.getDropResourceSet().size();i++){
            System.out.println(i+": "+currentTransportation.getDropResourceSet().get(i).toString());
        }
+
     }
     public void setCurrentTransportation(Transportation transportation){
         currentTransportation=transportation;

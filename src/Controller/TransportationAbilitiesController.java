@@ -46,11 +46,11 @@ public class TransportationAbilitiesController extends Controller {
     }
 
     @Override
-    public void print() {
+    public String print() {
     for(int i=0;i<controllerList.size();i++) {
-        controllerList.get(i).printType();
+        return controllerList.get(i).printType();
     }
-
+        return "";
     }
     public void setCurrentTransportation(Transportation transportation){
         currentTransportation=transportation;

@@ -13,7 +13,7 @@ import java.awt.geom.AffineTransform;
  */
 public class boardView extends JPanel implements MouseMotionListener, MouseListener {
 
-    final   int BSIZE = 5; //board size.
+    final   int BSIZE = 6; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
     private JScrollPane wholeBoard = new JScrollPane(this);
@@ -50,10 +50,16 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     public JScrollPane returnBoard(){
         wholeBoard.getVerticalScrollBar().setUnitIncrement(16);
         wholeBoard.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        wholeBoard.setPreferredSize(new Dimension(2000, 1200));
+        wholeBoard.setPreferredSize(new Dimension(2000, 800));
         return wholeBoard;
     }
     public void mouseMoved(MouseEvent e){
+        hoverP = hex.pxtoHex(e.getX(),e.getY());
+        if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
+            return;
+        }
+
+        this.repaint();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -87,8 +93,9 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         this.board = board;
         addMouseMotionListener(this);
         addMouseListener(this);
-        setPreferredSize(new Dimension(2200,2100));
+        setPreferredSize(new Dimension(2200,1500));
         hex.createImages();
+        hex.CreateRiver();
     }
 
 }
