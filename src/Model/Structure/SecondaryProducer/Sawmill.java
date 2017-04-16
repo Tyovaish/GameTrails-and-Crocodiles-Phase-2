@@ -4,5 +4,5 @@ package Model.Structure.SecondaryProducer;
  * Created by khariollivierre on 4/15/17.
  */
 public class Sawmill extends SecondaryProducer {
-    public Sawmill() {}
+    public Sawmill() { setPrimaryProducer(false); }
 }

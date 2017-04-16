@@ -7,7 +7,7 @@ import Model.Resource.PrimaryResource.Trunk;
  * Created by khariollivierre on 4/15/17.
  */
 public class ClayPit extends PrimaryProducer {
-    public ClayPit() {}
+    public ClayPit() { setPrimaryProducer(true); }
 
     @Override
     public Clay produce(){

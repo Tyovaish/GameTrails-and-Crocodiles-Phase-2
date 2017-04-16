@@ -1,6 +1,7 @@
 package Model.Transportation;
 
 import Model.Abilities.*;
+import Model.Location.Location;
 import Model.Movement.MovementManager;
 import Model.Resource.Resource;
 import Model.Resource.ResourceBag;
@@ -51,6 +52,6 @@ public abstract class Transportation implements ResourceHolder{
   public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
       Resource material = removeResource(resource);
       if (material != null) builder.addMaterial(material);
-      else System.out.printf("Material not found in bag!\n");
+      else System.out.printf("Material not found in Transport bag!\n");
   }
 }
