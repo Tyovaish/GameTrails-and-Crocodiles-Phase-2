@@ -4,9 +4,7 @@ import Model.Map.Map;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 
 
@@ -18,7 +16,6 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     final   int BSIZE = 5; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
-    private int flag = 0;
     private JScrollPane wholeBoard = new JScrollPane(this);
     private Map board;
 
@@ -35,32 +32,19 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
                     AffineTransform old = g2.getTransform();
                     hex.fillHex(i, j, board, g2);
                     g2.setTransform(old);
-
                 }
             }
         }
     }
 
-    private void draw(Graphics g){
-        System.out.println("HELLO");
-        Graphics2D g2 = (Graphics2D) g;
-
-        fillInHex(g2);
-
-
-
-
-    }
 
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        Graphics2D cursor = (Graphics2D) g.create();
+        Graphics2D g2= (Graphics2D) g;
         //Fills In Hexes with Tile Images from the Board
-            draw(g);
-
-
-        drawCursor(cursor);
+        fillInHex(g2);
+        drawCursor(g2);
     }
 
     public JScrollPane returnBoard(){
@@ -70,24 +54,16 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         return wholeBoard;
     }
     public void mouseMoved(MouseEvent e){
-        hoverP = hex.pxtoHex(e.getX(),e.getY());
-        if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
-            System.out.println("OUTSIDE");
-        }
     }
 
     public void mouseClicked(MouseEvent e) {
-        Point p = new Point( hex.pxtoHex(e.getX(),e.getY()) );
-        if (p.x < 0 || p.y < 0 || p.x >= BSIZE || p.y >= BSIZE) {
+        hoverP = new Point( hex.pxtoHex(e.getX(),e.getY()) );
+        if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE) {
                 System.out.println("OUTSIDE"); //IF USER CLICKS OUT OF THE MAP
                 return;
             }
-            System.out.println(p.x + " " + p.y);
 
-            this.repaint();
-
-
-
+            repaint();
 
     }//end of mouseClicked method
 
@@ -112,6 +88,7 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         addMouseMotionListener(this);
         addMouseListener(this);
         setPreferredSize(new Dimension(2200,2100));
+        hex.createImages();
 
 
 
