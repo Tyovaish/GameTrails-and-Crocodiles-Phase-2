@@ -10,7 +10,7 @@ public class ProduceStructureAbility implements Ability {
     }
 
     @Override
-    public void print() {
-
+    public String print() {
+        return "";
     }
 }

@@ -10,15 +10,13 @@ import Model.Transportation.Transportation;
 public class Donkey extends Transportation {
     String transportationType="donkey";
 
-    public Donkey(MovementManager movementManager) {
-        super(movementManager);
+    public Donkey() {
+        super();
         setBagSize(2);
         initResourceBag();
     }
 
-    @Override
-    public void getMovementAbilities() {
-        movementAbilities=movementManager.getMovementAbilities(this);
+    public Donkey(ResourceBag resourceBag) {
+        super(resourceBag);
     }
-
 }

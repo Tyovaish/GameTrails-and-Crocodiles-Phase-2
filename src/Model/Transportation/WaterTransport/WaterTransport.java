@@ -7,7 +7,5 @@ import Model.Transportation.Transportation;
  * Created by khariollivierre on 4/16/17.
  */
 public abstract class WaterTransport extends Transportation {
-    public WaterTransport(MovementManager movementManager) {
-        super(movementManager);
-    }
+    public WaterTransport() { super(); }
 }

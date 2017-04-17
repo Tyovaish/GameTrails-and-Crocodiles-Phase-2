@@ -9,14 +9,9 @@ import Model.Transportation.Transportation;
 public class Raft extends WaterTransport {
     String transportationType="raft";
 
-    public Raft(MovementManager movementManager) {
-        super(movementManager);
+    public Raft() {
+        super();
         setBagSize(3);
         initResourceBag();
-    }
-
-    @Override
-    public void getMovementAbilities() {
-        movementAbilities=movementManager.getMovementAbilities(this);
     }
 }

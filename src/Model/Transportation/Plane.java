@@ -8,14 +8,9 @@ import Model.Movement.MovementManager;
 public class Plane extends Transportation {
     String transportationType="plane";
 
-    public Plane(MovementManager movementManager) {
-        super(movementManager);
+    public Plane() {
+        super();
         setBagSize(4);
         initResourceBag();
-    }
-
-    @Override
-    public void getMovementAbilities() {
-        movementAbilities=movementManager.getMovementAbilities(this);
     }
 }

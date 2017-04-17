@@ -31,7 +31,7 @@ public class MovementAbility implements Ability {
   }
 
   @Override
-  public void print() {
-
+  public String print() {
+      return this.nextTransportationLocation.print();
   }
 }

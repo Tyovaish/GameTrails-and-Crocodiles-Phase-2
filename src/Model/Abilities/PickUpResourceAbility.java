@@ -9,16 +9,17 @@ import Model.Resource.ResourceBag;
 public class PickUpResourceAbility implements Ability {
     ResourceBag resourceBag;
     Resource resourceToPickUp;
-    PickUpResourceAbility(ResourceBag resourceBag,Resource resourceToPickUp){
+    public PickUpResourceAbility(ResourceBag resourceBag, Resource resourceToPickUp){
         this.resourceBag=resourceBag;
-        resourceToPickUp=resourceToPickUp;
+        this.resourceToPickUp=resourceToPickUp;
     }
     @Override
     public void execute() {
         resourceBag.addResource(resourceToPickUp);
     }
     @Override
-    public void print() {
+    public String print() {
         System.out.println("Pick Up Resource: "+resourceToPickUp.getType());
+        return"";
     }
 }

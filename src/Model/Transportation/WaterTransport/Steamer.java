@@ -9,14 +9,9 @@ import Model.Transportation.WaterTransport.WaterTransport;
 public class Steamer extends WaterTransport {
     String transportationType="steamer";
 
-    public Steamer(MovementManager movementManager) {
-        super(movementManager);
+    public Steamer() {
+        super();
         setBagSize(8);
         initResourceBag();
-    }
-
-    @Override
-    public void getMovementAbilities() {
-        movementAbilities=movementManager.getMovementAbilities(this);
     }
 }

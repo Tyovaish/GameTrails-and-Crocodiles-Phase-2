@@ -100,7 +100,7 @@ public class Tile implements ResourceHolder{
                for(int i=5;i<2*Tile.SIZE;i++){
                    tileZone2.insertPartOfEdge(i);
                }
-               tileZone2.insertPartOfEdge(0);
+                tileZone2.insertPartOfEdge(0);
                 tileZone1.rotate(orientation.getNumberOfRotations());
                 tileZone2.rotate(orientation.getNumberOfRotations());
                 containedTileZone.add(tileZone1);
@@ -163,6 +163,7 @@ public class Tile implements ResourceHolder{
                 return containedTileZone.get(i);
             }
         }
+
         return null;
     }
 
@@ -173,13 +174,9 @@ public class Tile implements ResourceHolder{
         return containedTileZone.contains(tileZone);
     }
     public void print(){
-        System.out.println(containedTileZone.size());
-        System.out.println("Tile");
+
        for(int i=0;i<containedTileZone.size();i++){
-           System.out.println("TileZone: "+i);
-           System.out.println("Number of connections"+containedTileZone.get(i).getConnectedTileZones().size());
            containedTileZone.get(i).print();
-           System.out.println();
        }
     }
 }

@@ -9,14 +9,10 @@ import Model.Transportation.WaterTransport.WaterTransport;
 public class Rowboat extends WaterTransport {
     String transportationType="rowboat";
 
-    public Rowboat(MovementManager movementManager) {
-        super(movementManager);
+    public Rowboat() {
+        super();
         setBagSize(5);
         initResourceBag();
     }
 
-    @Override
-    public void getMovementAbilities() {
-        movementAbilities=movementManager.getMovementAbilities(this);
-    }
 }

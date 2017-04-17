@@ -9,15 +9,9 @@ import Model.Transportation.RoadTransport.RoadTransport;
 public class Wagon extends RoadTransport {
     String transportationType="wagon";
 
-    public Wagon(MovementManager movementManager) {
-        super(movementManager);
+    public Wagon() {
+        super();
         setBagSize(3);
         initResourceBag();
     }
-
-    @Override
-    public void getMovementAbilities() {
-        movementAbilities=movementManager.getMovementAbilities(this);
-    }
-
 }

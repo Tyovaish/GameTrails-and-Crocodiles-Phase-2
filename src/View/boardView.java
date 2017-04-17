@@ -1,11 +1,13 @@
 package View;
 
 import Model.Map.Map;
+import Model.Transportation.TransportationManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 
 
 /**
@@ -16,13 +18,18 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     final   int BSIZE = 5; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
-    private JScrollPane wholeBoard = new JScrollPane(this);
+    private JScrollPane wholeBoard;
+    boolean clickCheck = false;
+    private int pointX = -1, pointY = -1, transportrow = -1, transportcol = -1;
     private Map board;
 
 
 
     private void drawCursor(Graphics2D g2){
-        hex.drawCursor(hoverP.x, hoverP.y, g2);
+        if(!clickCheck)
+            hex.drawCursor(hoverP.x, hoverP.y, g2);
+        else
+            hex.drawCursorLockOn(hoverP.x,hoverP.y,g2);
     }
 
     private void fillInHex(Graphics2D g2){
@@ -45,15 +52,30 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
         drawCursor(g2);
+        hex.drawTransportCursor(transportrow, transportcol,g2);
     }
 
     public JScrollPane returnBoard(){
+        wholeBoard = new JScrollPane(this);
         wholeBoard.getVerticalScrollBar().setUnitIncrement(16);
-        wholeBoard.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        wholeBoard.setPreferredSize(new Dimension(2000, 1200));
+        wholeBoard.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+        wholeBoard.setPreferredSize(new Dimension(2000, 800));
         return wholeBoard;
     }
     public void mouseMoved(MouseEvent e){
+        if(!clickCheck) {
+            hoverP = hex.pxtoHex(e.getX(), e.getY());
+            if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE) {
+                return;
+            }
+            this.repaint();
+        }
+    }
+
+    public void setCurrentLocationCursor(int row, int col){
+        transportrow = row;
+        transportcol = col;
+        repaint();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -63,6 +85,16 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
                 return;
             }
 
+            if(pointX == hoverP.x && pointY == hoverP.y) {
+                pointX = -1;
+                pointY = -1;
+                clickCheck = false;
+            }
+            else{
+                pointX = hoverP.x;
+                pointY = hoverP.y;
+                clickCheck = true;
+            }
             repaint();
 
     }//end of mouseClicked method
@@ -83,12 +115,13 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
 
 
 
-    boardView(Map board){
+    boardView(Map board ){
         this.board = board;
         addMouseMotionListener(this);
         addMouseListener(this);
-        setPreferredSize(new Dimension(2200,2100));
+        setPreferredSize(new Dimension(2200,1500));
         hex.createImages();
+        hex.CreateRiver();
     }
 
 }

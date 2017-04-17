@@ -61,7 +61,7 @@ public class Location {
         else
             return new Location(getX() + 1, getY() + 1);
     }
-    public void print(){
-        System.out.println("X:"+x+" Y:"+y);
+    public String print(){
+        return "X:"+x+" Y:"+y;
     }
 }

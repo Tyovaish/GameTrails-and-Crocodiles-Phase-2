@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * Created by Trevor on 4/14/2017.
  */
 public abstract class Transportation implements ResourceHolder{
-    protected MovementManager movementManager;
     protected ArrayList<MovementAbility> movementAbilities;
     protected ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
     protected ArrayList<DropResourceAbility> dropResourceAbilities;
@@ -25,14 +24,20 @@ public abstract class Transportation implements ResourceHolder{
     protected ResourceBag resourceBag;
     protected int bagSize;
 
-    public Transportation(MovementManager movementManager){
-    this.movementManager=movementManager;
-    movementAbilities=new ArrayList<MovementAbility>();
-    pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
-    dropResourceAbilities=new ArrayList<DropResourceAbility>();
-    produceStructureAbilities=new ArrayList<ProduceStructureAbility>();
+    public Transportation() {
+        movementAbilities = new ArrayList<MovementAbility>();
+        pickUpResourceAbilities = new ArrayList<PickUpResourceAbility>();
+        dropResourceAbilities = new ArrayList<DropResourceAbility>();
+        produceStructureAbilities = new ArrayList<ProduceStructureAbility>();
+    }
 
-}
+    public Transportation(ResourceBag resourceBag) {
+        movementAbilities = new ArrayList<MovementAbility>();
+        pickUpResourceAbilities = new ArrayList<PickUpResourceAbility>();
+        dropResourceAbilities = new ArrayList<DropResourceAbility>();
+        produceStructureAbilities = new ArrayList<ProduceStructureAbility>();
+        this.resourceBag = resourceBag;
+    }
 
 
  public ResourceBag getResourceBag() { return resourceBag; }
@@ -40,29 +45,25 @@ public abstract class Transportation implements ResourceHolder{
  public int getBagSize() { return bagSize; }
  public void setBagSize(int bagSize) { this.bagSize = bagSize; }
 
- public  abstract void getMovementAbilities();
- private void getDropResourceAbilities(){
-     dropResourceAbilities=new ArrayList<DropResourceAbility>();
-     for(int i=0;i<resourceBag.getResourceList().size();i++){
-         System.out.println("Current Resource In Bag To Drop: "+resourceBag.getResourceList().get(i));
-         dropResourceAbilities.add(new DropResourceAbility(this.resourceBag,resourceBag.getResourceList().get(i)));
-     }
- }
- private void getPickUpResourceAbilities(){
 
+ public void setPickUpResourceAbilities(ArrayList<PickUpResourceAbility> pickUpResourceAbilities){
+    this.pickUpResourceAbilities=pickUpResourceAbilities;
  }
+    public void setDropResourceAbilities(ArrayList<DropResourceAbility> dropResourceAbilities){
+        this.dropResourceAbilities=dropResourceAbilities;
+    }
+    public void setMovementAbilities(ArrayList<MovementAbility> movementAbilities){
+        this.movementAbilities=movementAbilities;
+    }
+
 
  public ArrayList<MovementAbility> getMovementSet(){
-     getMovementAbilities();
      return movementAbilities;
   }
-
   public ArrayList<PickUpResourceAbility> getPickUpResourceSet(){
-      getPickUpResourceAbilities();
       return pickUpResourceAbilities;
  }
   public ArrayList<DropResourceAbility> getDropResourceSet(){
-      getDropResourceAbilities();
       return dropResourceAbilities;
   }
   public void useAbility(Ability ability){

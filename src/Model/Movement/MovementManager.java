@@ -23,29 +23,27 @@ public class MovementManager {
     }
 
     public ArrayList<MovementAbility> getMovementAbilities(Transportation transportation) {
-        map.print();
-        TransportationLocation transLocation=transportationManager.getTransportationLocation(transportation);
+        TransportationLocation transportationLocation=transportationManager.getTransportationLocation(transportation);
 
-        TileZone tileZoneToCheck=transLocation.getTileZone();
+        TileZone tileZoneToCheck=transportationLocation.getTileZone();
 
         ArrayList<TileZone> tileZones=tileZoneToCheck.getConnectedTileZones();
 
         ArrayList<MovementAbility> movementAbilities=new ArrayList<MovementAbility>();
 
-        Location northTileLocation=transLocation.getNorth();
-        Location northEastTileLocation=transLocation.getNorthEast();
-        Location southEastTileLocation=transLocation.getSouthEast();
-        Location southTileLocation=transLocation.getSouth();
-        Location southWestTileLocation=transLocation.getSouthWest();
-        Location northWestTileLocation=transLocation.getNorthWest();
+        Location northTileLocation=transportationLocation.getNorth();
+        Location northEastTileLocation=transportationLocation.getNorthEast();
+        Location southEastTileLocation=transportationLocation.getSouthEast();
+        Location southTileLocation=transportationLocation.getSouth();
+        Location southWestTileLocation=transportationLocation.getSouthWest();
+        Location northWestTileLocation=transportationLocation.getNorthWest();
 
         Tile northTile=map.getTileAt(northTileLocation.getX(),northTileLocation.getY());
         if(northTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(northTileLocation.getX(),northTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
-                  northTileLocation.print();
-                    System.out.println("Can move North");
+                    movementAbilities.add(new MovementAbility(transportationLocation,new TransportationLocation(northTileLocation.getX(),northTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
+                     northTileLocation.print();
                 }
             }
         }
@@ -54,7 +52,7 @@ public class MovementManager {
         if(northEastTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(northEastTileLocation.getX(),northEastTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
+                    movementAbilities.add(new MovementAbility(transportationLocation,new TransportationLocation(northEastTileLocation.getX(),northEastTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     northEastTile.print();
                 }
             }
@@ -63,7 +61,7 @@ public class MovementManager {
         if(southEastTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(southEastTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(southEastTileLocation.getX(),southEastTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
+                    movementAbilities.add(new MovementAbility(transportationLocation,new TransportationLocation(southEastTileLocation.getX(),southEastTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     southEastTileLocation.print();
                 }
             }
@@ -72,7 +70,7 @@ public class MovementManager {
         if(southTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(southTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(southTileLocation.getX(),southTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
+                    movementAbilities.add(new MovementAbility(transportationLocation,new TransportationLocation(southTileLocation.getX(),southTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     southTileLocation.print();
                 }
             }
@@ -81,7 +79,7 @@ public class MovementManager {
         if(southWestTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(southWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(southWestTileLocation.getX(),southWestTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
+                    movementAbilities.add(new MovementAbility(transportationLocation,new TransportationLocation(southWestTileLocation.getX(),southWestTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     southWestTileLocation.print();
                 }
             }
@@ -90,11 +88,12 @@ public class MovementManager {
         if(northWestTile!=null){
             for(int i=0;i<tileZones.size();i++){
                 if(northWestTile.checkIfTileZoneContainsIn(tileZones.get(i))){
-                    movementAbilities.add(new MovementAbility(transLocation,new TransportationLocation(northWestTileLocation.getX(),northWestTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
+                    movementAbilities.add(new MovementAbility(transportationLocation,new TransportationLocation(northWestTileLocation.getX(),northWestTileLocation.getY(),tileZones.get(i)),transportation.getResourceBag()));
                     northWestTileLocation.print();
                 }
             }
         }
+        System.out.println("");
         return movementAbilities;
     }
 }

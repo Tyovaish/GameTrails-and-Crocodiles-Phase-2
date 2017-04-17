@@ -39,7 +39,7 @@ public class SawmillTest {
         // Initialize transporter and transportation manager
         TransportationManager transManager = new TransportationManager(gameMap);
         MovementManager moveManager = new MovementManager(gameMap, transManager);
-        Steamer steamer = new Steamer(moveManager);
+        Steamer steamer = new Steamer();
 
         // Initialize locations
         Location location = new Location(0, 0);

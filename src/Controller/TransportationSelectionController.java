@@ -18,7 +18,7 @@ public class TransportationSelectionController extends Controller{
     public TransportationSelectionController(TransportationManager transportationManager,Controller previousController){
         this.transportationManager=transportationManager;
         this.prevController=previousController;
-        this.TransportationAbilitiesController=new TransportationAbilitiesController(this);
+        this.TransportationAbilitiesController=new TransportationAbilitiesController(transportationManager,this);
         nextController=this.TransportationAbilitiesController;
         currentTransportation=transportationManager.getTransportationList().get(0);
     }
@@ -42,9 +42,12 @@ public class TransportationSelectionController extends Controller{
     }
 
     @Override
-    public void print() {
+    public String print() {
+        String output = "";
         for(int i=0;i<transportationManager.getTransportationList().size();i++){
-            System.out.println(i+ ": "+transportationManager.getTransportationList().get(i).getType());
+            output = i+ ": "+transportationManager.getTransportationList().get(i).getType();
+            return output;
         }
+        return output;
     }
 }
