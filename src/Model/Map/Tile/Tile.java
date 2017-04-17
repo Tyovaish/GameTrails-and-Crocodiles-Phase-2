@@ -36,6 +36,7 @@ public class Tile implements ResourceHolder{
     public void addStructure(Structure structure) { this.structure = structure; hasStructure = true; }
     public void removeStructure() { this.structure = null; hasStructure = false; }
     public boolean hasStructure() { return hasStructure; }
+    public String getStructureName() { return structure.getName(); }
 
     public ResourceBag getResourceBag() { return resourceBag; }
 
@@ -45,6 +46,7 @@ public class Tile implements ResourceHolder{
             else addResource(resource);
         }
     }
+
     // ResourceHolder
     public void addResource(Resource resource){ resourceBag.addResource(resource); }
     public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }

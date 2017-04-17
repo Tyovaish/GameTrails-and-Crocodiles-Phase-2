@@ -20,6 +20,7 @@ public class StockExchange extends SecondaryProducer {
         setPrimaryProducer(false);
         inputPaper = new LinkedList<>();
         inputCoin = new LinkedList<>();
+        setName("stockexchange");
     }
 
     public void addMaterial(Resource resource){

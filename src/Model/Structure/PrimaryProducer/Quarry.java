@@ -14,6 +14,7 @@ public class Quarry extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Rock());
+        setName("quarry");
     }
 
     public ArrayList<Resource> produce(){

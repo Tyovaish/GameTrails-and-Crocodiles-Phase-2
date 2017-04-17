@@ -19,6 +19,7 @@ public class Sawmill extends SecondaryProducer {
         super();
         setPrimaryProducer(false);
         inputTrunk = new LinkedList<>();
+        setName("sawmill");
     }
 
     public ArrayList<Resource> produce(){

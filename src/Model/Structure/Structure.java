@@ -13,6 +13,7 @@ public abstract class Structure<T> {
     private boolean isPrimaryProducer;
     private FeatureType productionFeature = null;
     private Location location;
+    private String name;
 
     public boolean isPrimaryProducer() { return isPrimaryProducer; }
     public void setPrimaryProducer(boolean primaryProducer) { isPrimaryProducer = primaryProducer; }
@@ -22,6 +23,9 @@ public abstract class Structure<T> {
 
     public Location getLocation() { return location; }
     public void setLocation(Location location) { this.location = location; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
     public abstract T produce();
 }

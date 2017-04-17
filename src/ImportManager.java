@@ -175,7 +175,6 @@ public class ImportManager {
             rotation = 0;
         }
 
-
         //inserting tile to map
         Location loc = new Location(row, col);
         editor.insertTile(loc, createTile());
@@ -183,7 +182,6 @@ public class ImportManager {
 
 
     }
-
 
     private Tile createTile(){
         return TileFactory.createTile(type, rotation, riverEdges);

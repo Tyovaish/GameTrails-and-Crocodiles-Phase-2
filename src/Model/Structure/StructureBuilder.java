@@ -41,7 +41,6 @@ public class StructureBuilder {
     private ArrayList<ResourceEnum> truckFactoryRecipe;
     private ArrayList<ResourceEnum> wagonFactoryRecipe;
 
-
     private Map<StructureEnum, ArrayList> recipeMap;
     private Map<StructureEnum, Structure> structureMap;
 
@@ -91,7 +90,6 @@ public class StructureBuilder {
         recipeMap.put(StructureEnum.STEAMERFACTORY, steamerFactoryRecipe);
         recipeMap.put(StructureEnum.TRUCKFACTORY, truckFactoryRecipe);
         recipeMap.put(StructureEnum.WAGONFACTORY, wagonFactoryRecipe);
-
 
         structureMap = new HashMap<>();
         structureMap.put(StructureEnum.CLAYPIT, new ClayPit());

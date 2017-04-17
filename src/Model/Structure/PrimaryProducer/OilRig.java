@@ -14,6 +14,7 @@ public class OilRig extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Sea());
+        setName("oilrig");
     }
 
     public ArrayList<Resource> produce(){

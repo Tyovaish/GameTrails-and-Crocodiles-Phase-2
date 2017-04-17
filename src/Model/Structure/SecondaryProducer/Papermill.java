@@ -21,6 +21,7 @@ public class Papermill extends SecondaryProducer {
         setPrimaryProducer(false);
         inputTrunk = new LinkedList<>();
         inputBoard = new LinkedList<>();
+        setName("papermill");
     }
 
     public void addMaterial(Resource resource){
