@@ -15,4 +15,5 @@ public abstract class Resource {
     public void setType(ResourceEnum type) { this.type = type; }
     public String getResourceType(){return resourceType;}
     public void setResourceType(String resourceType){this.resourceType=resourceType;}
+    public abstract void acceptVisitor(ResourceVisitor resourceVisitor);
 }
