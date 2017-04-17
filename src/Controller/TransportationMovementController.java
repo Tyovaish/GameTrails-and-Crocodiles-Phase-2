@@ -30,8 +30,8 @@ public class TransportationMovementController extends TransportationController{
     public Controller nextController() {
         if(!currentTransportation.getMovementSet().isEmpty()){
             currentTransportation.getMovementSet().get(currentMovementAbility).execute();
+            transportationManager.setMovementAbilities(currentTransportation);
         }
-        transportationManager.setMovementAbilities(currentTransportation);
         return this;
     }
 
@@ -50,6 +50,6 @@ public class TransportationMovementController extends TransportationController{
             transportationManager.setMovementAbilities(currentTransportation);
     }
     public String printType(){
-      return "Movement Controller";
+      return "Movement";
     }
 }

@@ -47,10 +47,14 @@ public class TransportationAbilitiesController extends Controller {
 
     @Override
     public String print() {
-    for(int i=0;i<controllerList.size();i++) {
-        return controllerList.get(i).printType();
+    if(currentControllerSelected==0){
+        return "Movement Controller";
+    } else if(currentControllerSelected==1){
+        return "Pick Up Resource";
+    } else if(currentControllerSelected==2){
+        return "Drop Off Resource";
     }
-        return "";
+    return "None selected";
     }
     public void setCurrentTransportation(Transportation transportation){
         currentTransportation=transportation;

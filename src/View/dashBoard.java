@@ -2,15 +2,6 @@ package View;
 
 import Controller.MainController;
 import Model.Abilities.MovementAbility;
-import Model.Location.ResourceLocation;
-import Model.Location.TransportationLocation;
-import Model.Map.Map;
-import Model.Movement.MovementManager;
-import Model.Resource.PrimaryResource.Trunk;
-import Model.Resource.Resource;
-import Model.Resource.ResourceBag;
-import Model.Resource.ResourceManager;
-import Model.Transportation.Donkey;
 import Model.Transportation.TransportationManager;
 
 import javax.swing.*;
@@ -30,7 +21,6 @@ public class dashBoard extends JPanel implements KeyListener{
    DisplayManager manager;
    Graphics2D g2;
    String str = "";
-   int count = 0;
    boolean draw = false;
     ArrayList<MovementAbility> movementList;
 
@@ -68,19 +58,15 @@ public class dashBoard extends JPanel implements KeyListener{
                 break;
             }
             case KeyEvent.VK_ENTER:{
-                count++;
                 mainctrl.getEnter();
                 str = mainctrl.print();
                 int x = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getX();
                 int y = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getY();
-                System.out.println(x + " "+ y);
                 board.setCurrentLocationCursor(x,y);
-                if(count == 2){
+                if(str.equals("Movement")) {
                     movementList = transportationManager.getMovementList();
                     draw = true;
-                    count =0;
                 }
-
                this.repaint();
                 break;
             }
@@ -107,7 +93,8 @@ public class dashBoard extends JPanel implements KeyListener{
         g2.setFont(new Font("Times New Roman",Font.BOLD,50));
         g2.drawString(str,100,150);
         if(draw)
-       drawlist(g2);
+            drawlist(g2);
+
 
     }
 
