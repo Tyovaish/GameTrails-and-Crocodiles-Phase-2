@@ -22,7 +22,7 @@ public class TransportationAbilitiesController extends Controller {
         controllerList.add(new TransportationMovementController(transportationManager,this));
         controllerList.add(new TransportationPickUpResourceController(transportationManager,this));
         controllerList.add(new TransportationDropResourceController(transportationManager,this));
-        controllerList.add(new Controller.TransportationPrimaryProducerBuilder(transportationManager,this));
+        controllerList.add(new TransportationPrimaryProducerBuilder(transportationManager,this));
 }
     @Override
     public void getKeyPress(int keyPressed) {
