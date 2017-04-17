@@ -235,7 +235,12 @@ public class ResourceBag implements ResourceHolder {
 
     public Resource removeResource(ResourceEnum resource) {
        Queue<Resource> resourceQueue = resourceMap.get(resource);
-        if (!resourceQueue.isEmpty()){ counter--; resourceList.remove(resource); return resourceQueue.poll(); }
+        if (!resourceQueue.isEmpty()){
+            counter--;
+            Resource rem = resourceQueue.poll();
+            resourceList.remove(rem);
+            return rem;
+        }
         else {
             System.out.printf("No resources of this type in bag!\n");
             return null;
