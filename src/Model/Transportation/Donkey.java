@@ -8,7 +8,9 @@ import Model.Transportation.Transportation;
  * Created by Trevor on 4/14/2017.
  */
 public class Donkey extends Transportation {
+    private int player;
     String transportationType="donkey";
+    public Location location;
 
     public Donkey() {
         super();
@@ -19,4 +21,8 @@ public class Donkey extends Transportation {
     public Donkey(ResourceBag resourceBag) {
         super(resourceBag);
     }
+    
+    public void setPlayer(int player){this.player = player;}
+
+    public int getPlayer(){return this.player;}
 }
