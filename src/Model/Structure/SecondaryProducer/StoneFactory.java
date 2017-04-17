@@ -4,6 +4,7 @@ import Model.Resource.PrimaryResource.Stone;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.SecondaryResource.Board;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class StoneFactory extends SecondaryProducer {
         super();
         setPrimaryProducer(false);
         inputClay = new LinkedList<>();
-        setName("stonefactory");
+        setType(StructureEnum.STONEFACTORY);
     }
 
     public ArrayList<Resource> produce(){

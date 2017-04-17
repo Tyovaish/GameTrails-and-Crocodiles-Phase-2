@@ -13,7 +13,7 @@ public abstract class Structure<T> {
     private boolean isPrimaryProducer;
     private FeatureType productionFeature = null;
     private Location location;
-    private String name;
+    private StructureEnum type;
 
     public boolean isPrimaryProducer() { return isPrimaryProducer; }
     public void setPrimaryProducer(boolean primaryProducer) { isPrimaryProducer = primaryProducer; }
@@ -24,8 +24,10 @@ public abstract class Structure<T> {
     public Location getLocation() { return location; }
     public void setLocation(Location location) { this.location = location; }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public StructureEnum getType() { return type; }
+    public void setType(StructureEnum type) { this.type = type; }
+
+    public String getName() { return type.getStructName(); }
 
     public abstract T produce();
 }

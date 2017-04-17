@@ -4,6 +4,7 @@ import Model.Resource.PrimaryResource.Fuel;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.SecondaryResource.Paper;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,7 +22,7 @@ public class Papermill extends SecondaryProducer {
         setPrimaryProducer(false);
         inputTrunk = new LinkedList<>();
         inputBoard = new LinkedList<>();
-        setName("papermill");
+        setType(StructureEnum.PAPERMILL);
     }
 
     public void addMaterial(Resource resource){

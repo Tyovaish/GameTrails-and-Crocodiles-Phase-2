@@ -3,6 +3,7 @@ package Model.Structure.PrimaryProducer;
 import Model.Map.Tile.Features.Sea;
 import Model.Resource.PrimaryResource.Fuel;
 import Model.Resource.Resource;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class OilRig extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Sea());
-        setName("oilrig");
+        setType(StructureEnum.OILRIG);
     }
 
     public ArrayList<Resource> produce(){

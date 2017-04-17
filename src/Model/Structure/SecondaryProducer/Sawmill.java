@@ -4,6 +4,7 @@ import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.SecondaryResource.Board;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class Sawmill extends SecondaryProducer {
         super();
         setPrimaryProducer(false);
         inputTrunk = new LinkedList<>();
-        setName("sawmill");
+        setType(StructureEnum.CLAYPIT);
     }
 
     public ArrayList<Resource> produce(){

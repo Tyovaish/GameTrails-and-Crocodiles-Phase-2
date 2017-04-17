@@ -13,8 +13,7 @@ public class TransportationAbilitiesController extends Controller {
     ArrayList<TransportationController> controllerList;
     Controller prevController;
     int currentControllerSelected;
-
-
+    
     public TransportationAbilitiesController(TransportationManager transportationManager, Controller prevController){
         currentControllerSelected=0;
         this.prevController=prevController;

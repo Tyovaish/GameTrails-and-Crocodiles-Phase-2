@@ -6,6 +6,7 @@ import Model.Resource.PrimaryResource.Gold;
 import Model.Resource.PrimaryResource.Iron;
 import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,7 +21,7 @@ public class Mine extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Mountain());
-        setName("mine");
+        setType(StructureEnum.MINE);
     }
 
     public Resource selectOre(){
