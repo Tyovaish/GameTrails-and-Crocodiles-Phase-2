@@ -6,16 +6,14 @@ import Model.Transportation.Transportation;
 /**
  * Created by Larry on 4/17/2017.
  */
-public class Goose {
+public class Goose extends Livestock {
     private Location location;
     private String livestockType = "goose";
-    private int player;
 
     public void attemptReproduction(Goose goose){
         //check if goose is in the same Location as another Goose and nothing else
     }
 
-    public void setPlayer(int player){this.player = player;}
 
     /*public void followTransportation(Transportation transportation){
         if(transportation.getLocation == this.location){
@@ -25,3 +23,4 @@ public class Goose {
     }*/
 
 }
+
