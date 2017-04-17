@@ -1,11 +1,11 @@
 package Model.Transportation;
 
+import Model.Location.Location;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
 import Model.Map.Tile.Tile;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
-import Model.Transportation.Transportation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +37,10 @@ public class TransportationManager {
 
     public TransportationLocation getTransportationLocation(Transportation transportation){
         return transportationLocationList.get(transportation);
+    }
+
+    public Location getLocation(Transportation transportation){
+        return transportationLocationList.get(transportation).toLocation();
     }
 
     public Tile getTileOfTransporter(Transportation transportation){

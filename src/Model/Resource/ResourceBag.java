@@ -17,7 +17,7 @@ public class ResourceBag implements ResourceHolder {
     ArrayList<Resource> resourceList;
 
     public ResourceBag(ResourceManager resourceManager) {
-        resourceList = new ArrayList<Resource>();
+        resourceList = new ArrayList<>();
         this.resourceManager = resourceManager;
     }
 
@@ -200,15 +200,12 @@ public class ResourceBag implements ResourceHolder {
 
     // ResourceHolder
     public void addResource(Resource resource) {
-//        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
-//        if (counter < size || size == -1){
-//            resourceQueue.offer(resource);
-//            counter++;
-//        }
-//        else System.out.printf("Bag is full! Resource not added.\n");
-        if (resourceList.size() < size) {
-            resourceList.add(resource);
+        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
+        if (counter < size || size == -1){
+            resourceQueue.offer(resource);
+            counter++;
         }
+        else System.out.printf("Bag is full! Resource not added.\n");
     }
 
     public void removeResource(Resource resource) {
@@ -216,13 +213,12 @@ public class ResourceBag implements ResourceHolder {
     }
 
     public Resource removeResource(ResourceEnum resource) {
-//        Queue<Resource> resourceQueue = resourceMap.get(resource);
-//        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
-//        else {
-//            System.out.printf("No resources of this type in bag!\n");
-//            return null;
-//        }
-        return null;
+       Queue<Resource> resourceQueue = resourceMap.get(resource);
+        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
+        else {
+            System.out.printf("No resources of this type in bag!\n");
+            return null;
+        }
     }
 
     public void giveMaterial(StructureBuilder builder, ResourceEnum resource) {
