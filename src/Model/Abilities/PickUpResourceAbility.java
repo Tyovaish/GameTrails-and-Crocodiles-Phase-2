@@ -20,6 +20,7 @@ public class PickUpResourceAbility implements Ability {
     @Override
     public void execute() {
         ResourceEnum rEnum = resourceToPickUp.getType();
+        resourceToPickUp.setOnGround(false);
         tile.removeResource(rEnum);
         resourceBag.addResource(resourceToPickUp);
     }
