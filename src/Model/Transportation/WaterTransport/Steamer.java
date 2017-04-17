@@ -1,6 +1,7 @@
 package Model.Transportation.WaterTransport;
 
 import Model.Movement.MovementManager;
+import Model.Transportation.TransportationEnum;
 import Model.Transportation.WaterTransport.WaterTransport;
 
 /**
@@ -13,5 +14,6 @@ public class Steamer extends WaterTransport {
         super();
         setBagSize(8);
         initResourceBag();
+        setType(TransportationEnum.STEAMER);
     }
 }

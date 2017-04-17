@@ -33,8 +33,9 @@ public class ResourceManager {
     public ResourceLocation getResourceLocation(Resource resource){
         return resourceLocationList.get(resource);
     }
+
     public ArrayList<Resource> getResourceAtTileZone(TileZone tileZone){
-        ArrayList<Resource> resourcesOnTileZone=new ArrayList<Resource>();
+        ArrayList<Resource> resourcesOnTileZone=new ArrayList<>();
         Set<Resource> resourceSet=resourceLocationList.keySet();
         for(Resource resource:resourceSet){
           if(resourceLocationList.get(resource).getTileZone()==tileZone){
@@ -42,8 +43,8 @@ public class ResourceManager {
           }
         }
         return resourcesOnTileZone;
-
     }
+
     public ArrayList<Resource> getResourceAtTile(Location location){
         ArrayList<Resource> resourcesOnTile=new ArrayList<Resource>();
         Set<Resource> resourceSet=resourceLocationList.keySet();

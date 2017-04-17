@@ -12,5 +12,6 @@ public class Plane extends Transportation {
         super();
         setBagSize(4);
         initResourceBag();
+        setType(TransportationEnum.PLANE);
     }
 }
