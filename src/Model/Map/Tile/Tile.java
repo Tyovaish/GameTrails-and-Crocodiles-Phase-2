@@ -59,7 +59,7 @@ public class Tile implements ResourceHolder{
 
     public void produce(){
         if (canProduce()){
-            ArrayList<Resource> resources = (ArrayList<Resource>)structure.produce();
+            ArrayList<Resource> resources = (ArrayList<Resource>) structure.produce();
             if (!resources.isEmpty())
                 addResources(resources);
         }
