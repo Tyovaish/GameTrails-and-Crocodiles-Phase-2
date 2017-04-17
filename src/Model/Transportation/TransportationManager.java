@@ -75,10 +75,11 @@ public class TransportationManager {
 
     public void setPickUpResourceAbilities(Transportation transportation){
         ArrayList<Resource> resourcesOnTileZone=resourceManager.getResourceAtTileZone(getTransportationLocation(transportation).getTileZone());
+        Tile tile = getTileOfTransporter(transportation);
         pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
                 for(int i=0;i<resourcesOnTileZone.size();i++){
                     if(resourcesOnTileZone.get(i).onGround()) {
-                        pickUpResourceAbilities.add(new PickUpResourceAbility(transportation.getResourceBag(), resourcesOnTileZone.get(i)));
+                        pickUpResourceAbilities.add(new PickUpResourceAbility(transportation.getResourceBag(), tile, resourcesOnTileZone.get(i)));
                         System.out.println("There is a resource on the tile!");
                     }
                 }
@@ -91,8 +92,9 @@ public class TransportationManager {
 
     public void setDropResourceAbilities(Transportation transportation){
        dropResourceAbilities=new ArrayList<DropResourceAbility>();
+        Tile tile = getTileOfTransporter(transportation);
         for(int i=0;i<transportation.getResourceBag().getResourceList().size();i++){
-            dropResourceAbilities.add(new DropResourceAbility(transportation.getResourceBag(),transportation.getResourceBag().getResourceList().get(i)));
+            dropResourceAbilities.add(new DropResourceAbility(transportation.getResourceBag(), tile, transportation.getResourceBag().getResourceList().get(i)));
         }
         transportation.setDropResourceAbilities(dropResourceAbilities);
     }
@@ -103,8 +105,6 @@ public class TransportationManager {
         for(int i=0;i<resourcesInPossesion.size();i++){
 
         }
-
-
     }
 
     public  ArrayList<DropResourceAbility> getDropList(){
