@@ -5,6 +5,7 @@ package Model.Resource;
  */
 public abstract class Resource {
     private ResourceEnum type;
+    private String resourceType;
     boolean onGround=true;
     public boolean onGround(){return onGround;}
     void setOnGround(boolean onGround){
@@ -12,4 +13,6 @@ public abstract class Resource {
     }
     public ResourceEnum getType() { return type; }
     public void setType(ResourceEnum type) { this.type = type; }
+    public String getResourceType(){return resourceType;}
+    public void setResourceType(String resourceType){this.resourceType=resourceType;}
 }

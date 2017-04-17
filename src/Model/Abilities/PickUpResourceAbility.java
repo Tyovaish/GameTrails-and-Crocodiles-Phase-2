@@ -20,6 +20,6 @@ public class PickUpResourceAbility implements Ability {
     @Override
     public String print() {
         System.out.println("Pick Up Resource: "+resourceToPickUp.getType());
-        return"";
+        return resourceToPickUp.getResourceType();
     }
 }

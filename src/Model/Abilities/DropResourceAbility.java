@@ -21,7 +21,6 @@ public class DropResourceAbility implements Ability {
 
     @Override
     public String print() {
-        resourceToDrop.getType();
-        return "";
+        return resourceToDrop.getResourceType();
     }
 }

@@ -33,6 +33,7 @@ public class TransportationPickUpResourceController extends TransportationContro
     public Controller nextController() {
         if(!currentTransportation.getPickUpResourceSet().isEmpty()) {
            currentTransportation.getPickUpResourceSet().get(currentResourcePickUpAbility).execute();
+           transportationManager.setPickUpResourceAbilities(currentTransportation);
         }
         return this;
     }
@@ -47,7 +48,7 @@ public class TransportationPickUpResourceController extends TransportationContro
         for(int i=0;i<currentTransportation.getPickUpResourceSet().size();i++){
            currentTransportation.getPickUpResourceSet().get(i).print();
         }
-        return "";
+        return "Pick Up";
     }
     public void setCurrentTransportation(Transportation transportation){
         currentTransportation=transportation;

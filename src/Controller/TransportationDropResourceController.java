@@ -30,6 +30,7 @@ public class TransportationDropResourceController extends TransportationControll
     public Controller nextController() {
         if(!currentTransportation.getDropResourceSet().isEmpty()){
             currentTransportation.getDropResourceSet().get(currentResourceDropAbility).execute();
+            transportationManager.setDropResourceAbilities(currentTransportation);
         }
         return this;
     }
@@ -41,11 +42,11 @@ public class TransportationDropResourceController extends TransportationControll
 
     @Override
     public String print() {
-        System.out.println("Drop Resource");
+
        for(int i=0;i<currentTransportation.getDropResourceSet().size();i++){
            System.out.println(i+": "+currentTransportation.getDropResourceSet().get(i).toString());
        }
-       return "";
+       return "Drop Resource";
 
     }
     public void setCurrentTransportation(Transportation transportation){
