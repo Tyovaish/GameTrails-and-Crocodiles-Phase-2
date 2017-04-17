@@ -131,7 +131,7 @@ public class dashBoard extends JPanel implements KeyListener{
 
         else if(str.equals("Pick Up")){
             for(int i = 0 ; i < pickUpResourceList.size(); i++){
-                g2.drawString(i+") "+pickUpResourceList.get(i).print(),200,200+(i*50));
+                g2.drawString(i+") "+ pickUpResourceList.get(i).print(),200,200+(i*50));
             }
         }
         else if(str.equals("Drop Resource")) {
