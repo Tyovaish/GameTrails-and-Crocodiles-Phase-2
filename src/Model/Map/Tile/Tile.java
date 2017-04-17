@@ -48,7 +48,10 @@ public class Tile implements ResourceHolder{
     }
 
     // ResourceHolder
-    public void addResource(Resource resource){ resourceBag.addResource(resource); }
+    public void addResource(Resource resource){
+        resource.setOnGround(true);
+        resourceBag.addResource(resource);
+    }
     public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
     public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
         Resource material = removeResource(resource);
