@@ -35,6 +35,7 @@ public class TransportationManager {
 
     public TransportationManager(Map gameMap){
         transportationList=new ArrayList<Transportation>();
+        this.movementList=new ArrayList<MovementAbility>();
         transportationLocationList=new HashMap<Transportation,TransportationLocation>();
         this.gameMap = gameMap;
     }
