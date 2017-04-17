@@ -40,11 +40,12 @@ public class TransportationDropResourceController extends TransportationControll
     }
 
     @Override
-    public void print() {
+    public String print() {
         System.out.println("Drop Resource");
        for(int i=0;i<currentTransportation.getDropResourceSet().size();i++){
            System.out.println(i+": "+currentTransportation.getDropResourceSet().get(i).toString());
        }
+       return "";
 
     }
     public void setCurrentTransportation(Transportation transportation){

@@ -1,5 +1,6 @@
 package View;
 
+import Controller.MainController;
 import Model.Map.Map;
 import Model.Map.Tile.Tile;
 import Model.Resource.ResourceManager;
@@ -15,7 +16,7 @@ public class DisplayManager {
     TransportationManager transport;
     ResourceManager resource;
     Map board;
-
+    MainController mainctrl;
     public Tile getTile(int row, int col){
         return board.getTileAt(row, col);
     }
@@ -27,6 +28,10 @@ public class DisplayManager {
     public void load(){}//load resources
     public void unload(){} //unload resources
 
+    public String getState(){
+        return mainctrl.print();
+    }
+
 
 
 
@@ -34,6 +39,7 @@ public class DisplayManager {
         this.board = board;
         transport = new TransportationManager(board);
         resource = new ResourceManager(transport);
+//        mainctrl = new MainController(transport);
 
     }
 }

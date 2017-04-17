@@ -14,7 +14,7 @@ import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
  */
 public class boardView extends JPanel implements MouseMotionListener, MouseListener {
 
-    final   int BSIZE = 6; //board size.
+    final   int BSIZE = 5; //board size.
     private paintHex hex = new paintHex();
     private Point hoverP = new Point(0,0);
     private JScrollPane wholeBoard;

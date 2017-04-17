@@ -43,10 +43,11 @@ public class TransportationPickUpResourceController extends TransportationContro
     }
 
     @Override
-    public void print() {
+    public String print() {
         for(int i=0;i<currentTransportation.getPickUpResourceSet().size();i++){
            currentTransportation.getPickUpResourceSet().get(i).print();
         }
+        return "";
     }
     public void setCurrentTransportation(Transportation transportation){
         currentTransportation=transportation;
