@@ -34,7 +34,7 @@ public class TransportationPickUpResourceController extends TransportationContro
         if(!currentTransportation.getPickUpResourceSet().isEmpty()) {
            currentTransportation.getPickUpResourceSet().get(currentResourcePickUpAbility).execute();
         }
-        return prevController;
+        return this;
     }
 
     @Override

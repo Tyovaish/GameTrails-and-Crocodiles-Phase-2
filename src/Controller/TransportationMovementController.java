@@ -31,7 +31,8 @@ public class TransportationMovementController extends TransportationController{
         if(!currentTransportation.getMovementSet().isEmpty()){
             currentTransportation.getMovementSet().get(currentMovementAbility).execute();
         }
-        return prevController;
+        transportationManager.setMovementAbilities(currentTransportation);
+        return this;
     }
 
     @Override

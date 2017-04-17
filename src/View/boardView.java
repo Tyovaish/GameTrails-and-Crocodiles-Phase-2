@@ -1,6 +1,7 @@
 package View;
 
 import Model.Map.Map;
+import Model.Transportation.TransportationManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     private Point hoverP = new Point(0,0);
     private JScrollPane wholeBoard;
     boolean clickCheck = false;
-    private int pointX = -1, pointY = -1;
+    private int pointX = -1, pointY = -1, transportrow = -1, transportcol = -1;
     private Map board;
 
 
@@ -51,6 +52,7 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
         drawCursor(g2);
+        hex.drawTransportCursor(transportrow, transportcol,g2);
     }
 
     public JScrollPane returnBoard(){
@@ -68,6 +70,12 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
             }
             this.repaint();
         }
+    }
+
+    public void setCurrentLocationCursor(int row, int col){
+        transportrow = row;
+        transportcol = col;
+        repaint();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -107,7 +115,7 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
 
 
 
-    boardView(Map board){
+    boardView(Map board ){
         this.board = board;
         addMouseMotionListener(this);
         addMouseListener(this);

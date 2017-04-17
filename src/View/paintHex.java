@@ -80,6 +80,21 @@ public class paintHex {
         g2.drawPolygon(poly);
     }
 
+    public void drawTransportCursor(int i, int j , Graphics2D g2){
+        int vert;
+        int horiz = radius +(int)(j*((width/4*2.89)));
+        if(j % 2 == 0)
+            vert = radius +(i * height);
+        else
+            vert = 10 + ((i+1) * (height));
+
+
+        Polygon poly = setHex(horiz, vert);
+        g2.setClip(poly);
+        g2.setColor(Color.BLUE.darker());
+        g2.setStroke(new BasicStroke(25));
+        g2.drawPolygon(poly);
+    }
 
     public void fillHex(int i, int j, Map board, Graphics2D g2) {
 

@@ -45,7 +45,6 @@ public class TransportationManager {
     }
 
     public TransportationLocation getTransportationLocation(Transportation transportation){
-
         return transportationLocationList.get(transportation);
     }
 

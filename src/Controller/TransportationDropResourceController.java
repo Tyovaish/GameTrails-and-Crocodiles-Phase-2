@@ -31,7 +31,7 @@ public class TransportationDropResourceController extends TransportationControll
         if(!currentTransportation.getDropResourceSet().isEmpty()){
             currentTransportation.getDropResourceSet().get(currentResourceDropAbility).execute();
         }
-        return prevController;
+        return this;
     }
 
     @Override

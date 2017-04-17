@@ -25,10 +25,12 @@ import java.util.ArrayList;
 public class dashBoard extends JPanel implements KeyListener{
 
    private  TransportationManager transportationManager;
+   boardView board;
    MainController mainctrl;
    DisplayManager manager;
    Graphics2D g2;
    String str = "";
+   int count = 0;
    boolean draw = false;
     ArrayList<MovementAbility> movementList;
 
@@ -66,15 +68,21 @@ public class dashBoard extends JPanel implements KeyListener{
                 break;
             }
             case KeyEvent.VK_ENTER:{
+                count++;
                 mainctrl.getEnter();
                 str = mainctrl.print();
+                int x = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getX();
+                int y = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getY();
+                System.out.println(x + " "+ y);
+                board.setCurrentLocationCursor(x,y);
+                if(count == 2){
+                    movementList = transportationManager.getMovementList();
+                    draw = true;
+                    count =0;
+                }
+
                this.repaint();
                 break;
-            }
-            case KeyEvent.VK_D:{
-                movementList = transportationManager.getMovementList();
-                draw = true;
-                this.repaint();
             }
             case KeyEvent.VK_SHIFT:{
                 mainctrl.getShift();
@@ -105,34 +113,62 @@ public class dashBoard extends JPanel implements KeyListener{
 
     private void drawlist(Graphics2D g2){
         switch(movementList.size()){
+            case 1:{
+                g2.drawString(movementList.get(0).print(),200,200);
+                break;
+            }
+            case 2:{
+                g2.drawString(movementList.get(0).print(),200,200);
+                g2.drawString(movementList.get(1).print(),200,250);
+                break;
+            }
             case 3:{
                 g2.drawString(movementList.get(0).print(),200,200);
                 g2.drawString(movementList.get(1).print(),200,250);
                 g2.drawString(movementList.get(2).print(),200,300);
                 break;
             }
+            case 4:{
+                g2.drawString(movementList.get(0).print(),200,200);
+                g2.drawString(movementList.get(1).print(),200,250);
+                g2.drawString(movementList.get(2).print(),200,300);
+                g2.drawString(movementList.get(3).print(),200,350);
+                break;
+            }
+            case 5:{
+                g2.drawString(movementList.get(0).print(),200,200);
+                g2.drawString(movementList.get(1).print(),200,250);
+                g2.drawString(movementList.get(2).print(),200,300);
+                g2.drawString(movementList.get(3).print(),200,350);
+                g2.drawString(movementList.get(4).print(),200,400);
+                break;
+            }
+            case 6:{
+                g2.drawString(movementList.get(0).print(),200,200);
+                g2.drawString(movementList.get(1).print(),200,250);
+                g2.drawString(movementList.get(2).print(),200,300);
+                g2.drawString(movementList.get(3).print(),200,350);
+                g2.drawString(movementList.get(4).print(),200,400);
+                g2.drawString(movementList.get(5).print(),200,450);
+                break;
+            }
         }
     }
-    dashBoard(Map board, DisplayManager manger){
+    dashBoard(boardView board, DisplayManager manger, MainController ctrl, TransportationManager transport){
         setPreferredSize(new Dimension(700,1000));
         addKeyListener(this);
         setFocusable(true);
+        this.board = board;
         manager = manger;
+        mainctrl = ctrl;
+        transportationManager = transport;
+
+        int x = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getX();
+        int y = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getY();
+
+        board.setCurrentLocationCursor(x,y);
 
 
-        transportationManager=new TransportationManager(board);
-        ResourceManager resourceManager=new ResourceManager(transportationManager);
-        MovementManager movementManager=new MovementManager(board,transportationManager);
-        transportationManager.setMovementManager(movementManager);
-        transportationManager.setResourceManager(resourceManager);
-
-        ResourceBag resourceBag=new ResourceBag(resourceManager);
-        Resource resource=new Trunk();
-        Donkey donkey =new Donkey(resourceBag);
-        donkey.addResource(resource);
-        resourceManager.addResource(resource,new ResourceLocation(0,0,board.getTileAt(0,0).getTileZone(0)));
-        transportationManager.addTransportation(donkey, new TransportationLocation(0,0, board.getTileAt(0,0).getTileZone(0)));
-        mainctrl=new MainController(transportationManager);
 
     }
 }
