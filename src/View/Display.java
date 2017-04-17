@@ -9,6 +9,7 @@ import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
 import Model.Resource.ResourceBag;
 import Model.Resource.ResourceManager;
+import Model.Resource.SecondaryResource.Board;
 import Model.Structure.StructureManager;
 import Model.Transportation.Donkey;
 import Model.Transportation.TransportationManager;
@@ -50,10 +51,14 @@ public class Display extends JFrame {
         ResourceBag resourceBag=new ResourceBag(resourceManager);
         ResourceBag resourceBag2=new ResourceBag(resourceManager);
         Resource resource=new Trunk();
-        Resource resource2=new Trunk();
+        Resource resource2=new Board();
+
+        resource.setOnGround(false);
+        resource2.setOnGround(false);
 
         Donkey donkey =new Donkey(resourceBag);
-    donkey.addResource(resource);
+        donkey.addResource(resource);
+        donkey.addResource(resource2);
         Donkey donkey2 =new Donkey(resourceBag2);
 
 

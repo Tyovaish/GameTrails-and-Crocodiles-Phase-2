@@ -75,21 +75,21 @@ public class dashBoard extends JPanel implements KeyListener{
             case KeyEvent.VK_ENTER:{
                 mainctrl.getEnter();
                 str = mainctrl.print();
+                System.out.println(str);
 
                 if(str.equals("Movement")) {
                     movementList = observer.getMovementList();
-                    draw = true;
                 }
                 else if(str.equals("Pick Up")){
                     pickUpResourceList = observer.getResourceList();
-                    draw=true;
                 }
                 else if(str.equals("Drop Resource")){
                     dropResourceList = observer.getDropList();
-                 draw = true;
                 }
                 else
                     draw=false;
+
+                draw = true;
                this.repaint();
                 break;
             }
