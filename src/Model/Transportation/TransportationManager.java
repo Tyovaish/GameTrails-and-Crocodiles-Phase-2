@@ -82,6 +82,12 @@ public class TransportationManager {
         }
         transportation.setDropResourceAbilities(dropResourceAbilities);
     }
+    public void setProduceStructureAbilities(Transportation transportation){
+        ArrayList<Resource> resourcesInPossesion=resourceManager.getResourceAtTileZone(getTransportationLocation(transportation).getTileZone());
+        resourcesInPossesion.addAll(transportation.getResourceBag().getResourceList());
+
+
+    }
 
     public  ArrayList<DropResourceAbility> getDropList(){
         return dropResourceAbilities;
