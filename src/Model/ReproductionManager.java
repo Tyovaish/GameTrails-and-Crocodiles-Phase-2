@@ -15,6 +15,8 @@ public class ReproductionManager {
 
     public void reproduce(Donkey donkey){
         Donkey babyDonkey = new Donkey();
+        babyDonkey.location = donkey.location;
+        babyDonkey.setPlayer(donkey.getPlayer());
     }
     public void reproduce(Goose goose){
         Goose babyGoose = new Goose();
