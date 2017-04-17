@@ -20,6 +20,7 @@ public class DropResourceAbility implements Ability {
     @Override
     public void execute() {
         resourceBag.removeResource(resourceToDrop);
+        resourceToDrop.setOnGround(true);
         tile.addResource(resourceToDrop);
     }
 
