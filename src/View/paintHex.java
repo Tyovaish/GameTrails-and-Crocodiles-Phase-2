@@ -21,7 +21,7 @@ public class paintHex {
     final int width = radius * 2;
     final int height = (int) (Math.sqrt(3)/2 * width);
     private BufferedImage pasturebi = null, desertbi = null, rockbi = null, woodsbi = null, mountainbi = null ,seabi = null,
-    source = null, bend = null, Y = null, claypit = null, mine = null, oilrig = null, quary = null, woodcutter = null,
+    source = null, bend = null, Y = null, //claypit = null, mine = null, oilrig = null, quary = null, woodcutter = null,
             donkey = null;
 
 
@@ -44,20 +44,22 @@ public class paintHex {
     }
 
     public void drawCursor(int i, int j, Graphics2D g2){
+        if(i!=-1&&j!=-1) {
 
-        int vert;
-        int horiz = radius +(int)(j*((width/4*2.89)));
-        if(j % 2 == 0)
-            vert = radius +(i * height);
-        else
-            vert = 10 + ((i+1) * (height));
+            int vert;
+            int horiz = radius + (int) (j * ((width / 4 * 2.89)));
+            if (j % 2 == 0)
+                vert = radius + (i * height);
+            else
+                vert = 10 + ((i + 1) * (height));
 
 
-        Polygon poly = setHex(horiz, vert);
-        g2.setClip(poly);
-        g2.setColor(Color.RED.darker());
-        g2.setStroke(new BasicStroke(25));
-        g2.drawPolygon(poly);
+            Polygon poly = setHex(horiz, vert);
+            g2.setClip(poly);
+            g2.setColor(Color.RED.darker());
+            g2.setStroke(new BasicStroke(25));
+            g2.drawPolygon(poly);
+        }
     }
     public void drawCursorLockOn(int i, int j, Graphics2D g2){
 
@@ -147,6 +149,7 @@ public class paintHex {
         File quary = new File("./src/View/Images/quarry.jpg");
         File woodcutter = new File("./src/View/Images/woodcutter.jpg");
 
+        /*
         try {
             this.oilrig = ImageIO.read(oilrig);
         } catch (IOException e) {
@@ -175,7 +178,7 @@ public class paintHex {
             System.err.println("Could not load image file!");
         }
 
-
+*/
 
     }
 

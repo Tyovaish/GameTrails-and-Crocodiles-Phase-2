@@ -70,6 +70,7 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         if(!clickCheck) {
             hoverP = hex.pxtoHex(e.getX(), e.getY());
             if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE) {
+                hoverP.move(-1,-1);
                 return;
             }
             this.repaint();
