@@ -2,9 +2,11 @@ package View;
 
 import Model.Map.Map;
 import Model.Map.Tile.Features.*;
+import Model.ViewObserver;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.View;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
@@ -18,15 +20,9 @@ public class paintHex {
     final int radius = 110; //radius
     final int width = radius * 2;
     final int height = (int) (Math.sqrt(3)/2 * width);
-    private BufferedImage pasturebi = null;
-    private BufferedImage desertbi = null;
-    private BufferedImage rockbi = null;
-    private BufferedImage woodsbi = null;
-    private BufferedImage mountainbi = null;
-    private BufferedImage seabi = null;
-    private BufferedImage source = null;
-    private BufferedImage bend = null;
-    private BufferedImage Y = null;
+    private BufferedImage pasturebi = null, desertbi = null, rockbi = null, woodsbi = null, mountainbi = null ,seabi = null,
+    source = null, bend = null, Y = null, claypit = null, mine = null, oilrig = null, quary = null, woodcutter = null,
+            donkey = null;
 
 
 
@@ -80,7 +76,7 @@ public class paintHex {
         g2.drawPolygon(poly);
     }
 
-    public void drawTransportCursor(int i, int j , Graphics2D g2){
+    public void drawTransport(int i, int j , Graphics2D g2){
         int vert;
         int horiz = radius +(int)(j*((width/4*2.89)));
         if(j % 2 == 0)
@@ -91,19 +87,23 @@ public class paintHex {
 
         Polygon poly = setHex(horiz, vert);
         g2.setClip(poly);
-        g2.setColor(Color.BLUE.darker());
-        g2.setStroke(new BasicStroke(25));
+        g2.drawImage(donkey.getScaledInstance(50,50,0), horiz+20, vert-30, null);
         g2.drawPolygon(poly);
     }
 
-    public void fillHex(int i, int j, Map board, Graphics2D g2) {
+    public void fillHex(int i, int j, ViewObserver board, Graphics2D g2) {
 
         String riverType;
+        String structure;
         int rivers = board.getTileAt(i,j).getRiverEdges().size();
         String type = board.getTileAt(i,j).getFeature().getType();
         int rot = board.getTileAt(i,j).getOrientation().getNumberOfRotations();
         riverType = getRiverType(rivers);
-
+        if(board.getTileAt(i,j).hasStructure()){
+            structure = board.getTileAt(i,j).getStructure().getName();
+        }
+        else
+            structure = "";
 
 
         int vert;
@@ -135,6 +135,45 @@ public class paintHex {
         }
 
 
+
+
+
+    }
+
+    public void CreateStructures(){
+        File oilrig = new File("./src/View/Images/oilrig.jpg");
+        File claypit = new File("./src/View/Images/claypit.jpg");
+        File mine = new File("./src/View/Images/mine.jpg");
+        File quary = new File("./src/View/Images/quarry.jpg");
+        File woodcutter = new File("./src/View/Images/woodcutter.jpg");
+
+        try {
+            this.oilrig = ImageIO.read(oilrig);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+
+
+        try {
+            this.claypit= ImageIO.read(claypit);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            this.mine = ImageIO.read(mine);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            this.quary= ImageIO.read(quary);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+        try {
+            this.woodcutter= ImageIO.read(woodcutter);
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
 
 
 
@@ -180,19 +219,30 @@ public class paintHex {
     }
 
     public void createImages(){
-
+        BufferedImage bi1 = null;
         File pasture = new File("./src/View/Images/pasture.jpg");
         File desert = new File("./src/View/Images/desert.jpg");
         File mountain = new File("./src/View/Images/mountain.jpg");
         File sea = new File("./src/View/Images/sea.jpg");
         File rock = new File("./src/View/Images/rock.jpg");
         File woods = new File("./src/View/Images/woods.jpg");
+        File donkey = new File("./src/View/Images/donkey.jpg");
 
         try {
             pasturebi = ImageIO.read(pasture);
         } catch (IOException e) {
             System.err.println("Could not load image file!");
         }
+        try {
+            bi1 = ImageIO.read(donkey);
+
+        } catch (IOException e) {
+            System.err.println("Could not load image file!");
+        }
+
+        Image imageWithTransparency = makeColorTransparent(bi1);
+        this.donkey = imageToBufferedImage(imageWithTransparency);
+
         try {
             desertbi = ImageIO.read(desert);
         } catch (IOException e) {

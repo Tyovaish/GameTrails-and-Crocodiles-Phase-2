@@ -9,8 +9,10 @@ import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
 import Model.Resource.ResourceBag;
 import Model.Resource.ResourceManager;
+import Model.Structure.StructureManager;
 import Model.Transportation.Donkey;
 import Model.Transportation.TransportationManager;
+import Model.ViewObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,10 +22,10 @@ import java.awt.*;
  */
 public class Display extends JFrame {
 
-    private DisplayManager manager;
+    private ViewObserver observer;
 
-    private void createDisplay(boardView board,Map map, MainController mainctrl, TransportationManager transport){
-        dashBoard dash = new dashBoard(board, manager, mainctrl, transport);
+    private void createDisplay(boardView board, MainController mainctrl){
+        dashBoard dash = new dashBoard(observer, mainctrl);
         setTitle("PHASE 02");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
@@ -37,9 +39,8 @@ public class Display extends JFrame {
     }
 
     public Display(Map board){
-        manager = new DisplayManager(board);
 
-
+        StructureManager structure = new StructureManager();
         TransportationManager transportationManager=new TransportationManager(board);
         ResourceManager resourceManager=new ResourceManager(transportationManager);
         MovementManager movementManager=new MovementManager(board,transportationManager);
@@ -47,14 +48,23 @@ public class Display extends JFrame {
         transportationManager.setResourceManager(resourceManager);
 
         ResourceBag resourceBag=new ResourceBag(resourceManager);
+        ResourceBag resourceBag2=new ResourceBag(resourceManager);
         Resource resource=new Trunk();
-        Donkey donkey =new Donkey(resourceBag);
-        donkey.addResource(resource);
-        resourceManager.addResource(resource,new ResourceLocation(0,0,board.getTileAt(0,0).getTileZone(0)));
-        transportationManager.addTransportation(donkey, new TransportationLocation(0,0, board.getTileAt(0,0).getTileZone(0)));
-        MainController mainctrl=new MainController(transportationManager);
+        Resource resource2=new Trunk();
 
-        boardView map = new boardView(board);
-        createDisplay(map,board, mainctrl, transportationManager);
+        Donkey donkey =new Donkey(resourceBag);
+
+        Donkey donkey2 =new Donkey(resourceBag2);
+
+
+        resourceManager.addResource(resource,new ResourceLocation(0,0,board.getTileAt(0,0).getTileZone(0)));
+        resourceManager.addResource(resource2,new ResourceLocation(3,3,board.getTileAt(3,3).getTileZone(0)));
+        transportationManager.addTransportation(donkey, new TransportationLocation(0,0, board.getTileAt(0,0).getTileZone(0)));
+        transportationManager.addTransportation(donkey2, new TransportationLocation(3,3, board.getTileAt(3,3).getTileZone(0)));
+
+        observer = new ViewObserver(board, transportationManager, resourceManager, structure);
+        boardView map = new boardView(observer);
+        MainController mainctrl=new MainController(transportationManager);
+        createDisplay(map, mainctrl);
     }
 }

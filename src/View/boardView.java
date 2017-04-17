@@ -2,6 +2,7 @@ package View;
 
 import Model.Map.Map;
 import Model.Transportation.TransportationManager;
+import Model.ViewObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +21,8 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
     private Point hoverP = new Point(0,0);
     private JScrollPane wholeBoard;
     boolean clickCheck = false;
-    private int pointX = -1, pointY = -1, transportrow = -1, transportcol = -1;
-    private Map board;
+    private int pointX = -1, pointY = -1;
+    private ViewObserver board;
 
 
 
@@ -39,9 +40,13 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
                     AffineTransform old = g2.getTransform();
                     hex.fillHex(i, j, board, g2);
                     g2.setTransform(old);
+                    if(board.getDonkeyAt(i,j)){
+                        hex.drawTransport(i,j,g2);
+                    }
                 }
             }
         }
+        repaint();
     }
 
 
@@ -52,7 +57,6 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
         //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
         drawCursor(g2);
-        hex.drawTransportCursor(transportrow, transportcol,g2);
     }
 
     public JScrollPane returnBoard(){
@@ -70,12 +74,6 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
             }
             this.repaint();
         }
-    }
-
-    public void setCurrentLocationCursor(int row, int col){
-        transportrow = row;
-        transportcol = col;
-        repaint();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -115,13 +113,14 @@ public class boardView extends JPanel implements MouseMotionListener, MouseListe
 
 
 
-    boardView(Map board ){
-        this.board = board;
+    boardView(ViewObserver observer){
+        this.board = observer;
         addMouseMotionListener(this);
         addMouseListener(this);
         setPreferredSize(new Dimension(2200,1500));
         hex.createImages();
         hex.CreateRiver();
+        hex.CreateStructures();
     }
 
 }

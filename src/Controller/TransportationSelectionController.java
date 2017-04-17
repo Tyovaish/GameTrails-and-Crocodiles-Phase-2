@@ -43,11 +43,7 @@ public class TransportationSelectionController extends Controller{
 
     @Override
     public String print() {
-        String output = "";
-        for(int i=0;i<transportationManager.getTransportationList().size();i++){
-            output = i+ ": "+transportationManager.getTransportationList().get(i).getType();
-            return output;
-        }
+        String output = "Select Transportation";
         return output;
     }
 }
