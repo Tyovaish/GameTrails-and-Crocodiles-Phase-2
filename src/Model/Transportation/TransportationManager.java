@@ -11,6 +11,9 @@ import Model.Movement.MovementManager;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.ResourceManager;
+import Model.Resource.ResourceVisitor;
+import Model.Structure.Structure;
+import Model.Structure.StructureManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +24,7 @@ import java.util.HashMap;
 public class TransportationManager {
     MovementManager movementManager;
     ResourceManager resourceManager;
+    StructureManager structureManager;
     ArrayList<MovementAbility> movementList;
     ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
 
@@ -53,6 +57,15 @@ public class TransportationManager {
     public Location getLocation(Transportation transportation){
         return transportationLocationList.get(transportation).toLocation();
     }
+       public boolean donkeyIsOnTile(int x,int y){
+            for(int i=0;i<transportationList.size();i++){
+                 TransportationLocation location=transportationLocationList.get(transportationList.get(i));
+                 if(location.getX()==x && location.getY()==y){
+                     return true;
+                 }
+                }
+                return false;
+        }
 
     public Tile getTileOfTransporter(Transportation transportation){
         TransportationLocation location = getTransportationLocation(transportation);
@@ -85,6 +98,10 @@ public class TransportationManager {
     public void setProduceStructureAbilities(Transportation transportation){
         ArrayList<Resource> resourcesInPossesion=resourceManager.getResourceAtTileZone(getTransportationLocation(transportation).getTileZone());
         resourcesInPossesion.addAll(transportation.getResourceBag().getResourceList());
+        ResourceVisitor resourceVistor=new ResourceVisitor();
+        for(int i=0;i<resourcesInPossesion.size();i++){
+
+        }
 
 
     }
@@ -107,6 +124,8 @@ public class TransportationManager {
     public void setMovementManager(MovementManager movementManager) {
         this.movementManager = movementManager;
     }
+
+    public void getStructureManager(StructureManager structureManager){ this.structureManager=structureManager;}
 
     public ResourceManager getResourceManager() {
         return resourceManager;

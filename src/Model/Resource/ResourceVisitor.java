@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ResourceVisitor {
     ArrayList<Trunk> trunkList;
     ArrayList<Board> boardList;
-    ResourceVisitor(){
+    public ResourceVisitor(){
         trunkList=new ArrayList<Trunk>();
         boardList=new ArrayList<Board>();
     }
