@@ -8,7 +8,10 @@ import Model.Resource.ResourceVisitor;
  * Created by khariollivierre on 4/15/17.
  */
 public class Pearl extends SecondaryResource {
-    public Pearl() { setType(ResourceEnum.PEARL); }
+    public Pearl() {
+        setResourceType("Pearl");
+        setType(ResourceEnum.PEARL);
+    }
 
     @Override
     public void acceptVisitor(ResourceVisitor resourceVisitor) {

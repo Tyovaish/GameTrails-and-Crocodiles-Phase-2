@@ -9,7 +9,6 @@ import Model.Resource.ResourceVisitor;
  */
 public class Trunk extends PrimaryResource{
     public Trunk(){
-        super();
        setResourceType("Trunk");
         setType(ResourceEnum.TRUNK);
     }
