@@ -7,7 +7,7 @@ import Model.Transportation.Transportation;
  * Created by Larry on 4/17/2017.
  */
 public class Goose extends Livestock {
-    private Location location;
+    public Location location;
     private String livestockType = "goose";
 
     public void attemptReproduction(Goose goose){

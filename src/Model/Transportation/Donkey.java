@@ -1,5 +1,6 @@
 package Model.Transportation;
 
+import Model.Location.Location;
 import Model.Movement.MovementManager;
 import Model.Resource.ResourceBag;
 import Model.Transportation.Transportation;
