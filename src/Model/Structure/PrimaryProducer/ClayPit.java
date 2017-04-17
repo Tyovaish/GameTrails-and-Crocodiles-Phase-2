@@ -14,6 +14,7 @@ public class ClayPit extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(null);
+        setName("claypit");
     }
 
     public ArrayList<Resource> produce(){

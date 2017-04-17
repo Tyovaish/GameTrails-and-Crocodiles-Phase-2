@@ -20,6 +20,7 @@ public class Mine extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Mountain());
+        setName("mine");
     }
 
     public Resource selectOre(){

@@ -17,6 +17,7 @@ public class Mint extends SecondaryProducer {
     public Mint() {
         super();
         setPrimaryProducer(false);
+        setName("mint");
     }
 
     public void addMaterial(Resource resource){

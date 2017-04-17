@@ -21,6 +21,7 @@ public class CoalBurner extends SecondaryProducer {
         setPrimaryProducer(false);
         inputTrunk = new LinkedList<>();
         inputBoard = new LinkedList<>();
+        setName("coalburner");
     }
 
     public void addMaterial(Resource resource){

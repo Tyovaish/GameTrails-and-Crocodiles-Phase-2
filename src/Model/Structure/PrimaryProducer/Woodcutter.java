@@ -14,6 +14,7 @@ public class Woodcutter extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Woods());
+        setName("woodcutter");
     }
 
     public ArrayList<Resource> produce(){

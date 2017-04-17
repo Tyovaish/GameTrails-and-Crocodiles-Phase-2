@@ -19,6 +19,7 @@ public class StoneFactory extends SecondaryProducer {
         super();
         setPrimaryProducer(false);
         inputClay = new LinkedList<>();
+        setName("stonefactory");
     }
 
     public ArrayList<Resource> produce(){
