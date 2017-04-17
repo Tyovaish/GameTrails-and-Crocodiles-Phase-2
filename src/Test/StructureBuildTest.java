@@ -1,30 +1,6 @@
 
 package Test;
 
-import Model.Location.Location;
-import Model.Location.TransportationLocation;
-import Model.Map.Map;
-import Model.Map.Tile.Features.Rock;
-import Model.Map.Tile.Features.Woods;
-import Model.Map.Tile.Tile;
-import Model.Map.Tile.TileZone;
-import Model.Resource.PrimaryResource.Trunk;
-import Model.Resource.ResourceBag;
-import Model.Resource.ResourceEnum;
-import Model.Resource.SecondaryResource.Board;
-import Model.Structure.PrimaryProducer.ClayPit;
-import Model.Structure.PrimaryProducer.PrimaryProducer;
-import Model.Structure.PrimaryProducer.Woodcutter;
-import Model.Structure.Structure;
-import Model.Structure.StructureBuilder;
-import Model.Structure.StructureEnum;
-import Model.Transportation.Donkey;
-import Model.Transportation.Transportation;
-import Model.Transportation.TransportationManager;
-
-import java.util.ArrayList;
-import java.util.Queue;
-
 /**
  * Created by khariollivierre on 4/15/17.
  */

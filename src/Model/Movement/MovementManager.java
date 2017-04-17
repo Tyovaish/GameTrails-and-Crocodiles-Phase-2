@@ -22,7 +22,6 @@ public class MovementManager {
         this.transportationManager=transportationManager;
     }
 
-
     public ArrayList<MovementAbility> getMovementAbilities(Transportation transportation) {
         TransportationLocation transportationLocation=transportationManager.getTransportationLocation(transportation);
 

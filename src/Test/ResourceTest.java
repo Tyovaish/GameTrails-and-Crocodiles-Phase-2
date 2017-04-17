@@ -1,15 +1,5 @@
 package Test;
 
-import Model.Map.Tile.Tile;
-import Model.Resource.PrimaryResource.Trunk;
-import Model.Resource.ResourceBag;
-import Model.Resource.ResourceEnum;
-import Model.Structure.PrimaryProducer.Woodcutter;
-import Model.Transportation.Donkey;
-import Model.Transportation.Transportation;
-
-import java.util.Queue;
-
 public class ResourceTest {
     public static void main(String[] args) {
 //        // Tile, Donkey created

@@ -16,25 +16,6 @@ public class ResourceBag implements ResourceHolder {
     private int size = 6;
     ArrayList<Resource> resourceList;
 
-    public ResourceBag(ResourceManager resourceManager) {
-        resourceList = new ArrayList<Resource>();
-        this.resourceManager = resourceManager;
-    }
-
-    public ArrayList<Resource> getResourceList() {
-        return resourceList;
-    }
-
-    public void carry(TransportationLocation transportationLocation) {
-        for (int i = 0; i < resourceList.size(); i++) {
-            ResourceLocation locationToChange = this.resourceManager.getResourceLocation(resourceList.get(i));
-            locationToChange.setX(transportationLocation.getX());
-            locationToChange.setY(transportationLocation.getY());
-            locationToChange.setTileZone(transportationLocation.getTileZone());
-        }
-    }
-
-
     // Primary Resources
     private Queue<Stone> stones;
     private Queue<Trunk> trunks;
@@ -75,6 +56,42 @@ public class ResourceBag implements ResourceHolder {
 
         resourceMap = new HashMap<>();
         createResourceMap();
+    }
+
+    public ResourceBag(ResourceManager resourceManager) {
+        resourceList = new ArrayList<>();
+        this.resourceManager = resourceManager;
+        resourceList = new ArrayList<Resource>();
+
+        stones = new LinkedList<>();
+        trunks = new LinkedList<>();
+        fuels = new LinkedList<>();
+        irons = new LinkedList<>();
+        golds = new LinkedList<>();
+        clays = new LinkedList<>();
+
+        boards = new LinkedList<>();
+        coins = new LinkedList<>();
+        marbles = new LinkedList<>();
+        papers = new LinkedList<>();
+        pearls = new LinkedList<>();
+        bonds = new LinkedList<>();
+
+        resourceMap = new HashMap<>();
+        createResourceMap();
+    }
+
+    public ArrayList<Resource> getResourceList() {
+        return resourceList;
+    }
+
+    public void carry(TransportationLocation transportationLocation) {
+        for (int i = 0; i < resourceList.size(); i++) {
+            ResourceLocation locationToChange = this.resourceManager.getResourceLocation(resourceList.get(i));
+            locationToChange.setX(transportationLocation.getX());
+            locationToChange.setY(transportationLocation.getY());
+            locationToChange.setTileZone(transportationLocation.getTileZone());
+        }
     }
 
     private void createResourceMap() {
@@ -200,16 +217,12 @@ public class ResourceBag implements ResourceHolder {
 
     // ResourceHolder
     public void addResource(Resource resource) {
-//        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
-//        if (counter < size || size == -1){
-//            resourceQueue.offer(resource);
-//            counter++;
-//        }
-//        else System.out.printf("Bag is full! Resource not added.\n");
-        if (resourceList.size() < size) {
-            resource.setOnGround(false);
-            resourceList.add(resource);
+        Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
+        if (counter < size || size == -1){
+            resourceQueue.offer(resource);
+            counter++;
         }
+        else System.out.printf("Bag is full! Resource not added.\n");
     }
 
     public void removeResource(Resource resource) {
@@ -218,13 +231,12 @@ public class ResourceBag implements ResourceHolder {
     }
 
     public Resource removeResource(ResourceEnum resource) {
-//        Queue<Resource> resourceQueue = resourceMap.get(resource);
-//        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
-//        else {
-//            System.out.printf("No resources of this type in bag!\n");
-//            return null;
-//        }
-        return null;
+       Queue<Resource> resourceQueue = resourceMap.get(resource);
+        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
+        else {
+            System.out.printf("No resources of this type in bag!\n");
+            return null;
+        }
     }
 
     public void giveMaterial(StructureBuilder builder, ResourceEnum resource) {

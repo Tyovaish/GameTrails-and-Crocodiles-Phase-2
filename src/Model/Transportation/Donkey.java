@@ -2,6 +2,7 @@ package Model.Transportation;
 
 import Model.Movement.MovementManager;
 import Model.Resource.ResourceBag;
+import Model.Transportation.Transportation;
 
 /**
  * Created by Trevor on 4/14/2017.
@@ -9,10 +10,13 @@ import Model.Resource.ResourceBag;
 public class Donkey extends Transportation {
     String transportationType="donkey";
 
-    public Donkey(ResourceBag resourceBag) {
-        super(resourceBag);
-        //setBagSize(2);
-        //initResourceBag();
+    public Donkey() {
+        super();
+        setBagSize(2);
+        initResourceBag();
     }
 
+    public Donkey(ResourceBag resourceBag) {
+        super(resourceBag);
+    }
 }

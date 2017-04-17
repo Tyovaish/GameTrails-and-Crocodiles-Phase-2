@@ -1,5 +1,6 @@
 package Model.Transportation;
 
+import Model.Location.Location;
 import Model.Abilities.DropResourceAbility;
 import Model.Abilities.MovementAbility;
 import Model.Abilities.PickUpResourceAbility;
@@ -10,7 +11,6 @@ import Model.Movement.MovementManager;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.ResourceManager;
-import Model.Transportation.Transportation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class TransportationManager {
         transportationLocationList=new HashMap<Transportation,TransportationLocation>();
         this.gameMap = gameMap;
     }
-    TransportationManager(){
+    public TransportationManager(){
         transportationList=new ArrayList<Transportation>();
         transportationLocationList = new HashMap<Transportation, TransportationLocation>();
     }
@@ -48,6 +48,10 @@ public class TransportationManager {
 
     public TransportationLocation getTransportationLocation(Transportation transportation){
         return transportationLocationList.get(transportation);
+    }
+
+    public Location getLocation(Transportation transportation){
+        return transportationLocationList.get(transportation).toLocation();
     }
 
     public Tile getTileOfTransporter(Transportation transportation){
@@ -105,14 +109,6 @@ public class TransportationManager {
     public void setResourceManager(ResourceManager resourceManager) {
         this.resourceManager = resourceManager;
     }
-
-
-
-
-
-
-
-
 
     public void load(Transportation transportation, ResourceEnum resource){
         TransportationLocation location = getTransportationLocation(transportation);

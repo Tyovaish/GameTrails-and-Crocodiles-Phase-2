@@ -21,4 +21,6 @@ public class TransportationLocation extends Location {
     public TileZone getTileZone(){
         return tileZone;
     }
+
+    public Location toLocation(){ return new Location(this.getX(), this.getY()); }
 }

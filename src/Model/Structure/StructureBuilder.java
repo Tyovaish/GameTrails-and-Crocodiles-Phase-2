@@ -1,5 +1,6 @@
 package Model.Structure;
 
+import Model.Location.Location;
 import Model.Location.TransportationLocation;
 import Model.Map.Tile.Tile;
 import Model.Resource.Resource;
@@ -123,15 +124,18 @@ public class StructureBuilder {
         Tile tile = transManager.getTileOfTransporter(transportation);
 
         for (ResourceEnum resource : recipe){
-            acceptMaterial(tile, resource);
+            acceptMaterial(transportation, resource);
             if (!materials.remove(resource)){
-                acceptMaterial(transportation, resource);
+                acceptMaterial(tile, resource);
                 if (!materials.remove(resource)) {
                     System.out.printf("Not enough resources! Structure not built.\n");
                     return;
                 }
             }
         }
-        tile.addStructure(structureMap.get(structure));
+        Structure struct = structureMap.get(structure);
+        Location loc = transManager.getLocation(transportation);
+        struct.setLocation(loc);
+        tile.addStructure(struct);
     }
 }

@@ -1,11 +1,13 @@
 package Model.Structure.PrimaryProducer;
 
 import Model.Map.Tile.Features.Mountain;
+import Model.Resource.PrimaryResource.Clay;
 import Model.Resource.PrimaryResource.Gold;
 import Model.Resource.PrimaryResource.Iron;
 import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -15,6 +17,7 @@ public class Mine extends PrimaryProducer {
     private int oreCounter = 10;
 
     public Mine() {
+        super();
         setPrimaryProducer(true);
         setProductionFeature(new Mountain());
     }
@@ -32,6 +35,9 @@ public class Mine extends PrimaryProducer {
     public int getOreCounter() { return oreCounter; }
     public void setOreCounter(int oreCounter) { this.oreCounter = oreCounter; }
 
-    @Override
-    public Resource produce(){ return selectOre(); }
+    public ArrayList<Resource> produce(){
+        output.clear();
+        output.add(selectOre());
+        return output;
+    }
 }

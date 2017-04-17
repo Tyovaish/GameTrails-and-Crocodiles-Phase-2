@@ -39,6 +39,12 @@ public class Tile implements ResourceHolder{
 
     public ResourceBag getResourceBag() { return resourceBag; }
 
+    public void addResources(ArrayList<Resource> resources){
+        for (Resource resource : resources){
+            if (resource == null) return;
+            else addResource(resource);
+        }
+    }
     // ResourceHolder
     public void addResource(Resource resource){ resourceBag.addResource(resource); }
     public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
@@ -48,12 +54,15 @@ public class Tile implements ResourceHolder{
         else System.out.printf("Material not found in Tile bag!\n");
     }
 
+
     public void produce(){
         if (canProduce()){
-            Resource resource = structure.produce();
-            if (resource != null) addResource(resource);
+            ArrayList<Resource> resources = (ArrayList<Resource>)structure.produce();
+            if (!resources.isEmpty())
+                addResources(resources);
         }
     }
+
     public boolean canProduce(){
         if (feature == null) return false;
         if (hasStructure){
@@ -65,9 +74,6 @@ public class Tile implements ResourceHolder{
         }
         return false;
     }
-
-    // Phases
-    public void productionPhase(){ if (canProduce()) produce(); }
 
     public void setTileZones(ArrayList<Integer> riverEdges) {
             if(riverEdges.size()==0){

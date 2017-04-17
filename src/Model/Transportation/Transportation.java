@@ -16,21 +16,28 @@ import java.util.ArrayList;
  * Created by Trevor on 4/14/2017.
  */
 public abstract class Transportation implements ResourceHolder{
-  ArrayList<MovementAbility> movementAbilities;
-  ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
-  ArrayList<DropResourceAbility> dropResourceAbilities;
-  ArrayList<ProduceStructureAbility> produceStructureAbilities;
+    protected ArrayList<MovementAbility> movementAbilities;
+    protected ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
+    protected ArrayList<DropResourceAbility> dropResourceAbilities;
+    protected ArrayList<ProduceStructureAbility> produceStructureAbilities;
 
-  ResourceBag resourceBag;
-  int bagSize;
-Transportation(ResourceBag resourceBag){
-    movementAbilities=new ArrayList<MovementAbility>();
-    pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
-    dropResourceAbilities=new ArrayList<DropResourceAbility>();
-    produceStructureAbilities=new ArrayList<ProduceStructureAbility>();
-    this.resourceBag=resourceBag;
+    protected ResourceBag resourceBag;
+    protected int bagSize;
 
-}
+    public Transportation() {
+        movementAbilities = new ArrayList<MovementAbility>();
+        pickUpResourceAbilities = new ArrayList<PickUpResourceAbility>();
+        dropResourceAbilities = new ArrayList<DropResourceAbility>();
+        produceStructureAbilities = new ArrayList<ProduceStructureAbility>();
+    }
+
+    public Transportation(ResourceBag resourceBag) {
+        movementAbilities = new ArrayList<MovementAbility>();
+        pickUpResourceAbilities = new ArrayList<PickUpResourceAbility>();
+        dropResourceAbilities = new ArrayList<DropResourceAbility>();
+        produceStructureAbilities = new ArrayList<ProduceStructureAbility>();
+        this.resourceBag = resourceBag;
+    }
 
 
  public ResourceBag getResourceBag() { return resourceBag; }
@@ -63,14 +70,7 @@ Transportation(ResourceBag resourceBag){
       ability.execute();
   }
 
-
-
-
-
   // ResourceHolder
-
-
-
   public void addResource(Resource resource){ resourceBag.addResource(resource); }
   public Resource removeResource(ResourceEnum resource){ return resourceBag.removeResource(resource); }
   public void giveMaterial(StructureBuilder builder, ResourceEnum resource){
