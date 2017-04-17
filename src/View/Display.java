@@ -53,7 +53,7 @@ public class Display extends JFrame {
         Resource resource2=new Trunk();
 
         Donkey donkey =new Donkey(resourceBag);
-
+    donkey.addResource(resource);
         Donkey donkey2 =new Donkey(resourceBag2);
 
 

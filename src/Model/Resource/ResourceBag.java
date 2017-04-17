@@ -220,19 +220,23 @@ public class ResourceBag implements ResourceHolder {
         Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
         if (counter < size || size == -1){
             resourceQueue.offer(resource);
+            resourceList.add(resource);
             counter++;
         }
         else System.out.printf("Bag is full! Resource not added.\n");
     }
 
     public void removeResource(Resource resource) {
+        ResourceEnum rEnum = resource.getType();
+        Queue<Resource> resourceQueue = resourceMap.get(rEnum);
         resource.setOnGround(true);
+        resourceQueue.poll();
         resourceList.remove(resource);
     }
 
     public Resource removeResource(ResourceEnum resource) {
        Queue<Resource> resourceQueue = resourceMap.get(resource);
-        if (!resourceQueue.isEmpty()){ counter--; return resourceQueue.poll(); }
+        if (!resourceQueue.isEmpty()){ counter--; resourceList.remove(resource); return resourceQueue.poll(); }
         else {
             System.out.printf("No resources of this type in bag!\n");
             return null;
