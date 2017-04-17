@@ -8,7 +8,10 @@ import Model.Resource.ResourceVisitor;
  * Created by khariollivierre on 4/15/17.
  */
 public class Coin extends SecondaryResource {
-    public Coin() { setType(ResourceEnum.COIN); }
+    public Coin() {
+        setResourceType("Coin");
+        setType(ResourceEnum.COIN);
+    }
 
     @Override
     public void acceptVisitor(ResourceVisitor resourceVisitor) {

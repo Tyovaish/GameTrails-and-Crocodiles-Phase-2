@@ -8,7 +8,10 @@ import Model.Resource.ResourceVisitor;
  * Created by khariollivierre on 4/15/17.
  */
 public class Stone extends PrimaryResource{
-    public Stone() { setType(ResourceEnum.STONE); }
+    public Stone() {
+        setResourceType("Stone");
+        setType(ResourceEnum.STONE);
+    }
 
     @Override
     public void acceptVisitor(ResourceVisitor resourceVisitor) {
