@@ -8,7 +8,7 @@ public abstract class Resource {
     private String resourceType;
     boolean onGround=true;
     public boolean onGround(){return onGround;}
-    void setOnGround(boolean onGround){
+    public void setOnGround(boolean onGround){
         this.onGround=onGround;
     }
     public ResourceEnum getType() { return type; }
