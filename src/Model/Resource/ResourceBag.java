@@ -220,6 +220,7 @@ public class ResourceBag implements ResourceHolder {
         Queue<Resource> resourceQueue = resourceMap.get(resource.getType());
         if (counter < size || size == -1){
             resourceQueue.offer(resource);
+            resource.setOnGround(false);
             resourceList.add(resource);
             counter++;
         }
@@ -227,6 +228,7 @@ public class ResourceBag implements ResourceHolder {
     }
 
     public void removeResource(Resource resource) {
+        resource.setOnGround(true);
         ResourceEnum rEnum = resource.getType();
         Queue<Resource> resourceQueue = resourceMap.get(rEnum);
         resource.setOnGround(true);
