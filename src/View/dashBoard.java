@@ -1,7 +1,9 @@
 package View;
 
 import Controller.MainController;
+import Model.Abilities.DropResourceAbility;
 import Model.Abilities.MovementAbility;
+import Model.Abilities.PickUpResourceAbility;
 import Model.Transportation.TransportationManager;
 
 import javax.swing.*;
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 public class dashBoard extends JPanel implements KeyListener{
 
    private  TransportationManager transportationManager;
+    ArrayList<PickUpResourceAbility> pickUpResourceList;
+    ArrayList<DropResourceAbility> dropResourceList;
    boardView board;
    MainController mainctrl;
    DisplayManager manager;
@@ -35,26 +39,38 @@ public class dashBoard extends JPanel implements KeyListener{
             }
             case KeyEvent.VK_1:{
                 mainctrl.getKeyPress(1);
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_2:{
                 mainctrl.getKeyPress(2);
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_3:{
                 mainctrl.getKeyPress(3);
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_4:{
                 mainctrl.getKeyPress(4);
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_5:{
                 mainctrl.getKeyPress(5);
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_6:{
                 mainctrl.getKeyPress(6);
+                str = mainctrl.print();
+                this.repaint();
                 break;
             }
             case KeyEvent.VK_ENTER:{
@@ -63,15 +79,28 @@ public class dashBoard extends JPanel implements KeyListener{
                 int x = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getX();
                 int y = transportationManager.getTransportationLocation(transportationManager.getTransportationList().get(0)).getY();
                 board.setCurrentLocationCursor(x,y);
+                System.out.println(str);
+
                 if(str.equals("Movement")) {
                     movementList = transportationManager.getMovementList();
                     draw = true;
                 }
+                else if(str.equals("Pick Up")){
+                    pickUpResourceList = transportationManager.getResourceList();
+                    draw=true;
+                }
+                else if(str.equals("Drop Resource")){
+                    dropResourceList = transportationManager.getDropList();
+                 draw = true;
+                }
+                else
+                    draw=false;
                this.repaint();
                 break;
             }
             case KeyEvent.VK_SHIFT:{
                 mainctrl.getShift();
+                draw=false;
                 str = mainctrl.print();
                 this.repaint();
                 break;
@@ -99,45 +128,20 @@ public class dashBoard extends JPanel implements KeyListener{
     }
 
     private void drawlist(Graphics2D g2){
-        switch(movementList.size()){
-            case 1:{
-                g2.drawString(movementList.get(0).print(),200,200);
-                break;
+        if(str.equals("Movement")) {
+            for(int i = 0 ; i < movementList.size(); i++){
+                g2.drawString(i+" ) "+movementList.get(i).print(),200,200+(i*50));
             }
-            case 2:{
-                g2.drawString(movementList.get(0).print(),200,200);
-                g2.drawString(movementList.get(1).print(),200,250);
-                break;
+        }
+
+        else if(str.equals("Pick Up")){
+            for(int i = 0 ; i < pickUpResourceList.size(); i++){
+                g2.drawString(i+" ) "+pickUpResourceList.get(i).print(),200,200+(i*50));
             }
-            case 3:{
-                g2.drawString(movementList.get(0).print(),200,200);
-                g2.drawString(movementList.get(1).print(),200,250);
-                g2.drawString(movementList.get(2).print(),200,300);
-                break;
-            }
-            case 4:{
-                g2.drawString(movementList.get(0).print(),200,200);
-                g2.drawString(movementList.get(1).print(),200,250);
-                g2.drawString(movementList.get(2).print(),200,300);
-                g2.drawString(movementList.get(3).print(),200,350);
-                break;
-            }
-            case 5:{
-                g2.drawString(movementList.get(0).print(),200,200);
-                g2.drawString(movementList.get(1).print(),200,250);
-                g2.drawString(movementList.get(2).print(),200,300);
-                g2.drawString(movementList.get(3).print(),200,350);
-                g2.drawString(movementList.get(4).print(),200,400);
-                break;
-            }
-            case 6:{
-                g2.drawString(movementList.get(0).print(),200,200);
-                g2.drawString(movementList.get(1).print(),200,250);
-                g2.drawString(movementList.get(2).print(),200,300);
-                g2.drawString(movementList.get(3).print(),200,350);
-                g2.drawString(movementList.get(4).print(),200,400);
-                g2.drawString(movementList.get(5).print(),200,450);
-                break;
+        }
+        else if(str.equals("Drop Resource")) {
+            for (int i = 0; i < dropResourceList.size(); i++) {
+                g2.drawString(i+" ) "+dropResourceList.get(i).print(), 200, 200 + (i * 50));
             }
         }
     }

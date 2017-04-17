@@ -22,9 +22,11 @@ public class TransportationManager {
     MovementManager movementManager;
     ResourceManager resourceManager;
     ArrayList<MovementAbility> movementList;
+    ArrayList<PickUpResourceAbility> pickUpResourceAbilities;
 
     ArrayList<Transportation> transportationList;
     HashMap<Transportation,TransportationLocation> transportationLocationList;
+    ArrayList<DropResourceAbility> dropResourceAbilities;
     Map gameMap;
 
     public TransportationManager(Map gameMap){
@@ -55,7 +57,7 @@ public class TransportationManager {
 
     public void setPickUpResourceAbilities(Transportation transportation){
         ArrayList<Resource> resourcesOnTileZone=resourceManager.getResourceAtTileZone(getTransportationLocation(transportation).getTileZone());
-        ArrayList<PickUpResourceAbility> pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
+        pickUpResourceAbilities=new ArrayList<PickUpResourceAbility>();
                 for(int i=0;i<resourcesOnTileZone.size();i++){
                     if(resourcesOnTileZone.get(i).onGround()) {
                         pickUpResourceAbilities.add(new PickUpResourceAbility(transportation.getResourceBag(), resourcesOnTileZone.get(i)));
@@ -65,15 +67,21 @@ public class TransportationManager {
                 transportation.setPickUpResourceAbilities(pickUpResourceAbilities);
     }
 
+    public  ArrayList<PickUpResourceAbility> getResourceList(){
+        return pickUpResourceAbilities;
+    }
 
     public void setDropResourceAbilities(Transportation transportation){
-        ArrayList<DropResourceAbility> dropResourceAbilities=new ArrayList<DropResourceAbility>();
+       dropResourceAbilities=new ArrayList<DropResourceAbility>();
         for(int i=0;i<transportation.getResourceBag().getResourceList().size();i++){
             dropResourceAbilities.add(new DropResourceAbility(transportation.getResourceBag(),transportation.getResourceBag().getResourceList().get(i)));
         }
         transportation.setDropResourceAbilities(dropResourceAbilities);
     }
 
+    public  ArrayList<DropResourceAbility> getDropList(){
+        return dropResourceAbilities;
+    }
     public void setMovementAbilities(Transportation transportation){
                 transportation.setMovementAbilities(movementManager.getMovementAbilities(transportation));
                 movementList = movementManager.getMovementAbilities(transportation);
