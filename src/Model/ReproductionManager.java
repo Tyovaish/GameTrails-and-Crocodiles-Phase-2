@@ -18,5 +18,6 @@ public class ReproductionManager {
     }
     public void reproduce(Goose goose){
         Goose babyGoose = new Goose();
+        babyGoose.location = goose.location;
     }
 }
