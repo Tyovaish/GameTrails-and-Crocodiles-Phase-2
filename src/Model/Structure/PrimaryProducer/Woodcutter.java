@@ -3,6 +3,7 @@ package Model.Structure.PrimaryProducer;
 import Model.Map.Tile.Features.Woods;
 import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class Woodcutter extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Woods());
-        setName("woodcutter");
+        setType(StructureEnum.WOODCUTTER);
     }
 
     public ArrayList<Resource> produce(){

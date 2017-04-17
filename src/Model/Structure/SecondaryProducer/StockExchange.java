@@ -3,6 +3,7 @@ package Model.Structure.SecondaryProducer;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.SecondaryResource.Coin;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -20,7 +21,7 @@ public class StockExchange extends SecondaryProducer {
         setPrimaryProducer(false);
         inputPaper = new LinkedList<>();
         inputCoin = new LinkedList<>();
-        setName("stockexchange");
+        setType(StructureEnum.EXCHANGE);
     }
 
     public void addMaterial(Resource resource){

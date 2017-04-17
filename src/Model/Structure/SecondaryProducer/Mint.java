@@ -3,6 +3,7 @@ package Model.Structure.SecondaryProducer;
 import Model.Resource.Resource;
 import Model.Resource.ResourceEnum;
 import Model.Resource.SecondaryResource.Coin;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 import java.util.Queue;
@@ -17,7 +18,7 @@ public class Mint extends SecondaryProducer {
     public Mint() {
         super();
         setPrimaryProducer(false);
-        setName("mint");
+        setType(StructureEnum.MINT);
     }
 
     public void addMaterial(Resource resource){

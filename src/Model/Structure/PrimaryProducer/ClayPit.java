@@ -3,6 +3,7 @@ package Model.Structure.PrimaryProducer;
 import Model.Resource.PrimaryResource.Clay;
 import Model.Resource.PrimaryResource.Trunk;
 import Model.Resource.Resource;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class ClayPit extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(null);
-        setName("claypit");
+        setType(StructureEnum.CLAYPIT);
     }
 
     public ArrayList<Resource> produce(){

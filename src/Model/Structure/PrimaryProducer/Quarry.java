@@ -3,6 +3,7 @@ package Model.Structure.PrimaryProducer;
 import Model.Map.Tile.Features.Rock;
 import Model.Resource.PrimaryResource.Stone;
 import Model.Resource.Resource;
+import Model.Structure.StructureEnum;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class Quarry extends PrimaryProducer {
         super();
         setPrimaryProducer(true);
         setProductionFeature(new Rock());
-        setName("quarry");
+        setType(StructureEnum.QUARRY);
     }
 
     public ArrayList<Resource> produce(){
