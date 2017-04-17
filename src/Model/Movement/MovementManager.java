@@ -22,6 +22,7 @@ public class MovementManager {
         this.transportationManager=transportationManager;
     }
 
+
     public ArrayList<MovementAbility> getMovementAbilities(Transportation transportation) {
         TransportationLocation transportationLocation=transportationManager.getTransportationLocation(transportation);
 
@@ -93,6 +94,7 @@ public class MovementManager {
                 }
             }
         }
+        System.out.println("");
         return movementAbilities;
     }
 }

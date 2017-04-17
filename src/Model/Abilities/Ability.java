@@ -5,5 +5,5 @@ package Model.Abilities;
  */
 public interface Ability {
     public void execute();
-    public void print();
+    public String print();
 }

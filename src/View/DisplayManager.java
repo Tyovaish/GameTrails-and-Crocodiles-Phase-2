@@ -31,6 +31,7 @@ public class DisplayManager {
     public String getState(){
         return mainctrl.print();
     }
+    //public String getCurrentLocation(){return transport.getTransportationLocation()}
 
 
 
@@ -39,7 +40,7 @@ public class DisplayManager {
         this.board = board;
         transport = new TransportationManager(board);
         resource = new ResourceManager(transport);
-//        mainctrl = new MainController(transport);
+      //  mainctrl = new MainController(transport);
 
     }
 }

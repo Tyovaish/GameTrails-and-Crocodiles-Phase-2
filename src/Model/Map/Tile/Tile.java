@@ -157,7 +157,7 @@ public class Tile implements ResourceHolder{
                 return containedTileZone.get(i);
             }
         }
-        System.out.println("Oh NO!!!!!!");
+
         return null;
     }
 
@@ -168,13 +168,9 @@ public class Tile implements ResourceHolder{
         return containedTileZone.contains(tileZone);
     }
     public void print(){
-        System.out.println(containedTileZone.size());
-        System.out.println("Tile");
+
        for(int i=0;i<containedTileZone.size();i++){
-           System.out.println("TileZone: "+i);
-           System.out.println("Number of connections"+containedTileZone.get(i).getConnectedTileZones().size());
            containedTileZone.get(i).print();
-           System.out.println();
        }
     }
 }

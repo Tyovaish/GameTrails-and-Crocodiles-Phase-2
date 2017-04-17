@@ -1,6 +1,7 @@
 package View;
 
 import Controller.MainController;
+import Model.Abilities.MovementAbility;
 import Model.Location.ResourceLocation;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
@@ -16,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 /**
  * Created by Lazaro on 4/11/2017.
@@ -27,6 +29,8 @@ public class dashBoard extends JPanel implements KeyListener{
    DisplayManager manager;
    Graphics2D g2;
    String str = "";
+   boolean draw = false;
+    ArrayList<MovementAbility> movementList;
 
     public void keyPressed(KeyEvent e){
 
@@ -67,6 +71,11 @@ public class dashBoard extends JPanel implements KeyListener{
                this.repaint();
                 break;
             }
+            case KeyEvent.VK_D:{
+                movementList = transportationManager.getMovementList();
+                draw = true;
+                this.repaint();
+            }
             case KeyEvent.VK_SHIFT:{
                 mainctrl.getShift();
                 str = mainctrl.print();
@@ -89,9 +98,21 @@ public class dashBoard extends JPanel implements KeyListener{
         g2 = (Graphics2D) g;
         g2.setFont(new Font("Times New Roman",Font.BOLD,50));
         g2.drawString(str,100,150);
+        if(draw)
+       drawlist(g2);
 
     }
 
+    private void drawlist(Graphics2D g2){
+        switch(movementList.size()){
+            case 3:{
+                g2.drawString(movementList.get(0).print(),200,200);
+                g2.drawString(movementList.get(1).print(),200,250);
+                g2.drawString(movementList.get(2).print(),200,300);
+                break;
+            }
+        }
+    }
     dashBoard(Map board, DisplayManager manger){
         setPreferredSize(new Dimension(700,1000));
         addKeyListener(this);
@@ -99,7 +120,7 @@ public class dashBoard extends JPanel implements KeyListener{
         manager = manger;
 
 
-        TransportationManager transportationManager=new TransportationManager(board);
+        transportationManager=new TransportationManager(board);
         ResourceManager resourceManager=new ResourceManager(transportationManager);
         MovementManager movementManager=new MovementManager(board,transportationManager);
         transportationManager.setMovementManager(movementManager);
@@ -112,5 +133,6 @@ public class dashBoard extends JPanel implements KeyListener{
         resourceManager.addResource(resource,new ResourceLocation(0,0,board.getTileAt(0,0).getTileZone(0)));
         transportationManager.addTransportation(donkey, new TransportationLocation(0,0, board.getTileAt(0,0).getTileZone(0)));
         mainctrl=new MainController(transportationManager);
+
     }
 }

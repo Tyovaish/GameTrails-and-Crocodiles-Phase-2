@@ -1,6 +1,7 @@
 package Model.Transportation;
 
 import Model.Abilities.DropResourceAbility;
+import Model.Abilities.MovementAbility;
 import Model.Abilities.PickUpResourceAbility;
 import Model.Location.TransportationLocation;
 import Model.Map.Map;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 public class TransportationManager {
     MovementManager movementManager;
     ResourceManager resourceManager;
+    ArrayList<MovementAbility> movementList;
 
     ArrayList<Transportation> transportationList;
     HashMap<Transportation,TransportationLocation> transportationLocationList;
@@ -43,6 +45,7 @@ public class TransportationManager {
     }
 
     public TransportationLocation getTransportationLocation(Transportation transportation){
+
         return transportationLocationList.get(transportation);
     }
 
@@ -73,7 +76,12 @@ public class TransportationManager {
     }
 
     public void setMovementAbilities(Transportation transportation){
-            transportation.setMovementAbilities(movementManager.getMovementAbilities(transportation));
+                transportation.setMovementAbilities(movementManager.getMovementAbilities(transportation));
+                movementList = movementManager.getMovementAbilities(transportation);
+    }
+
+    public ArrayList<MovementAbility> getMovementList(){
+        return movementList;
     }
     public MovementManager getMovementManager() {
         return movementManager;

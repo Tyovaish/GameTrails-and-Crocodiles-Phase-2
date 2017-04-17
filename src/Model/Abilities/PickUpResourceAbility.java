@@ -18,7 +18,8 @@ public class PickUpResourceAbility implements Ability {
         resourceBag.addResource(resourceToPickUp);
     }
     @Override
-    public void print() {
+    public String print() {
         System.out.println("Pick Up Resource: "+resourceToPickUp.getType());
+        return"";
     }
 }

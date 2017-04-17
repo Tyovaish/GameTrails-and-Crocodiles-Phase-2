@@ -178,7 +178,6 @@ public class ImportManager {
 
         //inserting tile to map
         Location loc = new Location(row, col);
-        System.out.println(type);
         editor.insertTile(loc, createTile());
 
 
