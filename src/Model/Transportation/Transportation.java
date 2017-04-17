@@ -24,6 +24,8 @@ public abstract class Transportation implements ResourceHolder{
     protected ResourceBag resourceBag;
     protected int bagSize;
 
+    private TransportationEnum type;
+
     public Transportation() {
         movementAbilities = new ArrayList<MovementAbility>();
         pickUpResourceAbilities = new ArrayList<PickUpResourceAbility>();
@@ -56,8 +58,13 @@ public abstract class Transportation implements ResourceHolder{
         this.movementAbilities=movementAbilities;
     }
 
+    public void setType(TransportationEnum type) { this.type = type; }
+    public String getType(){
+        return "donkey";
+    }
+    public String getName() { return type.getName(); }
 
- public ArrayList<MovementAbility> getMovementSet(){
+    public ArrayList<MovementAbility> getMovementSet(){
      return movementAbilities;
   }
   public ArrayList<PickUpResourceAbility> getPickUpResourceSet(){
@@ -78,7 +85,5 @@ public abstract class Transportation implements ResourceHolder{
       if (material != null) builder.addMaterial(material);
       else System.out.printf("Material not found in Transport bag!\n");
   }
-  public String getType(){
-      return "donkey";
-  }
+
 }

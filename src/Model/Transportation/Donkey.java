@@ -14,6 +14,7 @@ public class Donkey extends Transportation {
         super();
         setBagSize(2);
         initResourceBag();
+        setType(TransportationEnum.DONKEY);
     }
 
     public Donkey(ResourceBag resourceBag) {

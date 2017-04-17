@@ -1,6 +1,7 @@
 package Model.Transportation.WaterTransport;
 
 import Model.Movement.MovementManager;
+import Model.Transportation.TransportationEnum;
 import Model.Transportation.WaterTransport.WaterTransport;
 
 /**
@@ -13,6 +14,7 @@ public class Rowboat extends WaterTransport {
         super();
         setBagSize(5);
         initResourceBag();
+        setType(TransportationEnum.ROWBOAT);
     }
 
 }
