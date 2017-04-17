@@ -1,8 +1,5 @@
 package Controller;
 
-import Controller.Controller;
-import Model.Abilities.Ability;
-import Model.Abilities.MovementAbility;
 import Model.Transportation.Transportation;
 import Model.Transportation.TransportationManager;
 
@@ -25,7 +22,7 @@ public class TransportationAbilitiesController extends Controller {
         controllerList.add(new TransportationMovementController(transportationManager,this));
         controllerList.add(new TransportationPickUpResourceController(transportationManager,this));
         controllerList.add(new TransportationDropResourceController(transportationManager,this));
-        controllerList.add(new TransportationStructureBuilder(transportationManager,this));
+        controllerList.add(new TransportationPrimaryProducerBuilder(transportationManager,this));
 }
     @Override
     public void getKeyPress(int keyPressed) {
