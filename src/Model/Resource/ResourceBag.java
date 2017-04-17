@@ -16,25 +16,6 @@ public class ResourceBag implements ResourceHolder {
     private int size = 6;
     ArrayList<Resource> resourceList;
 
-    public ResourceBag(ResourceManager resourceManager) {
-        resourceList = new ArrayList<>();
-        this.resourceManager = resourceManager;
-    }
-
-    public ArrayList<Resource> getResourceList() {
-        return resourceList;
-    }
-
-    public void carry(TransportationLocation transportationLocation) {
-        for (int i = 0; i < resourceList.size(); i++) {
-            ResourceLocation locationToChange = this.resourceManager.getResourceLocation(resourceList.get(i));
-            locationToChange.setX(transportationLocation.getX());
-            locationToChange.setY(transportationLocation.getY());
-            locationToChange.setTileZone(transportationLocation.getTileZone());
-        }
-    }
-
-
     // Primary Resources
     private Queue<Stone> stones;
     private Queue<Trunk> trunks;
@@ -75,6 +56,42 @@ public class ResourceBag implements ResourceHolder {
 
         resourceMap = new HashMap<>();
         createResourceMap();
+    }
+
+    public ResourceBag(ResourceManager resourceManager) {
+        resourceList = new ArrayList<>();
+        this.resourceManager = resourceManager;
+        resourceList = new ArrayList<Resource>();
+
+        stones = new LinkedList<>();
+        trunks = new LinkedList<>();
+        fuels = new LinkedList<>();
+        irons = new LinkedList<>();
+        golds = new LinkedList<>();
+        clays = new LinkedList<>();
+
+        boards = new LinkedList<>();
+        coins = new LinkedList<>();
+        marbles = new LinkedList<>();
+        papers = new LinkedList<>();
+        pearls = new LinkedList<>();
+        bonds = new LinkedList<>();
+
+        resourceMap = new HashMap<>();
+        createResourceMap();
+    }
+
+    public ArrayList<Resource> getResourceList() {
+        return resourceList;
+    }
+
+    public void carry(TransportationLocation transportationLocation) {
+        for (int i = 0; i < resourceList.size(); i++) {
+            ResourceLocation locationToChange = this.resourceManager.getResourceLocation(resourceList.get(i));
+            locationToChange.setX(transportationLocation.getX());
+            locationToChange.setY(transportationLocation.getY());
+            locationToChange.setTileZone(transportationLocation.getTileZone());
+        }
     }
 
     private void createResourceMap() {
